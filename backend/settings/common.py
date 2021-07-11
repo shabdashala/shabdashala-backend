@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+import os
 
 from pathlib import Path
 
@@ -24,7 +25,7 @@ SITE_ID = 1
 ALLOWED_HOSTS = []
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'optional'
+ACCOUNT_EMAIL_VERIFICATION = 'optional'  # 'mandatory'
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'email'
@@ -46,29 +47,57 @@ LOGOUT_REDIRECT_URL = '/'
 REST_AUTH_TOKEN_MODEL = "apps.accounts.models.DeviceToken"
 REST_AUTH_TOKEN_CREATOR = "apps.accounts.utils.create_device_token"
 
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'apps.accounts.serializers.RegistrationSerializer',
+}
+
+REST_AUTH_SERIALIZERS = {
+    'LOGIN_SERIALIZER': 'apps.accounts.serializers.LoginSerializer',
+    'TOKEN_SERIALIZER': 'apps.accounts.serializers.TokenSerializer',
+    'USER_DETAILS_SERIALIZER': 'apps.accounts.serializers.UserDetailsSerializer',
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'apps.accounts.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    # 'DEFAULT_THROTTLE_CLASSES': (
+    #     'rest_framework.throttling.AnonRateThrottle',
+    #     'rest_framework.throttling.UserRateThrottle'
+    # ),
+    # 'DEFAULT_THROTTLE_RATES': {
+    #     'anon': '100/day',
+    #     'user': '1000/day'
+    # },
+    # 'DEFAULT_PAGINATION_CLASS': 'api.pagination.StandardResultsSetPagination',
+}
+
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
         'METHOD': 'oauth2',
-        'SCOPE': ['email', 'public_profile', 'user_friends'],
+        'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
+        'SCOPE': ['email', 'public_profile'],
         'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
         'INIT_PARAMS': {'cookie': True},
         'FIELDS': [
             'id',
-            'email',
-            'name',
             'first_name',
             'last_name',
+            'middle_name',
+            'name',
+            'name_format',
+            'picture',
+            'short_name',
             'verified',
-            'locale',
-            'timezone',
-            'link',
             'gender',
-            'updated_time',
         ],
         'EXCHANGE_TOKEN': True,
         'LOCALE_FUNC': lambda request: 'en_US',
         'VERIFIED_EMAIL': True,
-        'VERSION': 'v2.5',
+        'VERSION': 'v7.0',
     }
 }
 
@@ -87,6 +116,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
 
     'allauth',
     'allauth.account',
@@ -98,6 +128,8 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
 
     'drf_yasg',
+    'widget_tweaks',
+    'haystack',
 
     'apps.accounts',
 ]
@@ -191,3 +223,16 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# HAYSTACK_SETTINGS
+ENABLE_HAYSTACK_SEARCH = True
+
+# Haystack settings
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    },
+}
+
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
