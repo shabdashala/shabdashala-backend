@@ -22,10 +22,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = False
 SITE_ID = 1
 
+# outgoing mail server settings
+EMAIL_SUBJECT_PREFIX = 'ShabdaShala'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+SERVER_EMAIL = 'no-reply@shabdashala.com'
+DEFAULT_FROM_EMAIL = 'no-reply@shabdashala.com'
+EMAIL_HOST_USER = 'Varanasi Bala Subrahmanyam'
+EMAIL_HOST_PASSWORD = 'iv7LtOizxHq7YQtC5u_fSQ'
+EMAIL_HOST = 'smtp.mandrillapp.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = False
+
 ALLOWED_HOSTS = []
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'optional'  # 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # 'mandatory'
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'email'
