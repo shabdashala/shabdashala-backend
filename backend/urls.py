@@ -31,8 +31,6 @@ urlpatterns = [
         name="account_confirm_email",
     ),
     path('admin/', admin.site.urls),
-    path('accounts/social', include('allauth.socialaccount.providers.facebook.urls')),
-    path('accounts/social', include('allauth.socialaccount.urls')),
     path('accounts/', include('apps.accounts.urls.allauth')),
     path('api/auth/', include('apps.accounts.urls.api')),
 ]

@@ -1,7 +1,10 @@
-from django.urls import path, re_path
+from importlib import import_module
 
+from django.urls import include, path, re_path
+
+from allauth import app_settings
 from allauth.account import views as allauth_views
-
+from allauth.socialaccount import providers
 
 urlpatterns = [
     path("signup/", allauth_views.signup, name="account_signup"),
@@ -44,3 +47,15 @@ urlpatterns = [
         name="account_reset_password_from_key_done",
     ),
 ]
+
+if app_settings.SOCIALACCOUNT_ENABLED:
+    urlpatterns += [re_path(r'^social/', include('allauth.socialaccount.urls'))]
+
+for provider in providers.registry.get_list():
+    try:
+        prov_mod = import_module(provider.get_package() + '.urls')
+    except ImportError:
+        continue
+    prov_urlpatterns = getattr(prov_mod, 'urlpatterns', None)
+    if prov_urlpatterns:
+        urlpatterns += prov_urlpatterns
