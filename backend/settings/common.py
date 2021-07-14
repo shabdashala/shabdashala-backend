@@ -35,6 +35,10 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = False
 
 ALLOWED_HOSTS = []
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # 'mandatory'
@@ -125,6 +129,13 @@ INSTALLED_APPS = [
     'corsheaders',
     'import_export',
     'simple_history',
+    "compressor",
+
+    # tailwind css
+    'tailwind',
+    'theme',
+
+    # rest frame work
 
     'rest_framework',
     'rest_framework.authtoken',
@@ -144,7 +155,10 @@ INSTALLED_APPS = [
     'haystack',
 
     'apps.accounts',
+    'apps.home',
 ]
+
+TAILWIND_APP_NAME = 'theme'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -155,7 +169,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # other middleware classes
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
 ]
+
+HTML_MINIFY = True
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -228,8 +247,29 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+STATICFILES_LOCATION = 'static'
+MEDIAFILES_LOCATION = 'media'
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_files')
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+
+COMPRESS_ENABLED = True
+COMPRESS_PARSER = 'compressor.parser.BeautifulSoupParser'
+COMPRESS_STORAGE = STATICFILES_STORAGE
+COMPRESS_ROOT = STATIC_ROOT
+COMPRESS_URL = STATIC_URL
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

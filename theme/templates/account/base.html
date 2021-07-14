@@ -1,0 +1,54 @@
+{% load static compress tailwind_tags %}
+<!DOCTYPE html>
+<html {% block html_theme %}{% endblock %}x-data="data()" lang="en">
+<head>
+  <title>{% block head_title %}శబ్దశాల{% endblock %}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  {% tailwind_css %}
+
+
+  {% compress js %}
+    <script src="{% static 'home/js/alpine.min.js' %}"></script>
+    <script src="{% static 'home/js/init-alpine.js' %}"></script>
+  {% endcompress %}
+
+  {% block extra_head %}
+  {% endblock %}
+</head>
+<body class="font-serif leading-normal tracking-normal">
+
+{% block body %}
+  {% if messages %}
+    <div>
+      <strong>Messages:</strong>
+      <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <div>
+    <strong>Menu:</strong>
+    <ul>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+      {% else %}
+        <li><a href="{% url 'account_login' %}">Sign In</a></li>
+        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+      {% endif %}
+    </ul>
+  </div>
+  {% block content %}
+  {% endblock %}
+{% endblock %}
+
+{% block extra_body %}
+{% endblock %}
+</body>
+</html>
