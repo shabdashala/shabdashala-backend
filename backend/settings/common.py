@@ -130,6 +130,7 @@ INSTALLED_APPS = [
     'import_export',
     'simple_history',
     "compressor",
+    'storages',
 
     # tailwind css
     'tailwind',
