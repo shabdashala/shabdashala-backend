@@ -5,7 +5,15 @@
 {% block head_title %}{% trans "Social Network Login Failure" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Social Network Login Failure" %}</h1>
+  <h1>{% trans "Social Network Login Failure" %}</h1>
 
-<p>{% trans "An error occurred while attempting to login via your social network account." %}</p>
+  <p>{% trans "An error occurred while attempting to login via your social network account." %}</p>
+  <hr class="my-8"/>
+
+  <p class="mt-1">
+    <a class="text-sm font-medium text-gray-600 {% comment %}dark:text-purple-400{% endcomment %} hover:underline"
+       href="{% url 'account_login' %}">
+      Go back to Login page
+    </a>
+  </p>
 {% endblock %}
