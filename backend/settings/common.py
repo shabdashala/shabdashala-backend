@@ -34,7 +34,7 @@ EMAIL_HOST = 'smtp.mandrillapp.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.shabdashala.com']
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
