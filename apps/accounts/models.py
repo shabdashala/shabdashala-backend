@@ -115,9 +115,9 @@ class User(django_auth_models.AbstractBaseUser, django_auth_models.PermissionsMi
         verbose_name = _('user')
         verbose_name_plural = _('users')
 
-    def delete(self, **kwargs):
-        self.is_active = False
-        self.save()
+    # def delete(self, **kwargs):
+    #     self.is_active = False
+    #     self.save()
 
     def clean(self):
         super().clean()
