@@ -139,6 +139,7 @@ INSTALLED_APPS = [
     # tailwind css
     'tailwind',
     'theme',
+    'rangefilter',
 
     # rest frame work
 
