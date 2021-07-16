@@ -161,6 +161,7 @@ INSTALLED_APPS = [
 
     'apps.accounts',
     'apps.home',
+    'apps.playground',
 ]
 
 TAILWIND_APP_NAME = 'theme'
