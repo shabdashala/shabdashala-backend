@@ -9,11 +9,8 @@
 
   {% tailwind_css %}
 
-
-  {% compress js %}
-    <script src="{% static 'home/js/alpine.min.js' %}"></script>
-    <script src="{% static 'home/js/init-alpine.js' %}"></script>
-  {% endcompress %}
+  <script src="{% static 'home/js/alpine.min.js' %}"></script>
+  <script src="{% static 'home/js/init-alpine.js' %}"></script>
 
   {% block extra_head %}
   {% endblock %}
