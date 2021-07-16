@@ -1,12 +1,16 @@
 from importlib import import_module
 
-from django.urls import include, path, re_path
+from django.urls import include, path, re_path, reverse_lazy
+from django.views.generic import RedirectView
 
 from allauth import app_settings
 from allauth.account import views as allauth_views
 from allauth.socialaccount import providers
 
 urlpatterns = [
+    path("register/", RedirectView.as_view(url=reverse_lazy('account_signup')), name="account_register"),
+    path("signin/", RedirectView.as_view(url=reverse_lazy('account_login')), name="account_signin"),
+
     path("signup/", allauth_views.signup, name="account_signup"),
     path("login/", allauth_views.login, name="account_login"),
     path("logout/", allauth_views.logout, name="account_logout"),

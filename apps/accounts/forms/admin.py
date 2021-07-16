@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.utils.translation import ugettext_lazy as _
 
-from . import models as accounts_models
+from .. import models as accounts_models
 
 
 class UserCreationForm(forms.ModelForm):

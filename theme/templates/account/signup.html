@@ -1,0 +1,111 @@
+{% extends "account/base_dark_with_body.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+  <h1 class="mb-4 text-xl font-semibold">{% trans "Sign Up" %}</h1>
+
+  <p class="mt-2 mb-4">
+    {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
+  </p>
+
+  <div class="mt-2 mb-4">
+    <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+      {% csrf_token %}
+      <label class="block text-sm">
+      <span class="text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
+        Email *
+      </span>
+        <input class="block w-full mt-1 text-sm{% comment %}  dark:border-gray-600 dark:bg-gray-700{% endcomment %} focus:border-purple-400 focus:outline-none focus:shadow-outline-purple {% comment %}  dark:text-gray-300 dark:focus:shadow-outline-gray{% endcomment %} form-input"
+               autocomplete="email" id="id_email" name="email" placeholder="" required=""
+               type="email"
+        />
+        {% for error in form.email.errors %}
+          <span class="text-xs text-gray-700{% comment %}  dark:text-gray-400{% endcomment %}"
+                id="id_login">{{ error }}</span>
+        {% endfor %}
+      </label>
+
+      <label class="block mt-4 text-sm">
+      <span class="text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
+        First Name *
+      </span>
+        <input class="block w-full mt-1 text-sm{% comment %}  dark:border-gray-600 dark:bg-gray-700{% endcomment %} focus:border-purple-400 focus:outline-none focus:shadow-outline-purple {% comment %}  dark:text-gray-300 dark:focus:shadow-outline-gray{% endcomment %} form-input"
+               id="id_first_name" name="first_name" placeholder="" required=""
+               maxlength="30" type="text"
+        />
+        {% for error in form.first_name.errors %}
+          <span class="text-xs text-gray-700{% comment %}  dark:text-gray-400{% endcomment %}"
+                id="id_login">{{ error }}</span>
+        {% endfor %}
+      </label>
+
+      <label class="block mt-4 text-sm">
+      <span class="text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
+        Last Name *
+      </span>
+        <input class="block w-full mt-1 text-sm{% comment %}  dark:border-gray-600 dark:bg-gray-700{% endcomment %} focus:border-purple-400 focus:outline-none focus:shadow-outline-purple {% comment %}  dark:text-gray-300 dark:focus:shadow-outline-gray{% endcomment %} form-input"
+               id="id_last_name" name="last_name" placeholder="" required=""
+               maxlength="30" type="text"
+        />
+        {% for error in form.email.errors %}
+          <span class="text-xs text-gray-700{% comment %}  dark:text-gray-400{% endcomment %}"
+                id="id_login">{{ error }}</span>
+        {% endfor %}
+      </label>
+
+      <label class="block mt-4 text-sm">
+      <span class="text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
+        Password *
+      </span>
+        <input class="block w-full mt-1 text-sm {% comment %}dark:border-gray-600 dark:bg-gray-700 {% endcomment %}focus:border-purple-400 focus:outline-none focus:shadow-outline-purple {% comment %}dark:text-gray-300 dark:focus:shadow-outline-gray{% endcomment %} form-input"
+               autocomplete="new-password" id="id_password1" name="password1" placeholder="" required
+               type="password"
+        />
+        {% for error in form.password1.errors %}
+          <span class="text-xs text-gray-700{% comment %} dark:text-gray-400{% endcomment %}"
+                id="id_password">{{ error }}</span>
+        {% endfor %}
+      </label>
+      <label class="block mt-4 text-sm">
+      <span class="text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
+        Password (again) *
+      </span>
+        <input class="block w-full mt-1 text-sm {% comment %}dark:border-gray-600 dark:bg-gray-700 {% endcomment %}focus:border-purple-400 focus:outline-none focus:shadow-outline-purple {% comment %}dark:text-gray-300 dark:focus:shadow-outline-gray{% endcomment %} form-input"
+               autocomplete="new-password" id="id_password2" name="password2" placeholder="" required
+               type="password"
+        />
+        {% for error in form.password2.errors %}
+          <span class="text-xs text-gray-700{% comment %} dark:text-gray-400{% endcomment %}"
+                id="id_password">{{ error }}</span>
+        {% endfor %}
+      </label>
+
+      {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+      {% endif %}
+      {% if form.non_field_errors %}
+        <label class="block mt-4 text-sm">
+          {% for error in form.non_field_errors %}
+            <span class="text-xs text-gray-700{% comment %} dark:text-gray-400{% endcomment %}"
+                  id="id_password">{{ error }}</span>
+          {% endfor %}
+        </label>
+      {% endif %}
+      <button class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+              type="submit">{% trans "Sign Up" %} &raquo;
+      </button>
+    </form>
+
+    <hr class="my-8"/>
+
+    <p class="mt-1">
+      <a class="text-sm font-medium text-gray-600 {% comment %}dark:text-purple-400{% endcomment %} hover:underline"
+         href="{% url 'account_login' %}">
+        Already have an account? Login
+      </a>
+    </p>
+  </div>
+{% endblock %}

@@ -39,6 +39,8 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+AUTH_USER_MODEL = 'accounts.User'
+
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # 'mandatory'
@@ -50,11 +52,13 @@ ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 
+ACCOUNT_FORMS = {
+    'signup': 'apps.accounts.forms.SignupForm',
+}
+
 SOCIAL_AUTH_FACEBOOK_KEY = '4080949708656125'
 SOCIAL_AUTH_FACEBOOK_SECRET = '09add2496f9f0f56b7302298c1109229'
 SOCIALACCOUNT_ADAPTER = 'apps.accounts.adapters.SocialAccountAdapter'
-
-AUTH_USER_MODEL = 'accounts.User'
 
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
