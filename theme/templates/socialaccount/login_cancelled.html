@@ -2,7 +2,7 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Login Cancelled" %}{% endblock %}
+{% block head_title %}{{ block.super }} - {% trans "Login Cancelled" %}{% endblock %}
 
 {% block content %}
 

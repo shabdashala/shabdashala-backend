@@ -2,7 +2,7 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
+{% block head_title %}{{ block.super }} - {% trans "Verify Your E-mail Address" %}{% endblock %}
 
 {% block content %}
   <h1 class="mb-4 text-xl font-semibold">{% trans "Verify Your E-mail Address" %}</h1>

@@ -2,7 +2,7 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
+{% block head_title %}{{ block.super }} - {% trans "Sign Up Closed" %}{% endblock %}
 
 {% block content %}
   <h1 class="mb-4 text-xl font-semibold">{% trans "Sign Up Closed" %}</h1>
