@@ -140,6 +140,7 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'rangefilter',
+    'treebeard',
 
     # rest frame work
 
@@ -161,8 +162,13 @@ INSTALLED_APPS = [
     'haystack',
 
     'apps.accounts',
+    'apps.categories',
     'apps.home',
+    'apps.languages',
     'apps.playground',
+    'apps.quiz',
+    'apps.sentences',
+    'apps.words',
 ]
 
 TAILWIND_APP_NAME = 'theme'
