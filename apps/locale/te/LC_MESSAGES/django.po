@@ -1,0 +1,399 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-17 22:09+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: apps/accounts/adapters.py:19
+msgid "Email can not be used. Please use other email."
+msgstr ""
+
+#: apps/accounts/adapters.py:21
+msgid "Too many failed login attempts. Try again later."
+msgstr ""
+
+#: apps/accounts/adapters.py:23
+msgid "A user is already registered with this e-mail address."
+msgstr ""
+
+#: apps/accounts/admin.py:41
+msgid "Personal info"
+msgstr ""
+
+#: apps/accounts/admin.py:44
+msgid "Permissions"
+msgstr ""
+
+#: apps/accounts/admin.py:47
+msgid "Important dates"
+msgstr ""
+
+#: apps/accounts/filters.py:8
+msgid "groups"
+msgstr ""
+
+#: apps/accounts/forms/admin.py:14 apps/accounts/serializers/registration.py:35
+msgid "The two password fields didn't match."
+msgstr ""
+
+#: apps/accounts/forms/admin.py:17 apps/accounts/forms/admin.py:50
+msgid "Password"
+msgstr ""
+
+#: apps/accounts/forms/admin.py:21
+msgid "Password confirmation"
+msgstr ""
+
+#: apps/accounts/forms/admin.py:23
+msgid "Enter the same password as above, for verification."
+msgstr ""
+
+#: apps/accounts/forms/admin.py:51
+msgid ""
+"Raw passwords are not stored, so there is no way to see this user's "
+"password, but you can change the password using <a href=\"password/\">this "
+"form</a>."
+msgstr ""
+
+#: apps/accounts/models.py:71
+msgid "first name"
+msgstr ""
+
+#: apps/accounts/models.py:72
+msgid "last name"
+msgstr ""
+
+#: apps/accounts/models.py:73
+msgid "email address"
+msgstr ""
+
+#: apps/accounts/models.py:74
+msgid "Phone number"
+msgstr ""
+
+#: apps/accounts/models.py:76
+msgid "gender"
+msgstr ""
+
+#: apps/accounts/models.py:81
+msgid "staff status"
+msgstr ""
+
+#: apps/accounts/models.py:84
+msgid "Designates whether the user can log into this admin site."
+msgstr ""
+
+#: apps/accounts/models.py:87
+msgid "active"
+msgstr ""
+
+#: apps/accounts/models.py:90
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: apps/accounts/models.py:95
+msgid "password reset"
+msgstr ""
+
+#: apps/accounts/models.py:98
+msgid ""
+"Designates whether this user should change his password during the next "
+"login."
+msgstr ""
+
+#: apps/accounts/models.py:103
+msgid "date joined"
+msgstr ""
+
+#: apps/accounts/models.py:115
+msgid "user"
+msgstr ""
+
+#: apps/accounts/models.py:116
+msgid "users"
+msgstr ""
+
+#: apps/accounts/models.py:172
+msgid "Device ID"
+msgstr ""
+
+#: apps/accounts/models.py:173
+msgid "Unique device identifier"
+msgstr ""
+
+#: apps/accounts/models.py:176
+msgid "Key"
+msgstr ""
+
+#: apps/accounts/models.py:180
+msgid "Date Created"
+msgstr ""
+
+#: apps/accounts/models.py:182
+msgid "Date Removed"
+msgstr ""
+
+#: apps/accounts/models.py:193
+msgid "device token"
+msgstr ""
+
+#: apps/accounts/models.py:194
+msgid "device tokens"
+msgstr ""
+
+#: apps/accounts/serializers/login.py:20
+msgid "Invalid credentials!"
+msgstr ""
+
+#: apps/accounts/serializers/login.py:27
+msgid "Please reset your password to access your account."
+msgstr ""
+
+#: apps/accounts/serializers/login.py:30
+msgid "This email address hasn't been registered with us."
+msgstr ""
+
+#: apps/accounts/serializers/login.py:38
+msgid "User account is disabled."
+msgstr ""
+
+#: apps/accounts/serializers/login.py:41
+msgid "Incorrect Password. Please try again!"
+msgstr ""
+
+#: apps/accounts/serializers/login.py:44
+msgid "Unable to log in with provided credentials."
+msgstr ""
+
+#: apps/accounts/serializers/login.py:57
+msgid ""
+"Your E-mail address is not verified. A verification e-mail is sent to your "
+"inbox."
+msgstr ""
+
+#: apps/categories/models.py:26 apps/words/models.py:29
+msgid "Name"
+msgstr ""
+
+#: apps/categories/models.py:27 apps/words/models.py:30
+msgid "Description"
+msgstr ""
+
+#: apps/categories/models.py:28 apps/words/models.py:31
+msgid "Meta title"
+msgstr ""
+
+#: apps/categories/models.py:29 apps/words/models.py:32
+msgid "Meta description"
+msgstr ""
+
+#: apps/categories/models.py:30 apps/words/models.py:33
+msgid "Image"
+msgstr ""
+
+#: apps/categories/models.py:32 apps/words/models.py:35
+msgid "Slug"
+msgstr ""
+
+#: apps/categories/models.py:35 apps/words/models.py:38
+msgid "Is public"
+msgstr ""
+
+#: apps/categories/models.py:38
+msgid "Show this category in search results and categories listings."
+msgstr ""
+
+#: apps/categories/models.py:41
+msgid "Ancestor categories are public"
+msgstr ""
+
+#: apps/categories/models.py:44
+msgid "The ancestors of this category are public"
+msgstr ""
+
+#: apps/categories/models.py:45 apps/languages/models.py:12
+#: apps/quiz/models.py:25 apps/quiz/models.py:89 apps/words/models.py:48
+msgid "Display order"
+msgstr ""
+
+#: apps/categories/models.py:184 apps/quiz/models.py:17 apps/quiz/models.py:63
+msgid "Category"
+msgstr ""
+
+#: apps/categories/models.py:185
+msgid "Categories"
+msgstr ""
+
+#: apps/quiz/constants.py:7
+msgid "Configured"
+msgstr ""
+
+#: apps/quiz/constants.py:8
+msgid "Dynamic"
+msgstr ""
+
+#: apps/quiz/constants.py:18
+msgid "Multiple choice answer question"
+msgstr ""
+
+#: apps/quiz/constants.py:19
+msgid "Multiple choice multiple answer question"
+msgstr ""
+
+#: apps/quiz/constants.py:20
+msgid "Jumbled word answer question"
+msgstr ""
+
+#: apps/quiz/constants.py:21
+msgid "Translation question"
+msgstr ""
+
+#: apps/quiz/models.py:16 apps/quiz/models.py:62 apps/quiz/models.py:77
+msgid "Language"
+msgstr ""
+
+#: apps/quiz/models.py:18
+msgid "Quiz type"
+msgstr ""
+
+#: apps/quiz/models.py:21
+msgid "Maximum number of questions"
+msgstr ""
+
+#: apps/quiz/models.py:22
+msgid "Maximum marks"
+msgstr ""
+
+#: apps/quiz/models.py:23
+msgid "Maximum bonus marks"
+msgstr ""
+
+#: apps/quiz/models.py:24 apps/quiz/models.py:70
+msgid "Has been published?"
+msgstr ""
+
+#: apps/quiz/models.py:28
+msgid "Random Order"
+msgstr ""
+
+#: apps/quiz/models.py:29
+msgid "Display the questions in a random order or as they are set?"
+msgstr ""
+
+#: apps/quiz/models.py:34
+msgid "Pass Mark"
+msgstr ""
+
+#: apps/quiz/models.py:35
+msgid "Percentage required to pass exam."
+msgstr ""
+
+#: apps/quiz/models.py:38
+msgid "Displayed if user passes."
+msgstr ""
+
+#: apps/quiz/models.py:39
+msgid "Success Text"
+msgstr ""
+
+#: apps/quiz/models.py:41
+msgid "Fail Text"
+msgstr ""
+
+#: apps/quiz/models.py:42
+msgid "Displayed if user fails."
+msgstr ""
+
+#: apps/quiz/models.py:45
+msgid ""
+"Correct answer is NOT shown after question. Answers displayed at the end."
+msgstr ""
+
+#: apps/quiz/models.py:47
+msgid "Answers at end"
+msgstr ""
+
+#: apps/quiz/models.py:50
+msgid ""
+"If yes, the result of each attempt by a user will be stored. Necessary for "
+"marking."
+msgstr ""
+
+#: apps/quiz/models.py:53
+msgid "Exam Paper"
+msgstr ""
+
+#: apps/quiz/models.py:65 apps/quiz/models.py:79
+msgid "Sentence"
+msgstr ""
+
+#: apps/quiz/models.py:66
+msgid "Question type"
+msgstr ""
+
+#: apps/quiz/models.py:69
+msgid "Maximum Marks"
+msgstr ""
+
+#: apps/quiz/models.py:80
+msgid "Is this answer correct?"
+msgstr ""
+
+#: apps/quiz/models.py:87 apps/quiz/models.py:88 apps/quiz/models.py:97
+msgid "Quiz"
+msgstr ""
+
+#: apps/quiz/models.py:96
+msgid "User"
+msgstr ""
+
+#: apps/quiz/models.py:98
+msgid "Total Score"
+msgstr ""
+
+#: apps/quiz/models.py:138
+msgid "Was this attempt correct?"
+msgstr ""
+
+#: apps/quiz/models.py:139
+msgid "Marks Obtained"
+msgstr ""
+
+#: apps/sentences/models.py:17
+msgid "text"
+msgstr ""
+
+#: apps/words/models.py:41
+msgid "Show this category in search results and word listings."
+msgstr ""
+
+#: apps/words/models.py:44
+msgid "Ancestor words are public"
+msgstr ""
+
+#: apps/words/models.py:47
+msgid "The ancestors of this word are public"
+msgstr ""
+
+#: apps/words/models.py:186
+msgid "Word"
+msgstr ""
+
+#: apps/words/models.py:187
+msgid "Words"
+msgstr ""

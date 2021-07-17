@@ -5,7 +5,7 @@
 {% block head_title %}{{ block.super }} - {% trans "Signup" %}{% endblock %}
 
 {% block content %}
-  <h1 class="mb-4 text-xl font-semibold">{% trans "Sign Up" %}</h1>
+  <h1 class="mb-4 text-xl font-semibold">{% trans "Signup" %}</h1>
 
   <p class="mt-2 mb-4">{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to
     use your {{ provider_name }} account to login to
@@ -39,7 +39,7 @@
       </label>
     {% endif %}
     <button class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-            type="submit">{% trans "Sign Up" %} &raquo;
+            type="submit">{% trans "Signup" %} &raquo;
     </button>
   </form>
 

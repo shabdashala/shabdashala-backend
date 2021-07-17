@@ -1,0 +1,235 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-17 22:09+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: backend/urls.py:28 backend/urls.py:29
+msgid "ShabdaShala"
+msgstr "శబ్దశాల"
+
+#: theme/templates/account/login.html:4
+msgid "Login"
+msgstr "ప్రవేశించు"
+
+#: theme/templates/account/logout.html:5 theme/templates/account/logout.html:9
+#: theme/templates/account/logout.html:18
+msgid "Sign Out"
+msgstr "బయటకు వెళ్ళు"
+
+#: theme/templates/account/logout.html:10
+msgid "Are you sure you want to sign out?"
+msgstr "మీరు ఖఛ్చితంగా బయటకు వెళ్ళాలి అనుకుంటున్నారా?"
+
+#: theme/templates/account/password_change.html:5
+#: theme/templates/account/password_change.html:8
+#: theme/templates/account/password_change.html:15
+#: theme/templates/account/password_reset_from_key.html:4
+#: theme/templates/account/password_reset_from_key.html:8
+#: theme/templates/account/password_reset_from_key_done.html:4
+#: theme/templates/account/password_reset_from_key_done.html:8
+msgid "Change Password"
+msgstr "పాస్వర్డ్ మార్చండి"
+
+#: theme/templates/account/password_change.html:17
+msgid "Forgot Password?"
+msgstr "పాస్వర్డ్ మర్చిపోయారా?"
+
+#: theme/templates/account/password_reset.html:6
+#: theme/templates/account/password_reset.html:11
+#: theme/templates/account/password_reset_done.html:6
+#: theme/templates/account/password_reset_done.html:10
+msgid "Password Reset"
+msgstr "పాస్వర్డును మరలా స్తిరపరచండి"
+
+#: theme/templates/account/password_reset.html:17
+msgid "Forgotten your password? Enter your e-mail address below, and we'll send you an e-mail allowing you to reset it."
+msgstr "మీ పాస్వర్డును మర్చిపోయారా? దయచేసి మీ ఈమెయుల్ చిరునామాని క్రింద ఇవ్వండి. మేము మీ పాస్వర్డును మార్చుటకు గల మార్గమును చూపెడతాము."
+
+#: theme/templates/account/password_reset.html:47
+msgid "Reset My Password"
+msgstr "నా పాస్వర్డును మార్చండి"
+
+#: theme/templates/account/password_reset.html:50
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr "మీ పాస్వర్డును మరలా స్తిరపరచడంలో మీకు ఏమైనా సమస్య ఉంటే దయచేసి మమ్మల్ని సంప్రదించండి"
+
+#: theme/templates/account/password_reset_done.html:17
+msgid "We have sent you an e-mail. Please contact us if you do not receive it within a few minutes."
+msgstr "మేము మీకు ఇ-మెయిల్ పంపాము. మీరు కొద్ది నిమిషాల్లో అందుకోకపోతే దయచేసి మమ్మల్ని సంప్రదించండి."
+
+#: theme/templates/account/password_reset_from_key.html:8
+msgid "Bad Token"
+msgstr "చెత్త గుర్తు"
+
+#: theme/templates/account/password_reset_from_key.html:13
+#, python-format
+msgid "The password reset link was invalid, possibly because it has already been used. Please request <a href=\"%(passwd_reset_url)s\">new password reset</a>."
+msgstr "పాస్వర్డును మార్చుటకు ఉపయోగించిన లింక్ చెల్లదు, ఎందుకంటే ఇది ఇప్పటికే ఉపయోగించబడింది. దయచేసి ఇంకొక <a href=\"%(passwd_reset_url)s\">కొత్థ లింకును</a> అభ్యర్దించండి."
+
+#: theme/templates/account/password_reset_from_key.html:54
+msgid "change password"
+msgstr "పాస్వర్డును మార్చండి"
+
+#: theme/templates/account/password_reset_from_key.html:57
+#: theme/templates/account/password_reset_from_key_done.html:10
+msgid "Your password is now changed."
+msgstr "మీ పాస్‌వర్డ్ ఇప్పుడు మార్చబడింది."
+
+#: theme/templates/account/password_set.html:5
+#: theme/templates/account/password_set.html:8
+#: theme/templates/account/password_set.html:13
+msgid "Set Password"
+msgstr "పాస్వర్డును పెట్టండి"
+
+#: theme/templates/account/signup.html:5
+#: theme/templates/account/signup.html:8
+#: theme/templates/account/signup.html:119
+#: theme/templates/socialaccount/signup.html:5
+#: theme/templates/socialaccount/signup.html:8
+#: theme/templates/socialaccount/signup.html:47
+msgid "Signup"
+msgstr "చేరండి"
+
+#: theme/templates/account/signup.html:11
+#, python-format
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+
+#: theme/templates/account/signup_closed.html:5
+#: theme/templates/account/signup_closed.html:8
+msgid "Sign Up Closed"
+msgstr ""
+
+#: theme/templates/account/signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: theme/templates/account/verification_sent.html:5
+#: theme/templates/account/verification_sent.html:8
+#: theme/templates/account/verified_email_required.html:5
+#: theme/templates/account/verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: theme/templates/account/verification_sent.html:10
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup\n"
+"    process. Please contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: theme/templates/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"    you are who you claim to be. For this purpose, we require that you\n"
+"    verify ownership of your e-mail address. "
+msgstr ""
+
+#: theme/templates/account/verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"    verification. Please click on the link inside this e-mail. Please\n"
+"    contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: theme/templates/account/verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+
+#: theme/templates/home/index.html:5
+msgid "Dashboard"
+msgstr ""
+
+#: theme/templates/languages/index.html:5
+msgid "Languages"
+msgstr ""
+
+#: theme/templates/sentences/index.html:5
+msgid "Sentences"
+msgstr ""
+
+#: theme/templates/socialaccount/authentication_error.html:5
+#: theme/templates/socialaccount/authentication_error.html:8
+msgid "Social Network Login Failure"
+msgstr ""
+
+#: theme/templates/socialaccount/authentication_error.html:10
+msgid ""
+"An error occurred while attempting to login via your social network account."
+msgstr ""
+
+#: theme/templates/socialaccount/connections.html:5
+#: theme/templates/socialaccount/connections.html:8
+msgid "Account Connections"
+msgstr ""
+
+#: theme/templates/socialaccount/connections.html:11
+msgid ""
+"You can sign in to your account using any of the following third party\n"
+"      accounts:"
+msgstr ""
+
+#: theme/templates/socialaccount/connections.html:36
+msgid "Remove"
+msgstr ""
+
+#: theme/templates/socialaccount/connections.html:44
+msgid ""
+"You currently have no social network accounts connected to this account."
+msgstr ""
+
+#: theme/templates/socialaccount/connections.html:47
+msgid "Add a 3rd Party Account"
+msgstr ""
+
+#: theme/templates/socialaccount/login_cancelled.html:5
+#: theme/templates/socialaccount/login_cancelled.html:9
+msgid "Login Cancelled"
+msgstr ""
+
+#: theme/templates/socialaccount/login_cancelled.html:13
+#, python-format
+msgid ""
+"You decided to cancel logging in to our site using one of your existing "
+"accounts. If this was a\n"
+"    mistake, please proceed to <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+
+#: theme/templates/socialaccount/messages/account_connected.txt:2
+msgid "The social account has been connected."
+msgstr ""
+
+#: theme/templates/socialaccount/messages/account_connected_other.txt:2
+msgid "The social account is already connected to a different account."
+msgstr ""
+
+#: theme/templates/socialaccount/messages/account_disconnected.txt:2
+msgid "The social account has been disconnected."
+msgstr ""
+
+#: theme/templates/socialaccount/signup.html:10
+#, python-format
+msgid ""
+"You are about to\n"
+"    use your %(provider_name)s account to login to\n"
+"    %(site_name)s. As a final step, please complete the following form:"
+msgstr ""
