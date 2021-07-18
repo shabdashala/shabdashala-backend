@@ -88,7 +88,7 @@
               </label>
               <label class="block mt-4 text-sm">
               <span class="text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
-                {% trans "Password" %}
+                {% trans "Password" %} *
               </span>
                 <input class="block w-full mt-1 text-sm {% comment %}dark:border-gray-600 dark:bg-gray-700 {% endcomment %}focus:border-purple-400 focus:outline-none focus:shadow-outline-purple {% comment %}dark:text-gray-300 dark:focus:shadow-outline-gray{% endcomment %} form-input"
                        autocomplete="current-password" id="id_password" name="password" placeholder="" required=""
@@ -126,7 +126,8 @@
 
             <p class="mt-4">
               <a class="text-sm font-medium text-gray-600 {% comment %}dark:text-purple-400 {% endcomment %}hover:underline"
-                 href="{% url 'account_reset_password' %}">{% blocktrans %}Forgot your password{% endblocktrans %}?
+                 href="{% url 'account_reset_password' %}">
+                {% blocktrans %}Forgot your password?{% endblocktrans %}
               </a>
             </p>
             <p class="mt-1">

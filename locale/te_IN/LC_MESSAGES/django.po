@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-18 05:50+0530\n"
+"POT-Creation-Date: 2021-07-18 14:05+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,8 +54,7 @@ msgstr "మీరు నమోదు చేసిన రెండుసంకే
 
 #: apps/accounts/forms/admin.py:17 apps/accounts/forms/admin.py:50
 #: theme/templates/account/login.html:101
-#, fuzzy
-#| msgid "Set Password"
+#: theme/templates/account/signup.html:70
 msgid "Password"
 msgstr "సంకేతపదం"
 
@@ -76,11 +75,11 @@ msgstr ""
 "ముడి సంకేతపదాలు నిల్వ చేయబడవు, కాబట్టి ఈ వినియోగదారుడి సంకేతపదమును చూడటానికి మార్గం లేదు, కానీ మీరు "
 "<a href=\"password/\">ఈ పత్రము</a> ఉపయోగించి సంకేతపదమును మార్చవచ్చు."
 
-#: apps/accounts/models.py:71
+#: apps/accounts/models.py:71 theme/templates/account/signup.html:34
 msgid "first name"
 msgstr "మొదటి పేరు"
 
-#: apps/accounts/models.py:72
+#: apps/accounts/models.py:72 theme/templates/account/signup.html:52
 msgid "last name"
 msgstr "ఇంటి పేరు"
 
@@ -434,6 +433,8 @@ msgstr "ఆంగ్లము"
 
 #: backend/urls.py:28 backend/urls.py:29 theme/templates/account/base.html:5
 #: theme/templates/account/login.html:12
+#: theme/templates/components/sidebar.html:6
+#: theme/templates/components/sidebar.html:301
 msgid "ShabdaShala"
 msgstr "శబ్దశాల"
 
@@ -444,32 +445,32 @@ msgstr "ప్రవేశించు"
 
 #: theme/templates/account/login.html:31
 msgid "Social Login"
-msgstr "సామాజిక మాధ్యమాల ద్వారా ప్రవేశించు"
+msgstr "పరివారజాలఖాతాలు ద్వారా ప్రవేశించు"
 
 #: theme/templates/account/login.html:45
 msgid "Facebook"
 msgstr "ఫేస్బుక్"
 
 #: theme/templates/account/login.html:85
+#: theme/templates/account/password_reset.html:24
+#: theme/templates/account/signup.html:16
 msgid "Email"
 msgstr "ఈమెయిలు"
 
 #: theme/templates/account/login.html:120
 msgid "Remember me"
-msgstr "నా ప్రవేశాన్ని గుర్తు పెట్టుకో"
+msgstr "నా ప్రవేశాన్ని గుర్తు పెట్టు"
 
-#: theme/templates/account/login.html:147
-#, fuzzy
-#| msgid "Forgot Password?"
-msgid "Forgot your password"
-msgstr "మీ యొక్క సంకేతపదంను మర్చిపోయారా"
+#: theme/templates/account/login.html:148
+msgid "Forgot your password?"
+msgstr "మీ ఖాతా యొక్క సంకేతపదంను మర్చిపోయారా?"
 
-#: theme/templates/account/login.html:154
+#: theme/templates/account/login.html:155
 msgid "Create account"
 msgstr "ఖాతాను సృష్టించండి"
 
 #: theme/templates/account/logout.html:5 theme/templates/account/logout.html:9
-#: theme/templates/account/logout.html:18
+#: theme/templates/account/logout.html:18 theme/templates/base.html:151
 msgid "Sign Out"
 msgstr "బయటకు వెళ్ళు"
 
@@ -554,23 +555,20 @@ msgid "Set Password"
 msgstr "సంకేతపదంను నమోదుచేయ్యండి"
 
 #: theme/templates/account/signup.html:5 theme/templates/account/signup.html:8
-#: theme/templates/account/signup.html:119
+#: theme/templates/account/signup.html:115
 #: theme/templates/socialaccount/signup.html:5
 #: theme/templates/socialaccount/signup.html:8
 #: theme/templates/socialaccount/signup.html:47
 msgid "Signup"
 msgstr "ఖాతా తెరవండి"
 
-#: theme/templates/account/signup.html:11
-#, python-format
-msgid ""
-"Already have a ShabdaShala account? Then please <a href=\"%(login_url)s"
-"\">sign in</a>."
-msgstr ""
-"మీరు ఇప్పటికే శబ్దశాల ఖాతాని కలిగి ఉన్నారా? అయితే దయచేసి <a href=\"%(login_url)s\">ప్రవేశించండి</"
-"a>."
+#: theme/templates/account/signup.html:87
+#, fuzzy
+#| msgid "Password"
+msgid "Password (again)"
+msgstr "సంకేతపదం"
 
-#: theme/templates/account/signup.html:129
+#: theme/templates/account/signup.html:125
 msgid "Already have a ShabdaShala account? Login"
 msgstr "మీరు ఇప్పటికే శబ్దశాల ఖాతాని కలిగి ఉన్నారా? అయితే ప్రవేశించండి"
 
@@ -644,13 +642,25 @@ msgstr ""
 "<strong>గమనిక</strong>: మీరు ఇప్పటికీ మీ <a href=\"%(email_url)s\">ఈమెయిలు చిరునామాను "
 "మార్చవచ్చు</a>."
 
-#: theme/templates/base.html:173 theme/templates/home/index.html:5
+#: theme/templates/base.html:176 theme/templates/components/sidebar.html:25
+#: theme/templates/components/sidebar.html:321
+#: theme/templates/home/index.html:5
 msgid "Dashboard"
-msgstr "డాష్బోర్డ్"
+msgstr "ఎదురు పలక"
 
-#: theme/templates/base.html:178
-msgid "View this category in:"
+#: theme/templates/components/sidebar.html:45
+#: theme/templates/components/sidebar.html:341
+#: theme/templates/home/about-us.html:5
+msgid "About us"
+msgstr "మా గురించి"
+
+#: theme/templates/home/about-us.html:8
+msgid ""
+"A start-up that builds the technical tools needed to easily teach, learn and "
+"research languages."
 msgstr ""
+"భాషలను సులభంగా బోధించడానికి, నేర్చుకోవడానికి మరియు పరిశోధించడానికి కావలసినటువంటి సాంకేతిక సాధనాలను నిర్మించే "
+"అంకుర సంస్థ."
 
 #: theme/templates/languages/index.html:5
 msgid "Languages"
@@ -663,12 +673,12 @@ msgstr "వాక్యాలు"
 #: theme/templates/socialaccount/authentication_error.html:5
 #: theme/templates/socialaccount/authentication_error.html:8
 msgid "Social Network Login Failure"
-msgstr "సామాజిక మాధ్యమం ద్వారా ప్రవేశించడం విఫలం అయ్యింది"
+msgstr "పరివారజాలము ద్వారా ప్రవేశించడం విఫలం అయ్యింది"
 
 #: theme/templates/socialaccount/authentication_error.html:10
 msgid ""
 "An error occurred while attempting to login via your social network account."
-msgstr "మీ సామాజిక మాధ్యమం ఖాతా ద్వారా ప్రవేశ ప్రయత్నంలో లోపం సంభవించింది."
+msgstr "మీ పరివారజాలఖాతా ద్వారా ప్రవేశ ప్రయత్నంలో లోపం సంభవించింది."
 
 #: theme/templates/socialaccount/connections.html:5
 #: theme/templates/socialaccount/connections.html:8
@@ -679,7 +689,7 @@ msgstr "ఖాతాతో అనుసంధానం కలిగి ఉన్
 msgid ""
 "You can sign in to your account using any of the following third party\n"
 "      accounts:"
-msgstr "మీరు ఈ క్రింది సామాజిక ఖాతాలలో దేనినైనా ఉపయోగించి మీ ఖాతాలోకి ప్రవేశించవచ్చు."
+msgstr "మీరు ఈ క్రింది పరివారజాలఖాతాలలో దేనినైనా ఉపయోగించి మీ ఖాతాలోకి ప్రవేశించవచ్చు."
 
 #: theme/templates/socialaccount/connections.html:36
 msgid "Remove"
@@ -688,11 +698,11 @@ msgstr "తొలగించు"
 #: theme/templates/socialaccount/connections.html:44
 msgid ""
 "You currently have no social network accounts connected to this account."
-msgstr "ప్రస్తుతం మీ ఖాతాకు అనుసంధానించబడిన సామాజిక ఖాతాలు ఏమీ లేవు."
+msgstr "ప్రస్తుతం మీ ఖాతాకు అనుసంధానించబడిన పరివారజాలఖాతాలు ఏమీ లేవు."
 
 #: theme/templates/socialaccount/connections.html:47
 msgid "Add a 3rd Party Account"
-msgstr "సామాజిక ఖాతాను అనుసంధానించండి"
+msgstr "పరివారజాలఖాతాను అనుసంధానించండి"
 
 #: theme/templates/socialaccount/login_cancelled.html:5
 #: theme/templates/socialaccount/login_cancelled.html:9
@@ -706,20 +716,20 @@ msgid ""
 "accounts. If this was a\n"
 "    mistake, please proceed to <a href=\"%(login_url)s\">sign in</a>."
 msgstr ""
-"మీరు మీ సామాజిక ఖాతా ఉపయోగించి శబ్దశాలలో ప్రవేశించాలని ప్రయత్నిస్తూ విఫలం చెందారు. ఇది పొరపాటు అయితే, దయచేసి "
-"ఈ <a href=\"%(login_url)s\">ప్రవేశ లింక్</a> ద్వారా కొనసాగండి"
+"మీరు మీ పరివారజాలఖాతా ఉపయోగించి శబ్దశాలలో ప్రవేశించాలని ప్రయత్నిస్తూ విఫలం చెందారు. ఇది పొరపాటు అయితే, "
+"దయచేసి ఈ <a href=\"%(login_url)s\">ప్రవేశ లింక్</a> ద్వారా కొనసాగండి"
 
 #: theme/templates/socialaccount/messages/account_connected.txt:2
 msgid "The social account has been connected."
-msgstr "సామాజిక ఖాతా అనుసంధానించబడినది."
+msgstr "పరివారజాలఖాతా అనుసంధానించబడినది."
 
 #: theme/templates/socialaccount/messages/account_connected_other.txt:2
 msgid "The social account is already connected to a different account."
-msgstr "ఈ సామాజిక ఖాతా ఇప్పటికే వేరే శబ్దశాల వినియోగదారుడి ఖాతాకు అనుసంధానం అయ్యి ఉన్నది."
+msgstr "ఈ పరివారజాలఖాతా ఇప్పటికే వేరే శబ్దశాల వినియోగదారుడి ఖాతాకు అనుసంధానం అయ్యి ఉన్నది."
 
 #: theme/templates/socialaccount/messages/account_disconnected.txt:2
 msgid "The social account has been disconnected."
-msgstr "సామాజిక ఖాతా మీ ఖాతా నుండి వేరు చేయబడినది."
+msgstr "పరివారజాలఖాతా మీ ఖాతా నుండి వేరు చేయబడినది."
 
 #: theme/templates/socialaccount/signup.html:10
 #, python-format
@@ -730,3 +740,11 @@ msgid ""
 msgstr ""
 "మీరు %(site_name)s లాగిన్ అవ్వడానికి మీ %(provider_name)s ఖాతాను ఉపయోగించబోతున్నారు. చివరి "
 "దశగా, దయచేసి క్రింది పత్రాన్ని పూర్తి చేయండి:"
+
+#, python-format
+#~ msgid ""
+#~ "Already have a ShabdaShala account? Then please <a href=\"%(login_url)s"
+#~ "\">sign in</a>."
+#~ msgstr ""
+#~ "మీరు ఇప్పటికే శబ్దశాల ఖాతాని కలిగి ఉన్నారా? అయితే దయచేసి <a href=\"%(login_url)s"
+#~ "\">ప్రవేశించండి</a>."

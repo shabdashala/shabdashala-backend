@@ -6,3 +6,5 @@ class IndexView(auth_mixins.LoginRequiredMixin, generic.TemplateView):
     template_name = 'home/index.html'
 
 
+class AboutUsView(auth_mixins.LoginRequiredMixin, generic.TemplateView):
+    template_name = 'home/about-us.html'

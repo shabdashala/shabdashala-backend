@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block head_title %}{{ block.super }} - {% trans "About us" %}{% endblock %}
+
+{% block content %}
+  {% blocktrans %}A start-up that builds the technical tools needed to easily teach, learn and research languages.{% endblocktrans %}
+{% endblock %}

@@ -7,16 +7,12 @@
 {% block content %}
   <h1 class="mb-4 text-xl font-semibold">{% trans "Signup" %}</h1>
 
-  <p class="mt-2 mb-4">
-    {% blocktrans %}Already have a ShabdaShala account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
-  </p>
-
   <div class="mt-2 mb-4">
     <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
       {% csrf_token %}
       <label class="block text-sm">
       <span class="text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
-        Email *
+        {% trans "Email" %} *
       </span>
         <input class="block w-full mt-1 text-sm{% comment %}  dark:border-gray-600 dark:bg-gray-700{% endcomment %} focus:border-purple-400 focus:outline-none focus:shadow-outline-purple {% comment %}  dark:text-gray-300 dark:focus:shadow-outline-gray{% endcomment %} form-input"
                autocomplete="email" id="id_email" name="email" placeholder="" required=""
@@ -30,7 +26,7 @@
 
       <label class="block mt-4 text-sm">
       <span class="text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
-        First Name *
+        {% trans "first name" %} *
       </span>
         <input class="block w-full mt-1 text-sm{% comment %}  dark:border-gray-600 dark:bg-gray-700{% endcomment %} focus:border-purple-400 focus:outline-none focus:shadow-outline-purple {% comment %}  dark:text-gray-300 dark:focus:shadow-outline-gray{% endcomment %} form-input"
                id="id_first_name" name="first_name" placeholder="" required=""
@@ -44,7 +40,7 @@
 
       <label class="block mt-4 text-sm">
       <span class="text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
-        Last Name *
+        {% trans "last name" %} *
       </span>
         <input class="block w-full mt-1 text-sm{% comment %}  dark:border-gray-600 dark:bg-gray-700{% endcomment %} focus:border-purple-400 focus:outline-none focus:shadow-outline-purple {% comment %}  dark:text-gray-300 dark:focus:shadow-outline-gray{% endcomment %} form-input"
                id="id_last_name" name="last_name" placeholder="" required=""
@@ -58,7 +54,7 @@
 
       <label class="block mt-4 text-sm">
       <span class="text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
-        Password *
+        {% trans "Password" %} *
       </span>
         <input class="block w-full mt-1 text-sm {% comment %}dark:border-gray-600 dark:bg-gray-700 {% endcomment %}focus:border-purple-400 focus:outline-none focus:shadow-outline-purple {% comment %}dark:text-gray-300 dark:focus:shadow-outline-gray{% endcomment %} form-input"
                autocomplete="new-password" id="id_password1" name="password1" placeholder="" required
@@ -71,7 +67,7 @@
       </label>
       <label class="block mt-4 text-sm">
       <span class="text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
-        Password (again) *
+        {% trans "Password (again)" %} *
       </span>
         <input class="block w-full mt-1 text-sm {% comment %}dark:border-gray-600 dark:bg-gray-700 {% endcomment %}focus:border-purple-400 focus:outline-none focus:shadow-outline-purple {% comment %}dark:text-gray-300 dark:focus:shadow-outline-gray{% endcomment %} form-input"
                autocomplete="new-password" id="id_password2" name="password2" placeholder="" required

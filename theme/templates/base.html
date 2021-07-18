@@ -146,7 +146,9 @@
                             d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
                           ></path>
                         </svg>
-                        <span>Log out</span>
+                        <span>
+                          {% trans "Sign Out" %}
+                        </span>
                       </a>
                     </li>
                   </ul>
@@ -165,14 +167,16 @@
               </ul>
             </div>
           {% endif %}
-          <div class="container px-6 mx-auto grid">
-            <h2
-              class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
-            >
-              {% trans "Dashboard" %}
-            </h2>
-            {# Cards #}
-          </div>
+          {% block content %}
+            <div class="container px-6 mx-auto grid">
+              <h2
+                class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+              >
+                {% trans "Dashboard" %}
+              </h2>
+              {# Cards #}
+            </div>
+          {% endblock %}
         </main>
       </div>
     </div>
