@@ -1,8 +1,8 @@
-{% load static compress tailwind_tags %}
+{% load static i18n compress tailwind_tags %}
 <!DOCTYPE html>
 <html {% block html_theme %}{% endblock %}x-data="data()" lang="en">
 <head>
-  <title>{% block head_title %}శబ్దశాల{% endblock %}</title>
+  <title>{% block head_title %}{% trans "ShabdaShala" %}{% endblock %}</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">

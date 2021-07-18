@@ -8,7 +8,7 @@
     <div class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl{% comment %}  dark:bg-gray-800{% endcomment %}">
       <div class="flex justify-center mt-4 pt4">
         <h1 class="text-xl font-semibold text-gray-700">
-          శబ్దశాల
+          {% trans "ShabdaShala" %}
         </h1>
       </div>
       {% if messages %}
@@ -26,7 +26,7 @@
           {% if socialaccount_providers %}
             <div class="w-full">
               <h1 class="mb-4 text-xl font-semibold text-gray-700{% comment %}  dark:text-gray-200{% endcomment %}">
-                Social Login
+                {% trans "Social Login" %}
               </h1>
               {% include "socialaccount/snippets/login_extra.html" %}
               <a href="{% provider_login_url "facebook" method="js_sdk" %}"
@@ -39,7 +39,7 @@
                 >
                   <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"/>
                 </svg>
-                Facebook
+                {% trans "Facebook" %}
               </a>
               {% comment %}
               <button class="flex items-center justify-center w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray">
@@ -70,13 +70,13 @@
         <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
           <div class="w-full">
             <h1 class="mb-4 text-xl font-semibold text-gray-700{% comment %}  dark:text-gray-200{% endcomment %}">
-              Login
+              {% trans "Login" %}
             </h1>
             <form class="login" method="POST" action="{% url 'account_login' %}">
               {% csrf_token %}
               <label class="block text-sm">
               <span class="text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
-                Email
+                {% trans "Email" %} *
               </span>
                 <input class="block w-full mt-1 text-sm{% comment %}  dark:border-gray-600 dark:bg-gray-700{% endcomment %} focus:border-purple-400 focus:outline-none focus:shadow-outline-purple {% comment %}  dark:text-gray-300 dark:focus:shadow-outline-gray{% endcomment %} form-input"
                        autocomplete="email" id="id_login" name="login" placeholder="" required=""
@@ -88,7 +88,7 @@
               </label>
               <label class="block mt-4 text-sm">
               <span class="text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
-                Password
+                {% trans "Password" %}
               </span>
                 <input class="block w-full mt-1 text-sm {% comment %}dark:border-gray-600 dark:bg-gray-700 {% endcomment %}focus:border-purple-400 focus:outline-none focus:shadow-outline-purple {% comment %}dark:text-gray-300 dark:focus:shadow-outline-gray{% endcomment %} form-input"
                        autocomplete="current-password" id="id_password" name="password" placeholder="" required=""
@@ -103,7 +103,7 @@
               {% endif %}
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
-                  Remember Me
+                  {% trans "Remember me" %}
                   <input class="block mt-1 text-sm{% comment %} dark:border-gray-600 dark:bg-gray-700{% endcomment %}focus:border-purple-400 focus:outline-none focus:shadow-outline-purple{% comment %} dark:text-gray-300 dark:focus:shadow-outline-none{% endcomment %} form-input"
                          id="id_remember" name="remember" type="checkbox"{% if form.fields.remember.value %}
                          checked{% endif %}/>
@@ -118,7 +118,7 @@
               {% endif %}
               <button class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
               >
-                Log in
+                {% trans "Login" %}
               </button>
             </form>
 
@@ -126,14 +126,13 @@
 
             <p class="mt-4">
               <a class="text-sm font-medium text-gray-600 {% comment %}dark:text-purple-400 {% endcomment %}hover:underline"
-                 href="{% url 'account_reset_password' %}">
-                Forgot your password?
+                 href="{% url 'account_reset_password' %}">{% blocktrans %}Forgot your password{% endblocktrans %}?
               </a>
             </p>
             <p class="mt-1">
               <a class="text-sm font-medium text-gray-600 {% comment %}dark:text-purple-400{% endcomment %} hover:underline"
                  href="{% url 'account_signup' %}">
-                Create account
+                {% blocktrans %}Create account{% endblocktrans %}
               </a>
             </p>
           </div>

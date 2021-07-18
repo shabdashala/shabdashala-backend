@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+from django.utils.translation import gettext_lazy as _
 
 from pathlib import Path
 
@@ -176,6 +177,8 @@ TAILWIND_APP_NAME = 'theme'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'backend.middlewares.ForceTeluguLangMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -248,7 +251,21 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+
+LANGUAGES = [
+    ('te', _('Telugu')),
+    ('hi', _('Hindi')),
+    ('de', _('German')),
+    ('en', _('English')),
+]
+
+LANGUAGE_CODE = 'te-in'
+ADMIN_LANGUAGE_CODE = 'te-in'
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, '../locale'),
+]
 
 TIME_ZONE = 'UTC'
 

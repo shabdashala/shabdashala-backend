@@ -32,6 +32,7 @@ urlpatterns = [
     # re_path('^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     # re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     # re_path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path('i18n/', include('django.conf.urls.i18n')),
     re_path(
         r"^api/auth/registration/account-confirm-email/(?P<key>[-:\w]+)/$",
         allauth_views.confirm_email,

@@ -1,4 +1,4 @@
-{% load static compress tailwind_tags %}
+{% load static i18n compress tailwind_tags %}
 <!DOCTYPE html>
 <html x-data="data()" lang="en">
 	<head>
@@ -169,7 +169,7 @@
             <h2
               class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
             >
-              Dashboard
+              {% trans "Dashboard" %}
             </h2>
             {# Cards #}
           </div>

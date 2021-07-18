@@ -1,0 +1,732 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-18 05:50+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/accounts/adapters.py:19
+msgid "Email can not be used. Please use other email."
+msgstr "ఈ ఈమెయిలు ఉపయోగించబడదు. దయచేసి మరొక ఈమెయిలు ఉపయోగించండి."
+
+#: apps/accounts/adapters.py:21
+msgid "Too many failed login attempts. Try again later."
+msgstr "మీరు ప్రవేశించడానికి చేసిన ప్రయత్నాలు చాలా విఫలమయ్యాయి. కొంత విరామం తరువాత మళ్ళీ ప్రయత్నించండి."
+
+#: apps/accounts/adapters.py:23
+msgid "A user is already registered with this e-mail address."
+msgstr ""
+"ఈ ఈమెయిలు చిరునామాతో వినియోగదారు ఇప్పటికే నమోదు చేయబడ్డారు. క్రొత్థ ఖాతా తెరువుట కొరకు మీరు మరొక "
+"ఈమెయిలును ఉపయోగించండి."
+
+#: apps/accounts/admin.py:41
+msgid "Personal info"
+msgstr "వ్యక్తిగత సమాచారం"
+
+#: apps/accounts/admin.py:44
+msgid "Permissions"
+msgstr "అనుమతులు"
+
+#: apps/accounts/admin.py:47
+msgid "Important dates"
+msgstr "ముఖ్యమైన తేదీలు"
+
+#: apps/accounts/filters.py:8
+msgid "groups"
+msgstr "సమూహాలు"
+
+#: apps/accounts/forms/admin.py:14 apps/accounts/serializers/registration.py:35
+msgid "The two password fields didn't match."
+msgstr "మీరు నమోదు చేసిన రెండుసంకేతపదాలు సరిపోలలేదు."
+
+#: apps/accounts/forms/admin.py:17 apps/accounts/forms/admin.py:50
+#: theme/templates/account/login.html:101
+#, fuzzy
+#| msgid "Set Password"
+msgid "Password"
+msgstr "సంకేతపదం"
+
+#: apps/accounts/forms/admin.py:21
+msgid "Password confirmation"
+msgstr "సంకేతపదాన్ని నిర్దారించండి"
+
+#: apps/accounts/forms/admin.py:23
+msgid "Enter the same password as above, for verification."
+msgstr "ధృవీకరణ కోసం పైన నమోదు చేసిన అదే సంకేతపదమును నమోదు చేయండి."
+
+#: apps/accounts/forms/admin.py:51
+msgid ""
+"Raw passwords are not stored, so there is no way to see this user's "
+"password, but you can change the password using <a href=\"password/\">this "
+"form</a>."
+msgstr ""
+"ముడి సంకేతపదాలు నిల్వ చేయబడవు, కాబట్టి ఈ వినియోగదారుడి సంకేతపదమును చూడటానికి మార్గం లేదు, కానీ మీరు "
+"<a href=\"password/\">ఈ పత్రము</a> ఉపయోగించి సంకేతపదమును మార్చవచ్చు."
+
+#: apps/accounts/models.py:71
+msgid "first name"
+msgstr "మొదటి పేరు"
+
+#: apps/accounts/models.py:72
+msgid "last name"
+msgstr "ఇంటి పేరు"
+
+#: apps/accounts/models.py:73
+#, fuzzy
+#| msgid "Verify Your E-mail Address"
+msgid "email address"
+msgstr "ఈమెయిలు చిరునామా"
+
+#: apps/accounts/models.py:74
+msgid "Phone number"
+msgstr "చరవాణి సంఖ్య"
+
+#: apps/accounts/models.py:76
+msgid "gender"
+msgstr "లింగం"
+
+#: apps/accounts/models.py:81
+msgid "staff status"
+msgstr "సిబ్బంది హోదా"
+
+#: apps/accounts/models.py:84
+msgid "Designates whether the user can log into this admin site."
+msgstr "వినియోగదారు ఈ నిర్వాహక ప్రదేశంలోకి ప్రవేశించగలరా అని నిర్దేశిస్తుంది."
+
+#: apps/accounts/models.py:87
+msgid "active"
+msgstr "క్రియాశీలంగా ఉన్నారా?"
+
+#: apps/accounts/models.py:90
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+"ఈ వినియోగదారుని చురుకుగా పరిగణించాలా వద్దా అని నిర్దేశిస్తుంది. ఖాతాలను తొలగించడానికి బదులుగా దీన్ని ఎంపిక "
+"తీసివేయండి."
+
+#: apps/accounts/models.py:95
+#, fuzzy
+#| msgid "Password Reset"
+msgid "password reset"
+msgstr "వినియోగదారుని సంకేతపదాన్ని బలవంతంగా మార్పించండి."
+
+#: apps/accounts/models.py:98
+msgid ""
+"Designates whether this user should change his password during the next "
+"login."
+msgstr "వినియోగదారు యొక్క సంకేతపదాన్ని తదుపరి ప్రవేశ సమయములో మార్పించాలా వద్దా అని నిర్దేశిస్తుంది."
+
+#: apps/accounts/models.py:103
+msgid "date joined"
+msgstr "ఖాతా తెరిచిన తేదీ"
+
+#: apps/accounts/models.py:115
+msgid "user"
+msgstr "వినియోగదారు"
+
+#: apps/accounts/models.py:116
+msgid "users"
+msgstr "వినియోగదారులు"
+
+#: apps/accounts/models.py:172
+msgid "Device ID"
+msgstr "పరికరం యొక్క గుర్తింపు సంఖ్య"
+
+#: apps/accounts/models.py:173
+msgid "Unique device identifier"
+msgstr "పరికరం యొక్క ప్రత్యేక గుర్తింపు సంఖ్య"
+
+#: apps/accounts/models.py:176
+msgid "Key"
+msgstr "తాళం చెవి"
+
+#: apps/accounts/models.py:180
+msgid "Date Created"
+msgstr "సృష్టించబడిన తేదీ"
+
+#: apps/accounts/models.py:182
+msgid "Date Removed"
+msgstr "తొలగించబడిన తేదీ"
+
+#: apps/accounts/models.py:193
+msgid "device token"
+msgstr "పరికర చిహ్నము"
+
+#: apps/accounts/models.py:194
+msgid "device tokens"
+msgstr "పరికర చిహ్నములు"
+
+#: apps/accounts/serializers/login.py:20
+msgid "Invalid credentials!"
+msgstr "ఈమెయిలు మరియు సంకేతపదం కలయిక ఖాతాతో సరిపోలలేదు!"
+
+#: apps/accounts/serializers/login.py:27
+msgid "Please reset your password to access your account."
+msgstr "దయచేసి మీ ఖాతాలోకి ప్రవేశించడానికి ముందు మీ సంకేతపదంను మార్చండి."
+
+#: apps/accounts/serializers/login.py:30
+msgid "This email address hasn't been registered with us."
+msgstr "ఈ ఈమెయిలు చిరునామాతో మా దగ్గర ఏ వినియోగదారుడి ఖాతా లేదు."
+
+#: apps/accounts/serializers/login.py:38
+msgid "User account is disabled."
+msgstr "వినియోగదారు ఖాతా నిలిపివేయబడింది."
+
+#: apps/accounts/serializers/login.py:41
+msgid "Incorrect Password. Please try again!"
+msgstr "మీరు సరైన సంకేతపదంను పొదుపరచలేదు. దయచేసి మళ్ళీ ప్రయత్నించండి!"
+
+#: apps/accounts/serializers/login.py:44
+msgid "Unable to log in with provided credentials."
+msgstr "మీరు అందించిన  ఈమెయిలు  మరియు సంకేతపదం ఆధారాలతో ప్రవేశం అవ్వడం సాధ్యం కాలేదు."
+
+#: apps/accounts/serializers/login.py:57
+msgid ""
+"Your E-mail address is not verified. A verification e-mail is sent to your "
+"inbox."
+msgstr "మీ ఈమెయిలు చిరునామా ధృవీకరించబడలేదు. ధృవీకరణ కోసం వివరాలతో మీకు ఈమెయిలు పంపబడుతుంది."
+
+#: apps/categories/models.py:26 apps/words/models.py:29
+msgid "Name"
+msgstr "పేరు"
+
+#: apps/categories/models.py:27 apps/words/models.py:30
+msgid "Description"
+msgstr "వివరణ"
+
+#: apps/categories/models.py:28 apps/words/models.py:31
+msgid "Meta title"
+msgstr "మెటా శీర్షిక"
+
+#: apps/categories/models.py:29 apps/words/models.py:32
+msgid "Meta description"
+msgstr "మెటా వివరణ"
+
+#: apps/categories/models.py:30 apps/words/models.py:33
+msgid "Image"
+msgstr "చిత్రం"
+
+#: apps/categories/models.py:32 apps/words/models.py:35
+msgid "Slug"
+msgstr "స్లగ్"
+
+#: apps/categories/models.py:35 apps/words/models.py:38
+msgid "Is public"
+msgstr "అందరికి తెలిసేదా?"
+
+#: apps/categories/models.py:38
+msgid "Show this category in search results and categories listings."
+msgstr "శోధన ఫలితాలు మరియు వర్గాల జాబితాలలో ఈ వర్గాన్ని చూపించు."
+
+#: apps/categories/models.py:41
+msgid "Ancestor categories are public"
+msgstr "పూర్వీకుల వర్గాలు అందరికి తెలిసేవా?"
+
+#: apps/categories/models.py:44
+msgid "The ancestors of this category are public"
+msgstr "ఈ వర్గానికి చెందిన పూర్వీకులు అందరికి కనపడతారు"
+
+#: apps/categories/models.py:45 apps/languages/models.py:12
+#: apps/quiz/models.py:25 apps/quiz/models.py:89 apps/words/models.py:48
+msgid "Display order"
+msgstr "ప్రదర్శన క్రమం"
+
+#: apps/categories/models.py:184 apps/quiz/models.py:17 apps/quiz/models.py:63
+msgid "Category"
+msgstr "వర్గం"
+
+#: apps/categories/models.py:185
+msgid "Categories"
+msgstr "వర్గాలు"
+
+#: apps/quiz/constants.py:7
+msgid "Configured"
+msgstr "నిర్దిష్టమయిన"
+
+#: apps/quiz/constants.py:8
+msgid "Dynamic"
+msgstr "క్రియాశీలక"
+
+#: apps/quiz/constants.py:18
+msgid "Multiple choice answer question"
+msgstr "బహుళ ఎంపిక జవాబు ప్రశ్న"
+
+#: apps/quiz/constants.py:19
+msgid "Multiple choice multiple answer question"
+msgstr "బహుళ ఎంపిక బహుళ జవాబు ప్రశ్న"
+
+#: apps/quiz/constants.py:20
+msgid "Jumbled word answer question"
+msgstr "గందరగోళ పద జవాబు ప్రశ్న"
+
+#: apps/quiz/constants.py:21
+msgid "Translation question"
+msgstr "అనువాద ప్రశ్న"
+
+#: apps/quiz/models.py:16 apps/quiz/models.py:62 apps/quiz/models.py:77
+#, fuzzy
+#| msgid "Languages"
+msgid "Language"
+msgstr "భాష"
+
+#: apps/quiz/models.py:18
+msgid "Quiz type"
+msgstr "ప్రశ్నల పరీక్ష రకం"
+
+#: apps/quiz/models.py:21
+msgid "Maximum number of questions"
+msgstr "ప్రశ్నల గరిష్ట సంఖ్య"
+
+#: apps/quiz/models.py:22
+msgid "Maximum marks"
+msgstr "గరిష్ట మార్కులు"
+
+#: apps/quiz/models.py:23
+msgid "Maximum bonus marks"
+msgstr "గరిష్ట బహుమాన మార్కులు"
+
+#: apps/quiz/models.py:24 apps/quiz/models.py:70
+msgid "Has been published?"
+msgstr "ప్రచురించబడిందా?"
+
+#: apps/quiz/models.py:28
+msgid "Random Order"
+msgstr "యాదృచ్ఛిక క్రమం"
+
+#: apps/quiz/models.py:29
+msgid "Display the questions in a random order or as they are set?"
+msgstr "ప్రశ్నలను యాదృచ్ఛిక క్రమంలో ప్రదర్శించాలా లేదా అవి పొందుపరిచిన క్రమంలో ప్రదర్శించాలా?"
+
+#: apps/quiz/models.py:34
+msgid "Pass Mark"
+msgstr "ఉత్తీర్ణత సాధించాల్సిన మార్కు"
+
+#: apps/quiz/models.py:35
+msgid "Percentage required to pass exam."
+msgstr "పరీక్షలో ఉత్తీర్ణత సాధించాల్సిన శాతం."
+
+#: apps/quiz/models.py:38
+msgid "Displayed if user passes."
+msgstr "వినియోగదారు ఉత్తీర్ణులైతే ప్రదర్శించబడుతుంది."
+
+#: apps/quiz/models.py:39
+msgid "Success Text"
+msgstr "విజయ వచనం"
+
+#: apps/quiz/models.py:41
+msgid "Fail Text"
+msgstr "వైఫల్యం వచనం"
+
+#: apps/quiz/models.py:42
+msgid "Displayed if user fails."
+msgstr "వినియోగదారు విఫలమైతే ప్రదర్శించబడుతుంది."
+
+#: apps/quiz/models.py:45
+msgid ""
+"Correct answer is NOT shown after question. Answers displayed at the end."
+msgstr "ప్రశ్న తర్వాత సరైన సమాధానం చూపబడదు. సమాధానాలు చివరిలో ప్రదర్శించబడతాయి."
+
+#: apps/quiz/models.py:47
+msgid "Answers at end"
+msgstr "చివరికి సమాధానాలు"
+
+#: apps/quiz/models.py:50
+msgid ""
+"If yes, the result of each attempt by a user will be stored. Necessary for "
+"marking."
+msgstr "అవును అయితే, వినియోగదారు చేసిన ప్రతి ప్రయత్నం ఫలితం నిల్వ చేయబడుతుంది. మార్కింగ్ కోసం అవసరం."
+
+#: apps/quiz/models.py:53
+msgid "Exam Paper"
+msgstr "పరీక్షా పత్రం"
+
+#: apps/quiz/models.py:65 apps/quiz/models.py:79
+#, fuzzy
+#| msgid "Sentences"
+msgid "Sentence"
+msgstr "వాక్యం"
+
+#: apps/quiz/models.py:66
+msgid "Question type"
+msgstr "ప్రశ్న రకం"
+
+#: apps/quiz/models.py:69
+msgid "Maximum Marks"
+msgstr "గరిష్ట మార్కులు"
+
+#: apps/quiz/models.py:80
+msgid "Is this answer correct?"
+msgstr "ఈ సమాధానం సరైనదేనా?"
+
+#: apps/quiz/models.py:87 apps/quiz/models.py:88 apps/quiz/models.py:97
+msgid "Quiz"
+msgstr "ప్రశ్నల పరీక్ష"
+
+#: apps/quiz/models.py:96
+msgid "User"
+msgstr "వినియోగదారు"
+
+#: apps/quiz/models.py:98
+msgid "Total Score"
+msgstr "మొత్తం స్కోరు"
+
+#: apps/quiz/models.py:138
+msgid "Was this attempt correct?"
+msgstr "ఈ ప్రయత్నం సరైనదేనా?"
+
+#: apps/quiz/models.py:139
+msgid "Marks Obtained"
+msgstr "వచ్చిన మార్కులు"
+
+#: apps/sentences/models.py:17
+msgid "text"
+msgstr "పదాలు"
+
+#: apps/words/models.py:41
+msgid "Show this category in search results and word listings."
+msgstr "శోధన ఫలితాలు మరియు పద జాబితాలలో ఈ వర్గాన్ని చూపించు."
+
+#: apps/words/models.py:44
+msgid "Ancestor words are public"
+msgstr "పూర్వ మాటలు అందరికీ చూపాలా?"
+
+#: apps/words/models.py:47
+msgid "The ancestors of this word are public"
+msgstr "పూర్వ మాటలు అందరికీ ప్రదర్శించబడతాయి"
+
+#: apps/words/models.py:186
+msgid "Word"
+msgstr "పదం"
+
+#: apps/words/models.py:187
+msgid "Words"
+msgstr "పదాలు"
+
+#: backend/settings/common.py:257
+msgid "Telugu"
+msgstr "తెలుగు"
+
+#: backend/settings/common.py:258
+msgid "Hindi"
+msgstr "హిందీ"
+
+#: backend/settings/common.py:259
+msgid "German"
+msgstr "జర్మన్"
+
+#: backend/settings/common.py:260
+msgid "English"
+msgstr "ఆంగ్లము"
+
+#: backend/urls.py:28 backend/urls.py:29 theme/templates/account/base.html:5
+#: theme/templates/account/login.html:12
+msgid "ShabdaShala"
+msgstr "శబ్దశాల"
+
+#: theme/templates/account/login.html:4 theme/templates/account/login.html:78
+#: theme/templates/account/login.html:138
+msgid "Login"
+msgstr "ప్రవేశించు"
+
+#: theme/templates/account/login.html:31
+msgid "Social Login"
+msgstr "సామాజిక మాధ్యమాల ద్వారా ప్రవేశించు"
+
+#: theme/templates/account/login.html:45
+msgid "Facebook"
+msgstr "ఫేస్బుక్"
+
+#: theme/templates/account/login.html:85
+msgid "Email"
+msgstr "ఈమెయిలు"
+
+#: theme/templates/account/login.html:120
+msgid "Remember me"
+msgstr "నా ప్రవేశాన్ని గుర్తు పెట్టుకో"
+
+#: theme/templates/account/login.html:147
+#, fuzzy
+#| msgid "Forgot Password?"
+msgid "Forgot your password"
+msgstr "మీ యొక్క సంకేతపదంను మర్చిపోయారా"
+
+#: theme/templates/account/login.html:154
+msgid "Create account"
+msgstr "ఖాతాను సృష్టించండి"
+
+#: theme/templates/account/logout.html:5 theme/templates/account/logout.html:9
+#: theme/templates/account/logout.html:18
+msgid "Sign Out"
+msgstr "బయటకు వెళ్ళు"
+
+#: theme/templates/account/logout.html:10
+msgid "Are you sure you want to sign out?"
+msgstr "మీరు ఖఛ్చితంగా బయటకు వెళ్ళాలి అనుకుంటున్నారా?"
+
+#: theme/templates/account/password_change.html:5
+#: theme/templates/account/password_change.html:8
+#: theme/templates/account/password_change.html:15
+#: theme/templates/account/password_reset_from_key.html:4
+#: theme/templates/account/password_reset_from_key.html:8
+#: theme/templates/account/password_reset_from_key_done.html:4
+#: theme/templates/account/password_reset_from_key_done.html:8
+msgid "Change Password"
+msgstr "సంకేతపదంను మార్చండి"
+
+#: theme/templates/account/password_change.html:17
+msgid "Forgot Password?"
+msgstr "సంకేతపదంను మర్చిపోయారా?"
+
+#: theme/templates/account/password_reset.html:6
+#: theme/templates/account/password_reset.html:11
+#: theme/templates/account/password_reset_done.html:6
+#: theme/templates/account/password_reset_done.html:10
+msgid "Password Reset"
+msgstr "సంకేతపదంను మార్చండి"
+
+#: theme/templates/account/password_reset.html:17
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+"మీ యొక్క సంకేతపదంను మర్చిపోయారా? దయచేసి మీ ఈమెయిలు చిరునామాని క్రింద ఇవ్వండి. మేము మీ సంకేతపదంను ఎలా "
+"మార్చాలో వివరిస్తాము."
+
+#: theme/templates/account/password_reset.html:47
+msgid "Reset My Password"
+msgstr "నా సంకేతపదంను మార్చండి"
+
+#: theme/templates/account/password_reset.html:50
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr "మీ సంకేతపదంను మార్చే ప్రక్రియలో మీకు ఏమైనా సమస్య ఉంటే దయచేసి మమ్మల్ని సంప్రదించండి"
+
+#: theme/templates/account/password_reset_done.html:17
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr "మేము మీకు ఈమెయిలు పంపాము. మీరు కొద్ది నిమిషాల్లో అందుకోకపోతే దయచేసి మమ్మల్ని సంప్రదించండి."
+
+#: theme/templates/account/password_reset_from_key.html:8
+msgid "Bad Token"
+msgstr "చెత్త గుర్తు"
+
+#: theme/templates/account/password_reset_from_key.html:13
+#, fuzzy, python-format
+#| msgid ""
+#| "The password reset link was invalid, possibly because it has already been "
+#| "used. Please request <a href=\"%(passwd_reset_url)s\">new password reset</"
+#| "a>."
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+"సంకేతపదంను మార్చుటకు ఉపయోగించిన లింక్ చెల్లదు, ఎందుకంటే ఇది ఇప్పటికే ఉపయోగించబడింది. దయచేసి ఇంకొక "
+"<a href=\"%(passwd_reset_url)s\">కొత్థ లింకును</a> అభ్యర్దించండి."
+
+#: theme/templates/account/password_reset_from_key.html:53
+msgid "change password"
+msgstr "సంకేతపదంను మార్చండి"
+
+#: theme/templates/account/password_reset_from_key.html:56
+#: theme/templates/account/password_reset_from_key_done.html:10
+msgid "Your password is now changed."
+msgstr "మీ సంకేతపదం ఇప్పుడు మార్చబడింది."
+
+#: theme/templates/account/password_set.html:5
+#: theme/templates/account/password_set.html:8
+#: theme/templates/account/password_set.html:13
+msgid "Set Password"
+msgstr "సంకేతపదంను నమోదుచేయ్యండి"
+
+#: theme/templates/account/signup.html:5 theme/templates/account/signup.html:8
+#: theme/templates/account/signup.html:119
+#: theme/templates/socialaccount/signup.html:5
+#: theme/templates/socialaccount/signup.html:8
+#: theme/templates/socialaccount/signup.html:47
+msgid "Signup"
+msgstr "ఖాతా తెరవండి"
+
+#: theme/templates/account/signup.html:11
+#, python-format
+msgid ""
+"Already have a ShabdaShala account? Then please <a href=\"%(login_url)s"
+"\">sign in</a>."
+msgstr ""
+"మీరు ఇప్పటికే శబ్దశాల ఖాతాని కలిగి ఉన్నారా? అయితే దయచేసి <a href=\"%(login_url)s\">ప్రవేశించండి</"
+"a>."
+
+#: theme/templates/account/signup.html:129
+msgid "Already have a ShabdaShala account? Login"
+msgstr "మీరు ఇప్పటికే శబ్దశాల ఖాతాని కలిగి ఉన్నారా? అయితే ప్రవేశించండి"
+
+#: theme/templates/account/signup_closed.html:5
+#: theme/templates/account/signup_closed.html:8
+#, fuzzy
+#| msgid "Signup Closed"
+msgid "Sign Up Closed"
+msgstr "ఖాతా తెరిచే ప్రక్రియ మూతపడింది"
+
+#: theme/templates/account/signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr "మమ్మల్ని క్షమించండి, ఖాతా తెరిచే ప్రక్రియ ప్రస్తుతానికి మూసివేయబడింది."
+
+#: theme/templates/account/signup_closed.html:18
+#: theme/templates/account/verification_sent.html:18
+#: theme/templates/account/verified_email_required.html:24
+#: theme/templates/socialaccount/authentication_error.html:17
+#: theme/templates/socialaccount/login_cancelled.html:22
+msgid "Go back to Login page"
+msgstr "తిరిగి ప్రవేశ పేజీకి వెళ్ళండి"
+
+#: theme/templates/account/verification_sent.html:5
+#: theme/templates/account/verification_sent.html:8
+#: theme/templates/account/verified_email_required.html:5
+#: theme/templates/account/verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr "మీ ఈమెయిలు చిరునామాను నిర్దారించండి"
+
+#: theme/templates/account/verification_sent.html:10
+#, fuzzy
+#| msgid ""
+#| "We have sent you an e-mail. Please contact us if you do not receive it "
+#| "within a few minutes."
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+"మేము మీకు ఈమెయిలు పంపాము. ఖాతా తెరిచే ప్రక్రియను ఖరారు చేయడానికి అందించిన లింక్‌ను అనుసరించండి. మీరు "
+"కొద్ది నిమిషాల్లో అందుకోకపోతే దయచేసి మమ్మల్ని సంప్రదించండి."
+
+#: theme/templates/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that you are who you claim to "
+"be. For this purpose, we require that you verify ownership of your e-mail "
+"address. "
+msgstr ""
+"మీ శబ్దశాల ఖాతాకి అనుసంధానించి ఉన్న ఈమెయిలు చిరునామా వినియోగంలో ఉన్నదని ధృవీకరణ అవసరం. ఈ ప్రయోజనం "
+"కోసం, మీరు మీ ఈమెయిలుకు యజమాని అని ధృవీకరించవలసినదిగా మేము కోరుతున్నాము."
+
+#: theme/templates/account/verified_email_required.html:14
+#, fuzzy
+#| msgid ""
+#| "We have sent you an e-mail. Please contact us if you do not receive it "
+#| "within a few minutes."
+msgid ""
+"We have sent an e-mail to you for verification. Please click on the link "
+"inside this e-mail. Please contact us if you do not receive it within a few "
+"minutes."
+msgstr ""
+"మేము మీ ఈమెయిలు చిరునామాను ధ్రువపరచడానికి, మీకు ఒక ఈమెయిలు పంపాము. మీకు కొద్ది నిమిషాల్లో కనక అది "
+"అందకోకపోతే దయచేసి మమ్మల్ని సంప్రదించండి."
+
+#: theme/templates/account/verified_email_required.html:16
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+"<strong>గమనిక</strong>: మీరు ఇప్పటికీ మీ <a href=\"%(email_url)s\">ఈమెయిలు చిరునామాను "
+"మార్చవచ్చు</a>."
+
+#: theme/templates/base.html:173 theme/templates/home/index.html:5
+msgid "Dashboard"
+msgstr "డాష్బోర్డ్"
+
+#: theme/templates/base.html:178
+msgid "View this category in:"
+msgstr ""
+
+#: theme/templates/languages/index.html:5
+msgid "Languages"
+msgstr "భాషలు"
+
+#: theme/templates/sentences/index.html:5
+msgid "Sentences"
+msgstr "వాక్యాలు"
+
+#: theme/templates/socialaccount/authentication_error.html:5
+#: theme/templates/socialaccount/authentication_error.html:8
+msgid "Social Network Login Failure"
+msgstr "సామాజిక మాధ్యమం ద్వారా ప్రవేశించడం విఫలం అయ్యింది"
+
+#: theme/templates/socialaccount/authentication_error.html:10
+msgid ""
+"An error occurred while attempting to login via your social network account."
+msgstr "మీ సామాజిక మాధ్యమం ఖాతా ద్వారా ప్రవేశ ప్రయత్నంలో లోపం సంభవించింది."
+
+#: theme/templates/socialaccount/connections.html:5
+#: theme/templates/socialaccount/connections.html:8
+msgid "Account Connections"
+msgstr "ఖాతాతో అనుసంధానం కలిగి ఉన్నవి"
+
+#: theme/templates/socialaccount/connections.html:11
+msgid ""
+"You can sign in to your account using any of the following third party\n"
+"      accounts:"
+msgstr "మీరు ఈ క్రింది సామాజిక ఖాతాలలో దేనినైనా ఉపయోగించి మీ ఖాతాలోకి ప్రవేశించవచ్చు."
+
+#: theme/templates/socialaccount/connections.html:36
+msgid "Remove"
+msgstr "తొలగించు"
+
+#: theme/templates/socialaccount/connections.html:44
+msgid ""
+"You currently have no social network accounts connected to this account."
+msgstr "ప్రస్తుతం మీ ఖాతాకు అనుసంధానించబడిన సామాజిక ఖాతాలు ఏమీ లేవు."
+
+#: theme/templates/socialaccount/connections.html:47
+msgid "Add a 3rd Party Account"
+msgstr "సామాజిక ఖాతాను అనుసంధానించండి"
+
+#: theme/templates/socialaccount/login_cancelled.html:5
+#: theme/templates/socialaccount/login_cancelled.html:9
+msgid "Login Cancelled"
+msgstr "ప్రవేశం రద్దు చేయబడింది"
+
+#: theme/templates/socialaccount/login_cancelled.html:13
+#, python-format
+msgid ""
+"You decided to cancel logging in to our site using one of your existing "
+"accounts. If this was a\n"
+"    mistake, please proceed to <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+"మీరు మీ సామాజిక ఖాతా ఉపయోగించి శబ్దశాలలో ప్రవేశించాలని ప్రయత్నిస్తూ విఫలం చెందారు. ఇది పొరపాటు అయితే, దయచేసి "
+"ఈ <a href=\"%(login_url)s\">ప్రవేశ లింక్</a> ద్వారా కొనసాగండి"
+
+#: theme/templates/socialaccount/messages/account_connected.txt:2
+msgid "The social account has been connected."
+msgstr "సామాజిక ఖాతా అనుసంధానించబడినది."
+
+#: theme/templates/socialaccount/messages/account_connected_other.txt:2
+msgid "The social account is already connected to a different account."
+msgstr "ఈ సామాజిక ఖాతా ఇప్పటికే వేరే శబ్దశాల వినియోగదారుడి ఖాతాకు అనుసంధానం అయ్యి ఉన్నది."
+
+#: theme/templates/socialaccount/messages/account_disconnected.txt:2
+msgid "The social account has been disconnected."
+msgstr "సామాజిక ఖాతా మీ ఖాతా నుండి వేరు చేయబడినది."
+
+#: theme/templates/socialaccount/signup.html:10
+#, python-format
+msgid ""
+"You are about to\n"
+"    use your %(provider_name)s account to login to\n"
+"    %(site_name)s. As a final step, please complete the following form:"
+msgstr ""
+"మీరు %(site_name)s లాగిన్ అవ్వడానికి మీ %(provider_name)s ఖాతాను ఉపయోగించబోతున్నారు. చివరి "
+"దశగా, దయచేసి క్రింది పత్రాన్ని పూర్తి చేయండి:"

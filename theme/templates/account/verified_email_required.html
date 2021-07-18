@@ -9,13 +9,9 @@
 
   {% url 'account_email' as email_url %}
 
-  <p>{% blocktrans %}This part of the site requires us to verify that
-    you are who you claim to be. For this purpose, we require that you
-    verify ownership of your e-mail address. {% endblocktrans %}</p>
+  <p>{% blocktrans %}This part of the site requires us to verify that you are who you claim to be. For this purpose, we require that you verify ownership of your e-mail address. {% endblocktrans %}</p>
 
-  <p>{% blocktrans %}We have sent an e-mail to you for
-    verification. Please click on the link inside this e-mail. Please
-    contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+  <p>{% blocktrans %}We have sent an e-mail to you for verification. Please click on the link inside this e-mail. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
 
   <p>{% blocktrans %}<strong>Note:</strong> you can still <a href="{{ email_url }}">change your e-mail address</a>.{% endblocktrans %}</p>
 
@@ -24,7 +20,7 @@
   <p class="mt-1">
     <a class="text-sm font-medium text-gray-600 {% comment %}dark:text-purple-400{% endcomment %} hover:underline"
        href="{% url 'account_login' %}">
-      Go back to Login page
+      {% blocktrans %}Go back to Login page{% endblocktrans %}
     </a>
   </p>
 
