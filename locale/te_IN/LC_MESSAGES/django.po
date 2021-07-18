@@ -445,7 +445,7 @@ msgstr "ప్రవేశించు"
 
 #: theme/templates/account/login.html:31
 msgid "Social Login"
-msgstr "పరివారజాలఖాతాలు ద్వారా ప్రవేశించు"
+msgstr "సాంఘికమాధ్యమ ఖాతా ద్వారా ప్రవేశించు"
 
 #: theme/templates/account/login.html:45
 msgid "Facebook"
@@ -673,12 +673,12 @@ msgstr "వాక్యాలు"
 #: theme/templates/socialaccount/authentication_error.html:5
 #: theme/templates/socialaccount/authentication_error.html:8
 msgid "Social Network Login Failure"
-msgstr "పరివారజాలము ద్వారా ప్రవేశించడం విఫలం అయ్యింది"
+msgstr "సాంఘికమాధ్యమ ఖాతా ద్వారా ప్రవేశించడం విఫలం అయ్యింది"
 
 #: theme/templates/socialaccount/authentication_error.html:10
 msgid ""
 "An error occurred while attempting to login via your social network account."
-msgstr "మీ పరివారజాలఖాతా ద్వారా ప్రవేశ ప్రయత్నంలో లోపం సంభవించింది."
+msgstr "మీ సాంఘికమాధ్యమ ఖాతా ద్వారా ప్రవేశ ప్రయత్నంలో లోపం సంభవించింది."
 
 #: theme/templates/socialaccount/connections.html:5
 #: theme/templates/socialaccount/connections.html:8
@@ -689,7 +689,7 @@ msgstr "ఖాతాతో అనుసంధానం కలిగి ఉన్
 msgid ""
 "You can sign in to your account using any of the following third party\n"
 "      accounts:"
-msgstr "మీరు ఈ క్రింది పరివారజాలఖాతాలలో దేనినైనా ఉపయోగించి మీ ఖాతాలోకి ప్రవేశించవచ్చు."
+msgstr "మీరు ఈ క్రింది సాంఘికమాధ్యమ ఖాతాలలో దేనినైనా ఉపయోగించి మీ ఖాతాలోకి ప్రవేశించవచ్చు."
 
 #: theme/templates/socialaccount/connections.html:36
 msgid "Remove"
@@ -698,11 +698,11 @@ msgstr "తొలగించు"
 #: theme/templates/socialaccount/connections.html:44
 msgid ""
 "You currently have no social network accounts connected to this account."
-msgstr "ప్రస్తుతం మీ ఖాతాకు అనుసంధానించబడిన పరివారజాలఖాతాలు ఏమీ లేవు."
+msgstr "ప్రస్తుతం మీ ఖాతాకు అనుసంధానించబడిన సాంఘికమాధ్యమ ఖాతాలు ఏమీ లేవు."
 
 #: theme/templates/socialaccount/connections.html:47
 msgid "Add a 3rd Party Account"
-msgstr "పరివారజాలఖాతాను అనుసంధానించండి"
+msgstr "సాంఘికమాధ్యమ ఖాతాను అనుసంధానించండి"
 
 #: theme/templates/socialaccount/login_cancelled.html:5
 #: theme/templates/socialaccount/login_cancelled.html:9
@@ -716,20 +716,20 @@ msgid ""
 "accounts. If this was a\n"
 "    mistake, please proceed to <a href=\"%(login_url)s\">sign in</a>."
 msgstr ""
-"మీరు మీ పరివారజాలఖాతా ఉపయోగించి శబ్దశాలలో ప్రవేశించాలని ప్రయత్నిస్తూ విఫలం చెందారు. ఇది పొరపాటు అయితే, "
+"మీరు మీ సాంఘికమాధ్యమ ఖాతా ఉపయోగించి శబ్దశాలలో ప్రవేశించాలని ప్రయత్నిస్తూ విఫలం చెందారు. ఇది పొరపాటు అయితే, "
 "దయచేసి ఈ <a href=\"%(login_url)s\">ప్రవేశ లింక్</a> ద్వారా కొనసాగండి"
 
 #: theme/templates/socialaccount/messages/account_connected.txt:2
 msgid "The social account has been connected."
-msgstr "పరివారజాలఖాతా అనుసంధానించబడినది."
+msgstr "సాంఘికమాధ్యమ ఖాతా అనుసంధానించబడినది."
 
 #: theme/templates/socialaccount/messages/account_connected_other.txt:2
 msgid "The social account is already connected to a different account."
-msgstr "ఈ పరివారజాలఖాతా ఇప్పటికే వేరే శబ్దశాల వినియోగదారుడి ఖాతాకు అనుసంధానం అయ్యి ఉన్నది."
+msgstr "ఈ సాంఘికమాధ్యమ ఖాతా ఇప్పటికే వేరే శబ్దశాల వినియోగదారుడి ఖాతాకు అనుసంధానం అయ్యి ఉన్నది."
 
 #: theme/templates/socialaccount/messages/account_disconnected.txt:2
 msgid "The social account has been disconnected."
-msgstr "పరివారజాలఖాతా మీ ఖాతా నుండి వేరు చేయబడినది."
+msgstr "సాంఘికమాధ్యమ ఖాతా మీ ఖాతా నుండి వేరు చేయబడినది."
 
 #: theme/templates/socialaccount/signup.html:10
 #, python-format
