@@ -13,7 +13,7 @@ from django_extensions.db.fields import AutoSlugField
 
 from treebeard.mp_tree import MP_Node
 
-from . import managers as categories_managers
+from . import managers as words_managers
 
 
 class Word(MP_Node):
@@ -48,10 +48,12 @@ class Word(MP_Node):
     display_order = models.PositiveIntegerField(_("Display order"))
     is_active = models.BooleanField(default=False)
 
+    created_by = models.ForeignKey('accounts.User', on_delete=models.DO_NOTHING,
+                                   null=True, blank=True)
+    objects = words_managers.WordQuerySet.as_manager()
+
     _slug_separator = '/'
     _full_name_separator = ' > '
-
-    objects = categories_managers.WordQuerySet.as_manager()
 
     def __str__(self):
         return self.full_name
