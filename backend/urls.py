@@ -41,6 +41,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('apps.accounts.urls.allauth')),
     path('api/auth/', include('apps.accounts.urls.api')),
+    path('categories/', include('apps.categories.urls')),
+    path('languages/', include('apps.languages.urls')),
+    path('questions/', include('apps.questions.urls')),
+    path('quiz-attempts/', include('apps.quiz_attempts.urls')),
+    path('quizzes/', include('apps.quizzes.urls')),
+    path('quotes/', include('apps.quotes.urls')),
+    path('sentences/', include('apps.sentences.urls')),
+    path('words/', include('apps.words.urls')),
     path('', include('apps.home.urls')),
 ]
 

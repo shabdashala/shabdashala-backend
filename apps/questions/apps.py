@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class QuotesConfig(AppConfig):
+class QuestionsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.quotes'
+    name = 'apps.questions'

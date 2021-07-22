@@ -167,7 +167,10 @@ INSTALLED_APPS = [
     'apps.home',
     'apps.languages',
     'apps.playground',
-    'apps.quiz',
+    'apps.questions',
+    'apps.quiz_attempts',
+    'apps.quizzes',
+    'apps.quotes',
     'apps.sentences',
     'apps.words',
 ]
