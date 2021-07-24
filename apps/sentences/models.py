@@ -17,5 +17,9 @@ class Sentence(TimeStampedModel):
     text = models.TextField(_('text'), max_length=2048)
     is_active = models.BooleanField(default=False)
 
+    class Meta:
+        verbose_name = _('Sentence')
+        verbose_name_plural = _('Sentences')
+
     def __str__(self):
         return self.text

@@ -112,8 +112,8 @@ class User(django_auth_models.AbstractBaseUser, django_auth_models.PermissionsMi
     REQUIRED_FIELDS = []
 
     class Meta:
-        verbose_name = _('user')
-        verbose_name_plural = _('users')
+        verbose_name = _('User')
+        verbose_name_plural = _('Users')
 
     # def delete(self, **kwargs):
     #     self.is_active = False

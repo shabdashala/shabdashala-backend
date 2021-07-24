@@ -24,7 +24,7 @@ class Category(MP_Node):
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     language = models.ForeignKey('languages.Language', on_delete=models.CASCADE)
     name = models.CharField(_('Name'), max_length=255, db_index=True)
-    description = models.TextField(_('Description'), blank=True)
+    description = models.TextField(_('Description'), blank=True, null=True)
     meta_title = models.CharField(_('Meta title'), max_length=255, blank=True, null=True)
     meta_description = models.TextField(_('Meta description'), blank=True, null=True)
     image = models.ImageField(_('Image'), upload_to='categories', blank=True,
@@ -42,7 +42,7 @@ class Category(MP_Node):
         default=True,
         db_index=True,
         help_text=_("The ancestors of this category are public"))
-    display_order = models.PositiveIntegerField(_("Display order"))
+    display_order = models.PositiveIntegerField(_("Display order"), default=0)
 
     is_active = models.BooleanField(default=False)
 

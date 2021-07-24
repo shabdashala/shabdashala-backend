@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-18 14:05+0530\n"
+"POT-Creation-Date: 2021-07-24 23:20+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,6 +44,10 @@ msgstr "అనుమతులు"
 msgid "Important dates"
 msgstr "ముఖ్యమైన తేదీలు"
 
+#: apps/accounts/apps.py:7
+msgid "Accounts"
+msgstr ""
+
 #: apps/accounts/filters.py:8
 msgid "groups"
 msgstr "సమూహాలు"
@@ -54,7 +58,7 @@ msgstr "మీరు నమోదు చేసిన రెండుసంకే
 
 #: apps/accounts/forms/admin.py:17 apps/accounts/forms/admin.py:50
 #: theme/templates/account/login.html:101
-#: theme/templates/account/signup.html:70
+#: theme/templates/account/signup.html:70 theme/templates/words/form.html:37
 msgid "Password"
 msgstr "సంకేతపదం"
 
@@ -133,12 +137,13 @@ msgstr "వినియోగదారు యొక్క సంకేతపద�
 msgid "date joined"
 msgstr "ఖాతా తెరిచిన తేదీ"
 
-#: apps/accounts/models.py:115
-msgid "user"
+#: apps/accounts/models.py:115 apps/quiz_attempts/models.py:18
+#: apps/quiz_attempts/models.py:76
+msgid "User"
 msgstr "వినియోగదారు"
 
 #: apps/accounts/models.py:116
-msgid "users"
+msgid "Users"
 msgstr "వినియోగదారులు"
 
 #: apps/accounts/models.py:172
@@ -199,11 +204,16 @@ msgid ""
 "inbox."
 msgstr "మీ ఈమెయిలు చిరునామా ధృవీకరించబడలేదు. ధృవీకరణ కోసం వివరాలతో మీకు ఈమెయిలు పంపబడుతుంది."
 
+#: apps/categories/apps.py:8 apps/categories/models.py:185
+msgid "Categories"
+msgstr "వర్గాలు"
+
 #: apps/categories/models.py:26 apps/words/models.py:29
 msgid "Name"
 msgstr "పేరు"
 
-#: apps/categories/models.py:27 apps/words/models.py:30
+#: apps/categories/models.py:27 apps/questions/models.py:51
+#: apps/quizzes/models.py:17 apps/words/models.py:30
 msgid "Description"
 msgstr "వివరణ"
 
@@ -240,159 +250,281 @@ msgid "The ancestors of this category are public"
 msgstr "ఈ వర్గానికి చెందిన పూర్వీకులు అందరికి కనపడతారు"
 
 #: apps/categories/models.py:45 apps/languages/models.py:12
-#: apps/quiz/models.py:25 apps/quiz/models.py:89 apps/words/models.py:48
+#: apps/questions/models.py:24 apps/questions/models.py:54
+#: apps/quizzes/models.py:28 apps/quizzes/models.py:73
+#: apps/quizzes/models.py:82 apps/words/models.py:48
 msgid "Display order"
 msgstr "ప్రదర్శన క్రమం"
 
-#: apps/categories/models.py:184 apps/quiz/models.py:17 apps/quiz/models.py:63
+#: apps/categories/models.py:184 apps/questions/models.py:13
+#: apps/quizzes/models.py:20
 msgid "Category"
 msgstr "వర్గం"
 
-#: apps/categories/models.py:185
-msgid "Categories"
-msgstr "వర్గాలు"
+#: apps/languages/apps.py:8 apps/languages/models.py:17
+#: theme/templates/languages/index.html:5
+msgid "Languages"
+msgstr "భాషలు"
 
-#: apps/quiz/constants.py:7
-msgid "Configured"
-msgstr "నిర్దిష్టమయిన"
-
-#: apps/quiz/constants.py:8
-msgid "Dynamic"
-msgstr "క్రియాశీలక"
-
-#: apps/quiz/constants.py:18
-msgid "Multiple choice answer question"
-msgstr "బహుళ ఎంపిక జవాబు ప్రశ్న"
-
-#: apps/quiz/constants.py:19
-msgid "Multiple choice multiple answer question"
-msgstr "బహుళ ఎంపిక బహుళ జవాబు ప్రశ్న"
-
-#: apps/quiz/constants.py:20
-msgid "Jumbled word answer question"
-msgstr "గందరగోళ పద జవాబు ప్రశ్న"
-
-#: apps/quiz/constants.py:21
-msgid "Translation question"
-msgstr "అనువాద ప్రశ్న"
-
-#: apps/quiz/models.py:16 apps/quiz/models.py:62 apps/quiz/models.py:77
+#: apps/languages/models.py:16 apps/questions/models.py:12
+#: apps/questions/models.py:37 apps/quizzes/models.py:19
 #, fuzzy
 #| msgid "Languages"
 msgid "Language"
 msgstr "భాష"
 
-#: apps/quiz/models.py:18
-msgid "Quiz type"
-msgstr "ప్రశ్నల పరీక్ష రకం"
+#: apps/playground/apps.py:8
+msgid "Playground"
+msgstr ""
 
-#: apps/quiz/models.py:21
-msgid "Maximum number of questions"
-msgstr "ప్రశ్నల గరిష్ట సంఖ్య"
+#: apps/questions/apps.py:8
+msgid "Questions"
+msgstr "ప్రశ్నలు"
 
-#: apps/quiz/models.py:22
-msgid "Maximum marks"
+#: apps/questions/constants.py:11
+msgid "Multiple choice answer question"
+msgstr "బహుళ ఎంపిక జవాబు ప్రశ్న"
+
+#: apps/questions/constants.py:12
+msgid "Multiple choice multiple answer question"
+msgstr "బహుళ ఎంపిక బహుళ జవాబు ప్రశ్న"
+
+#: apps/questions/constants.py:13
+#, fuzzy
+#| msgid "Jumbled word answer question"
+msgid "Jumble words answer question"
+msgstr "గందరగోళ పద జవాబు ప్రశ్న"
+
+#: apps/questions/constants.py:14
+#, fuzzy
+#| msgid "Jumbled word answer question"
+msgid "Single word answer question"
+msgstr "గందరగోళ పద జవాబు ప్రశ్న"
+
+#: apps/questions/constants.py:15
+msgid "Translation question"
+msgstr "అనువాద ప్రశ్న"
+
+#: apps/questions/constants.py:16
+#, fuzzy
+#| msgid "Translation question"
+msgid "Textual question"
+msgstr "అనువాద ప్రశ్న"
+
+#: apps/questions/models.py:15 apps/questions/models.py:39
+#: apps/quiz_attempts/models.py:80
+msgid "Sentence"
+msgstr "వాక్యం"
+
+#: apps/questions/models.py:17
+msgid "Question type"
+msgstr "ప్రశ్న రకం"
+
+#: apps/questions/models.py:20
+msgid "Maximum Marks"
 msgstr "గరిష్ట మార్కులు"
 
-#: apps/quiz/models.py:23
-msgid "Maximum bonus marks"
-msgstr "గరిష్ట బహుమాన మార్కులు"
+#: apps/questions/models.py:21
+msgid "Correct answer"
+msgstr ""
 
-#: apps/quiz/models.py:24 apps/quiz/models.py:70
+#: apps/questions/models.py:23 apps/quizzes/models.py:27
 msgid "Has been published?"
 msgstr "ప్రచురించబడిందా?"
 
-#: apps/quiz/models.py:28
+#: apps/questions/models.py:40
+msgid "Is this answer correct?"
+msgstr "ఈ సమాధానం సరైనదేనా?"
+
+#: apps/questions/models.py:48 apps/quizzes/models.py:14
+msgid "Title"
+msgstr ""
+
+#: apps/questions/models.py:52
+msgid "A description of the QuestionSet"
+msgstr ""
+
+#: apps/quiz_attempts/apps.py:8
+#, fuzzy
+#| msgid "Quiz type"
+msgid "Quiz attempts"
+msgstr "ప్రశ్నల పరీక్ష రకం"
+
+#: apps/quiz_attempts/models.py:19 apps/quizzes/models.py:71
+#: apps/quizzes/models.py:72 apps/quizzes/models.py:80
+msgid "Quiz"
+msgstr "ప్రశ్నల పరీక్ష"
+
+#: apps/quiz_attempts/models.py:23
+#, fuzzy
+#| msgid "Question type"
+msgid "Questions list"
+msgstr "ప్రశ్న రకం"
+
+#: apps/quiz_attempts/models.py:28
+msgid "Completed question list"
+msgstr ""
+
+#: apps/quiz_attempts/models.py:33
+msgid "Not completed question list"
+msgstr ""
+
+#: apps/quiz_attempts/models.py:39
+msgid "Incorrect questions list"
+msgstr ""
+
+#: apps/quiz_attempts/models.py:42
+msgid "Total Score"
+msgstr "మొత్తం స్కోరు"
+
+#: apps/quiz_attempts/models.py:43
+msgid "Current Score"
+msgstr ""
+
+#: apps/quiz_attempts/models.py:46
+msgid "Is completed?"
+msgstr ""
+
+#: apps/quiz_attempts/models.py:47 apps/quiz_attempts/models.py:87
+msgid "Completed Date and time?"
+msgstr ""
+
+#: apps/quiz_attempts/models.py:48 apps/quiz_attempts/models.py:88
+msgid " info"
+msgstr ""
+
+#: apps/quiz_attempts/models.py:82
+msgid "Was this attempt correct?"
+msgstr "ఈ ప్రయత్నం సరైనదేనా?"
+
+#: apps/quiz_attempts/models.py:83
+msgid "Marks Obtained"
+msgstr "వచ్చిన మార్కులు"
+
+#: apps/quiz_attempts/models.py:86
+msgid "Is evaluated?"
+msgstr ""
+
+#: apps/quizzes/apps.py:8
+#, fuzzy
+#| msgid "Quiz"
+msgid "Quizzes"
+msgstr "ప్రశ్నల పరీక్ష"
+
+#: apps/quizzes/constants.py:7
+msgid "Configured"
+msgstr "నిర్దిష్టమయిన"
+
+#: apps/quizzes/constants.py:8
+msgid "Dynamic"
+msgstr "క్రియాశీలక"
+
+#: apps/quizzes/models.py:18
+msgid "A description of the quiz"
+msgstr ""
+
+#: apps/quizzes/models.py:21
+msgid "Quiz type"
+msgstr "ప్రశ్నల పరీక్ష రకం"
+
+#: apps/quizzes/models.py:24
+msgid "Maximum number of questions"
+msgstr "ప్రశ్నల గరిష్ట సంఖ్య"
+
+#: apps/quizzes/models.py:25
+msgid "Maximum marks"
+msgstr "గరిష్ట మార్కులు"
+
+#: apps/quizzes/models.py:26
+msgid "Maximum bonus marks"
+msgstr "గరిష్ట బహుమాన మార్కులు"
+
+#: apps/quizzes/models.py:31
 msgid "Random Order"
 msgstr "యాదృచ్ఛిక క్రమం"
 
-#: apps/quiz/models.py:29
+#: apps/quizzes/models.py:32
 msgid "Display the questions in a random order or as they are set?"
 msgstr "ప్రశ్నలను యాదృచ్ఛిక క్రమంలో ప్రదర్శించాలా లేదా అవి పొందుపరిచిన క్రమంలో ప్రదర్శించాలా?"
 
-#: apps/quiz/models.py:34
+#: apps/quizzes/models.py:37
 msgid "Pass Mark"
 msgstr "ఉత్తీర్ణత సాధించాల్సిన మార్కు"
 
-#: apps/quiz/models.py:35
+#: apps/quizzes/models.py:38
 msgid "Percentage required to pass exam."
 msgstr "పరీక్షలో ఉత్తీర్ణత సాధించాల్సిన శాతం."
 
-#: apps/quiz/models.py:38
+#: apps/quizzes/models.py:41
 msgid "Displayed if user passes."
 msgstr "వినియోగదారు ఉత్తీర్ణులైతే ప్రదర్శించబడుతుంది."
 
-#: apps/quiz/models.py:39
+#: apps/quizzes/models.py:42
 msgid "Success Text"
 msgstr "విజయ వచనం"
 
-#: apps/quiz/models.py:41
+#: apps/quizzes/models.py:44
 msgid "Fail Text"
 msgstr "వైఫల్యం వచనం"
 
-#: apps/quiz/models.py:42
+#: apps/quizzes/models.py:45
 msgid "Displayed if user fails."
 msgstr "వినియోగదారు విఫలమైతే ప్రదర్శించబడుతుంది."
 
-#: apps/quiz/models.py:45
+#: apps/quizzes/models.py:48
 msgid ""
 "Correct answer is NOT shown after question. Answers displayed at the end."
 msgstr "ప్రశ్న తర్వాత సరైన సమాధానం చూపబడదు. సమాధానాలు చివరిలో ప్రదర్శించబడతాయి."
 
-#: apps/quiz/models.py:47
+#: apps/quizzes/models.py:50
 msgid "Answers at end"
 msgstr "చివరికి సమాధానాలు"
 
-#: apps/quiz/models.py:50
+#: apps/quizzes/models.py:53
 msgid ""
 "If yes, the result of each attempt by a user will be stored. Necessary for "
 "marking."
 msgstr "అవును అయితే, వినియోగదారు చేసిన ప్రతి ప్రయత్నం ఫలితం నిల్వ చేయబడుతుంది. మార్కింగ్ కోసం అవసరం."
 
-#: apps/quiz/models.py:53
+#: apps/quizzes/models.py:56
 msgid "Exam Paper"
 msgstr "పరీక్షా పత్రం"
 
-#: apps/quiz/models.py:65 apps/quiz/models.py:79
+#: apps/quizzes/models.py:59
 #, fuzzy
-#| msgid "Sentences"
-msgid "Sentence"
-msgstr "వాక్యం"
+#| msgid "Jumbled word answer question"
+msgid "User should answer all questions."
+msgstr "గందరగోళ పద జవాబు ప్రశ్న"
 
-#: apps/quiz/models.py:66
-msgid "Question type"
-msgstr "ప్రశ్న రకం"
-
-#: apps/quiz/models.py:69
-msgid "Maximum Marks"
-msgstr "గరిష్ట మార్కులు"
-
-#: apps/quiz/models.py:80
-msgid "Is this answer correct?"
+#: apps/quizzes/models.py:60
+#, fuzzy
+#| msgid "Is this answer correct?"
+msgid "Ask till all correct"
 msgstr "ఈ సమాధానం సరైనదేనా?"
 
-#: apps/quiz/models.py:87 apps/quiz/models.py:88 apps/quiz/models.py:97
-msgid "Quiz"
-msgstr "ప్రశ్నల పరీక్ష"
+#: apps/quizzes/models.py:81
+#, fuzzy
+#| msgid "Quiz type"
+msgid "Quiz Set"
+msgstr "ప్రశ్నల పరీక్ష రకం"
 
-#: apps/quiz/models.py:96
-msgid "User"
-msgstr "వినియోగదారు"
+#: apps/quotes/apps.py:8
+msgid "Quotes"
+msgstr ""
 
-#: apps/quiz/models.py:98
-msgid "Total Score"
-msgstr "మొత్తం స్కోరు"
-
-#: apps/quiz/models.py:138
-msgid "Was this attempt correct?"
-msgstr "ఈ ప్రయత్నం సరైనదేనా?"
-
-#: apps/quiz/models.py:139
-msgid "Marks Obtained"
-msgstr "వచ్చిన మార్కులు"
+#: apps/sentences/apps.py:8 theme/templates/sentences/index.html:5
+msgid "Sentences"
+msgstr "వాక్యాలు"
 
 #: apps/sentences/models.py:17
 msgid "text"
+msgstr "పదాలు"
+
+#: apps/words/apps.py:8 apps/words/models.py:189
+#: theme/templates/words/delete.html:5 theme/templates/words/detail.html:5
+#: theme/templates/words/form.html:5 theme/templates/words/index.html:5
+#: theme/templates/words/list.html:5
+msgid "Words"
 msgstr "పదాలు"
 
 #: apps/words/models.py:41
@@ -407,27 +539,23 @@ msgstr "పూర్వ మాటలు అందరికీ చూపాలా
 msgid "The ancestors of this word are public"
 msgstr "పూర్వ మాటలు అందరికీ ప్రదర్శించబడతాయి"
 
-#: apps/words/models.py:186
+#: apps/words/models.py:188
 msgid "Word"
 msgstr "పదం"
 
-#: apps/words/models.py:187
-msgid "Words"
-msgstr "పదాలు"
-
-#: backend/settings/common.py:257
+#: backend/settings/common.py:260
 msgid "Telugu"
 msgstr "తెలుగు"
 
-#: backend/settings/common.py:258
+#: backend/settings/common.py:261
 msgid "Hindi"
 msgstr "హిందీ"
 
-#: backend/settings/common.py:259
+#: backend/settings/common.py:262
 msgid "German"
 msgstr "జర్మన్"
 
-#: backend/settings/common.py:260
+#: backend/settings/common.py:263
 msgid "English"
 msgstr "ఆంగ్లము"
 
@@ -439,7 +567,8 @@ msgid "ShabdaShala"
 msgstr "శబ్దశాల"
 
 #: theme/templates/account/login.html:4 theme/templates/account/login.html:78
-#: theme/templates/account/login.html:138
+#: theme/templates/account/login.html:138 theme/templates/words/form.html:13
+#: theme/templates/words/form.html:75
 msgid "Login"
 msgstr "ప్రవేశించు"
 
@@ -453,19 +582,19 @@ msgstr "ఫేస్బుక్"
 
 #: theme/templates/account/login.html:85
 #: theme/templates/account/password_reset.html:24
-#: theme/templates/account/signup.html:16
+#: theme/templates/account/signup.html:16 theme/templates/words/form.html:20
 msgid "Email"
 msgstr "ఈమెయిలు"
 
-#: theme/templates/account/login.html:120
+#: theme/templates/account/login.html:120 theme/templates/words/form.html:57
 msgid "Remember me"
 msgstr "నా ప్రవేశాన్ని గుర్తు పెట్టు"
 
-#: theme/templates/account/login.html:148
+#: theme/templates/account/login.html:148 theme/templates/words/form.html:85
 msgid "Forgot your password?"
 msgstr "మీ ఖాతా యొక్క సంకేతపదంను మర్చిపోయారా?"
 
-#: theme/templates/account/login.html:155
+#: theme/templates/account/login.html:155 theme/templates/words/form.html:92
 msgid "Create account"
 msgstr "ఖాతాను సృష్టించండి"
 
@@ -514,6 +643,16 @@ msgstr "నా సంకేతపదంను మార్చండి"
 #: theme/templates/account/password_reset.html:50
 msgid "Please contact us if you have any trouble resetting your password."
 msgstr "మీ సంకేతపదంను మార్చే ప్రక్రియలో మీకు ఏమైనా సమస్య ఉంటే దయచేసి మమ్మల్ని సంప్రదించండి"
+
+#: theme/templates/account/password_reset.html:58
+#: theme/templates/account/signup.html:125
+#: theme/templates/account/signup_closed.html:18
+#: theme/templates/account/verification_sent.html:18
+#: theme/templates/account/verified_email_required.html:24
+#: theme/templates/socialaccount/authentication_error.html:17
+#: theme/templates/socialaccount/login_cancelled.html:22
+msgid "Go back to Login page"
+msgstr "తిరిగి ప్రవేశ పేజీకి వెళ్ళండి"
 
 #: theme/templates/account/password_reset_done.html:17
 msgid ""
@@ -568,10 +707,6 @@ msgstr "ఖాతా తెరవండి"
 msgid "Password (again)"
 msgstr "సంకేతపదం"
 
-#: theme/templates/account/signup.html:125
-msgid "Already have a ShabdaShala account? Login"
-msgstr "మీరు ఇప్పటికే శబ్దశాల ఖాతాని కలిగి ఉన్నారా? అయితే ప్రవేశించండి"
-
 #: theme/templates/account/signup_closed.html:5
 #: theme/templates/account/signup_closed.html:8
 #, fuzzy
@@ -582,14 +717,6 @@ msgstr "ఖాతా తెరిచే ప్రక్రియ మూతపడ
 #: theme/templates/account/signup_closed.html:10
 msgid "We are sorry, but the sign up is currently closed."
 msgstr "మమ్మల్ని క్షమించండి, ఖాతా తెరిచే ప్రక్రియ ప్రస్తుతానికి మూసివేయబడింది."
-
-#: theme/templates/account/signup_closed.html:18
-#: theme/templates/account/verification_sent.html:18
-#: theme/templates/account/verified_email_required.html:24
-#: theme/templates/socialaccount/authentication_error.html:17
-#: theme/templates/socialaccount/login_cancelled.html:22
-msgid "Go back to Login page"
-msgstr "తిరిగి ప్రవేశ పేజీకి వెళ్ళండి"
 
 #: theme/templates/account/verification_sent.html:5
 #: theme/templates/account/verification_sent.html:8
@@ -662,14 +789,6 @@ msgstr ""
 "భాషలను సులభంగా బోధించడానికి, నేర్చుకోవడానికి మరియు పరిశోధించడానికి కావలసినటువంటి సాంకేతిక సాధనాలను నిర్మించే "
 "అంకుర సంస్థ."
 
-#: theme/templates/languages/index.html:5
-msgid "Languages"
-msgstr "భాషలు"
-
-#: theme/templates/sentences/index.html:5
-msgid "Sentences"
-msgstr "వాక్యాలు"
-
 #: theme/templates/socialaccount/authentication_error.html:5
 #: theme/templates/socialaccount/authentication_error.html:8
 msgid "Social Network Login Failure"
@@ -741,10 +860,36 @@ msgstr ""
 "మీరు %(site_name)s లాగిన్ అవ్వడానికి మీ %(provider_name)s ఖాతాను ఉపయోగించబోతున్నారు. చివరి "
 "దశగా, దయచేసి క్రింది పత్రాన్ని పూర్తి చేయండి:"
 
+#: theme/templates/words/index.html:10
+msgid "Word Index"
+msgstr ""
+
+#: theme/templates/words/list.html:10
+msgid "Word lists"
+msgstr "పదాలు"
+
+msgid "email addresses"
+msgstr "ఈమెయిలు చిరునామాలు"
+
+msgid "token"
+msgstr "చిహ్నము"
+
+msgid "tokens"
+msgstr "చిహ్నములు"
+
+msgid "Token"
+msgstr "చిహ్నము"
+
+msgid "Tokens"
+msgstr "చిహ్నములు"
+
+msgid "Already have a ShabdaShala account? Login"
+msgstr "మీరు ఇప్పటికే శబ్దశాల ఖాతాని కలిగి ఉన్నారా? అయితే ప్రవేశించండి"
+
 #, python-format
-#~ msgid ""
-#~ "Already have a ShabdaShala account? Then please <a href=\"%(login_url)s"
-#~ "\">sign in</a>."
-#~ msgstr ""
-#~ "మీరు ఇప్పటికే శబ్దశాల ఖాతాని కలిగి ఉన్నారా? అయితే దయచేసి <a href=\"%(login_url)s"
-#~ "\">ప్రవేశించండి</a>."
+msgid ""
+"Already have a ShabdaShala account? Then please <a href=\"%(login_url)s"
+"\">sign in</a>."
+msgstr ""
+"మీరు ఇప్పటికే శబ్దశాల ఖాతాని కలిగి ఉన్నారా? అయితే దయచేసి <a href=\"%(login_url)s"
+"\">ప్రవేశించండి</a>."

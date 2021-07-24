@@ -3,13 +3,15 @@ from django.utils.translation import gettext as _
 MCQ = 'mcq'  # multiple choice answer question
 MCMQ = 'mcmq'  # multiple choice multiple answer question
 JWQ = 'jwq'  # jumbled word answer question
+SWQ = 'swq'  # single word answer question
 TRQ = 'trq'  # translation question
 TQ = 'tq'  # textual question
 
 QUESTION_TYPE_CHOICES = (
     (MCQ, _('Multiple choice answer question')),
     (MCMQ, _('Multiple choice multiple answer question')),
-    (JWQ, _('Jumbled word answer question')),
+    (JWQ, _('Jumble words answer question')),
+    (SWQ, _('Single word answer question')),
     (TRQ, _('Translation question')),
     (TQ, _('Textual question')),
 )
