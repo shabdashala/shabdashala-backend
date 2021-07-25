@@ -1,5 +1,6 @@
 import csv
 import os
+import random
 
 from django.conf import settings
 
@@ -41,9 +42,10 @@ def seed_sandhulu_questions():
     sandhulu_questions_data = load_sandhulu_questions_data()
     language = languages_models.Language.objects.get(two_letter_code='te')
     for sandhi_question_data in sandhulu_questions_data:
-        category = create_from_breadcrumbs(
+        correct_sandhi_category_name = SANDHI_CATEGORY_MAPPING[sandhi_question_data['sandhi_peru']]
+        correct_sandh_category = create_from_breadcrumbs(
             language_code='te',
-            breadcrumb_str=SANDHI_CATEGORY_MAPPING[sandhi_question_data['sandhi_peru']])
+            breadcrumb_str=correct_sandhi_category_name)
         sentence_text = f"\"{sandhi_question_data['sandhi_padam']}\" ఏం సంధి?"
         sentence = sentences_models.Sentence.objects.filter(
             language=language,
@@ -56,7 +58,7 @@ def seed_sandhulu_questions():
                 text=sentence_text,
                 is_active=True,
             )
-        sentence.categories.add(category)
+        sentence.categories.add(correct_sandh_category)
 
         hint_text = f"విసంధి: {sandhi_question_data['visandhi']}"
         success_text = f"""
@@ -66,7 +68,7 @@ def seed_sandhulu_questions():
         """
         question = questions_models.Question.objects.filter(
             language=language,
-            category=category,
+            category=correct_sandh_category,
             question_type=questions_constants.MCQ,
             sentence=sentence,
             is_published=True,
@@ -74,7 +76,7 @@ def seed_sandhulu_questions():
         if not question:
             question = questions_models.Question.objects.create(
                 language=language,
-                category=category,
+                category=correct_sandh_category,
                 question_type=questions_constants.MCQ,
                 sentence=sentence,
                 is_published=True,
@@ -107,8 +109,11 @@ def seed_sandhulu_questions():
             is_correct=True
         )
 
-        other_sadhi_names = [sandhi_name for sandhi_name in SANDHI_CATEGORY_NAMES
-                             if sandhi_name is not correct_sadhi_name]
+        number_of_other_choices = random.randint(1, 5)
+        other_sadhi_names = random.sample([
+            sandhi_name for sandhi_name in SANDHI_CATEGORY_NAMES
+            if sandhi_name is not correct_sadhi_name
+        ], number_of_other_choices)
 
         for other_sadhi_name in other_sadhi_names:
             other_choice_sentence = sentences_models.Sentence.objects.filter(

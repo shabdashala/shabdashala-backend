@@ -58,7 +58,12 @@ class Choice(TimeStampedModel):
         verbose_name_plural = _('Choices')
 
     def __str__(self):
-        return self.sentence
+        return f"""
+            language: {self.language.name},
+            question: {self.question.sentence.text},
+            sentence: {self.sentence.text},
+            is_correct: {self.is_correct}
+        """
 
 
 class QuestionSet(TimeStampedModel):
