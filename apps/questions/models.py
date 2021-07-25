@@ -20,6 +20,7 @@ class Question(TimeStampedModel):
     question_type = models.CharField(verbose_name=_('Question type'),
                                      max_length=16, choices=questions_constants.QUESTION_TYPE_CHOICES,
                                      default=questions_constants.MCQ, db_index=True)
+    maximum_number_of_choices = models.PositiveIntegerField(_("Maximum number of choices"), default=4)
     maximum_marks = models.DecimalField(_('Maximum Marks'), default=4, decimal_places=2, max_digits=6)
     correct_answer = models.ForeignKey('sentences.Sentence', verbose_name=_('Correct answer'),
                                        related_name='questions_correct_answers', on_delete=models.CASCADE,
@@ -82,3 +83,10 @@ class QuestionSet(TimeStampedModel):
 
     def __str__(self):
         return self.title
+
+    def get_questions_queryset(self):
+        category_ids = []
+        for category in self.categories.filter(is_active=True):
+            category_ids.extend(list(category.get_descendants_and_self().values_list('id', flat=True)))
+        category_ids = list(set(category_ids))
+        return Question.objects.filter(category__in=category_ids)

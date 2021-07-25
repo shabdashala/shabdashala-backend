@@ -116,7 +116,7 @@ def seed_sandhulu_questions():
             is_correct=True
         )
 
-        number_of_other_choices = random.randint(1, 5)
+        number_of_other_choices = random.randint(1, question.maximum_number_of_choices)
         other_sadhi_names = random.sample([
             sandhi_name for sandhi_name in SANDHI_CATEGORY_NAMES
             if sandhi_name is not correct_sadhi_name
