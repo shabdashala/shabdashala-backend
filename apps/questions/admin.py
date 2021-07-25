@@ -11,3 +11,8 @@ class ChoiceInline(admin.TabularInline):
 @admin.register(questions_models.Question)
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline]
+
+
+@admin.register(questions_models.QuestionSet)
+class QuestionSetAdmin(admin.ModelAdmin):
+    pass

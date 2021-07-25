@@ -8,10 +8,17 @@ from apps.categories.utils import create_from_breadcrumbs
 from apps.languages import models as languages_models
 from apps.questions import constants as questions_constants
 from apps.questions import models as questions_models
+from apps.quizzes import constants as quizzes_constants
+from apps.quizzes import models as quizzes_models
 from apps.sentences import models as sentences_models
 
 from .create_languages import seed_languages_data
-from .telugu_sandhulu_data import SANDHI_CATEGORY_MAPPING, SANDHI_CATEGORY_NAMES, TELUGU_SANDHULU_DATA
+from .telugu_sandhulu_data import (
+    SANDHI_CATEGORY_MAPPING,
+    SANDHI_CATEGORY_NAMES,
+    SANDHULU,
+    TELUGU_SANDHULU_DATA
+)
 
 
 def load_sandhulu_questions_data():
@@ -133,8 +140,60 @@ def seed_sandhulu_questions():
             )
 
 
+def seed_question_sets_data():
+    language = languages_models.Language.objects.get(two_letter_code='te')
+    category = create_from_breadcrumbs(language_code=language.two_letter_code, breadcrumb_str=SANDHULU)
+
+    question_set_title = 'సంధులు ప్రశ్నలు'
+    question_set = questions_models.QuestionSet.objects.filter(
+        title=question_set_title,
+        description='',
+        display_order=0,
+    ).first()
+    if not question_set:
+        question_set = questions_models.QuestionSet.objects.create(
+            title=question_set_title,
+            description='',
+            display_order=0,
+        )
+    question_set.categories.add(category)
+
+
+def seed_quizzes_data():
+    quiz_title = 'సంధుల పరీక్ష'
+    question_set_title = 'సంధులు ప్రశ్నలు'
+
+    language = languages_models.Language.objects.get(two_letter_code='te')
+    category = create_from_breadcrumbs(language_code=language.two_letter_code, breadcrumb_str=SANDHULU)
+    question_set = questions_models.QuestionSet.objects.filter(title=question_set_title).first()
+
+    quiz = quizzes_models.Quiz.objects.filter(
+        title=quiz_title,
+        language=language,
+        category=category,
+    ).first()
+    if not quiz:
+        quiz = quizzes_models.Quiz.objects.create(
+            title=quiz_title,
+            language=language,
+            category=category,
+            quiz_type=quizzes_constants.DYNAMIC,
+            maximum_number_of_questions=5,
+            maximum_marks=5,
+            maximum_bonus_marks=5,
+            is_published=True,
+            random_order=True,
+            pass_mark=3,
+            success_text='',
+            fail_text='',
+        )
+    quiz.question_sets.add(question_set)
+
+
 def seed_initial_data():
     seed_languages_data()
     seed_sandhulu_categories()
     seed_sandhulu_questions()
+    seed_question_sets_data()
+    seed_quizzes_data()
 

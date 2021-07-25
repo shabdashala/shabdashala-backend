@@ -73,8 +73,8 @@ class QuestionSet(TimeStampedModel):
     description = models.TextField(
         verbose_name=_("Description"),
         blank=True, help_text=_("A description of the QuestionSet"))
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    display_order = models.PositiveIntegerField(_("Display order"))
+    categories = models.ManyToManyField('categories.Category', blank=True)
+    display_order = models.PositiveIntegerField(_("Display order"), default=0)
 
     class Meta:
         verbose_name = _('Question set')

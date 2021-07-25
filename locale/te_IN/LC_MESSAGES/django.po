@@ -484,7 +484,7 @@ msgstr "చివరికి సమాధానాలు"
 msgid ""
 "If yes, the result of each attempt by a user will be stored. Necessary for "
 "marking."
-msgstr "అవును అయితే, వినియోగదారు చేసిన ప్రతి ప్రయత్నం ఫలితం నిల్వ చేయబడుతుంది. మార్కింగ్ కోసం అవసరం."
+msgstr "అవును అయితే, వినియోగదారు చేసిన ప్రతి ప్రయత్నం ఫలితం నిల్వ చేయబడుతుంది. మూల్యాంకనము కోసం అవసరం."
 
 #: apps/quizzes/models.py:56
 msgid "Exam Paper"
