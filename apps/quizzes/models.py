@@ -79,7 +79,18 @@ class QuizQuestion(TimeStampedModel):
 class QuizQuestionSet(TimeStampedModel):
     quiz = models.ForeignKey('quizzes.Quiz', verbose_name=_('Quiz'), on_delete=models.CASCADE)
     question_set = models.ForeignKey('questions.QuestionSet', verbose_name=_('Quiz Set'), on_delete=models.CASCADE)
+    questions = models.ManyToManyField(to='questions.Question', through='QuizQuestionSetQuestion', blank=True)
     display_order = models.PositiveIntegerField(_("Display order"), default=0)
 
     def __str__(self):
         return self.question_set.title
+
+
+class QuizQuestionSetQuestion(TimeStampedModel):
+    quiz_question_set = models.ForeignKey('quizzes.QuizQuestionSet',
+                                          verbose_name=_('Quiz Quiz Set'), on_delete=models.CASCADE)
+    question = models.ForeignKey('questions.Question', verbose_name=_('Quiz'), on_delete=models.CASCADE)
+    display_order = models.PositiveIntegerField(_("Display order"), default=0)
+
+    def __str__(self):
+        return self.question.sentence.text
