@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block head_title %}{{ block.super }} - {% trans "Dashboard" %}{% endblock %}
+
+
+{% block content %}
+  <div class="container px-6 mx-auto grid">
+    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+      {% trans "Practice" %}
+    </h2>
+    {# Cards #}
+    <div class="w-full overflow-hidden rounded-lg shadow-xs">
+      <div class="w-full overflow-x-auto">
+        <p>{{ quiz.title }}</p>
+        <p>{{ quiz_attempt }}</p>
+        <p>
+          {{ quiz_attempt_question }}
+          <br>
+          <ol>
+            {% for choice in quiz_attempt_question.choices.all %}
+              <li>{{ choice.sentence.text }}</li>
+            {% endfor %}
+          </ol>
+        </p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

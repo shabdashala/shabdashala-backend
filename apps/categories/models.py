@@ -92,7 +92,7 @@ class Category(MP_Node):
         Generates a slug for a category. This makes no attempt at generating
         a unique slug.
         """
-        return slugify(self.name)
+        return slugify(self.name, allow_unicode=True)
 
     def save(self, *args, **kwargs):
         """

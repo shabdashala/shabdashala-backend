@@ -2,8 +2,9 @@ import uuid
 
 from django.db import models
 from django.core.validators import MaxValueValidator
+from django.utils.text import slugify
 from django.utils.translation import gettext as _
-
+from django_extensions.db.fields import AutoSlugField
 from django_extensions.db.models import TimeStampedModel
 
 from . import constants as quiz_constants
@@ -13,6 +14,8 @@ class Quiz(TimeStampedModel):
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     title = models.CharField(verbose_name=_("Title"), max_length=64,
                              blank=False)
+    slug = AutoSlugField(_('Slug'), populate_from='title', max_length=255,
+                         db_index=True, allow_unicode=True, unique=True)
     description = models.TextField(
         verbose_name=_("Description"),
         blank=True, help_text=_("A description of the quiz"))
@@ -65,6 +68,25 @@ class Quiz(TimeStampedModel):
 
     def __str__(self):
         return f'<Quiz: category={self.category.full_name}>'
+
+    def generate_slug(self):
+        """
+        Generates a slug for a category. This makes no attempt at generating
+        a unique slug.
+        """
+        return slugify(self.title, allow_unicode=True)
+
+    def save(self, *args, **kwargs):
+        """
+        Oscar traditionally auto-generated slugs from names. As that is
+        often convenient, we still do so if a slug is not supplied through
+        other means. If you want to control slug creation, just create
+        instances with a slug already set, or expose a field on the
+        appropriate forms.
+        """
+        if not self.slug:
+            self.slug = self.generate_slug()
+        super().save(*args, **kwargs)
 
 
 class QuizQuestion(TimeStampedModel):

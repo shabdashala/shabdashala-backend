@@ -13,32 +13,60 @@
     {# Cards #}
     <div class="w-full overflow-hidden rounded-lg shadow-xs">
       <div class="w-full overflow-x-auto">
-        <table class="w-full whitespace-no-wrap">
-          <thead>
-          <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-            <th class="px-4 py-3">{% trans "Language" %}</th>
-            <th class="px-4 py-3">{% trans "Category" %}</th>
-          </tr>
-          </thead>
-          <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-          {% for category in categories %}
-          <tr class="text-gray-700 dark:text-gray-400">
-            <td class="px-4 py-3">
-              <div class="flex items-center text-sm">
-                <div>
-                  <p class="font-semibold">
-                    <a href="{{ category.language.get_absolute_url }}">{{ category.language.name }}</a>
-                  </p>
-                </div>
-              </div>
-            </td>
-            <td class="px-4 py-3 text-sm">
-              {{ category.full_name }}
-            </td>
-          </tr>
-          {% endfor %}
-          </tbody>
-        </table>
+        {% if categories %}
+          <table class="w-full whitespace-no-wrap">
+            <thead>
+            <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+              <th class="px-4 py-3">{% trans "Language" %}</th>
+              <th class="px-4 py-3">{% trans "Category" %}</th>
+            </tr>
+            </thead>
+            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+            {% for category in categories %}
+              <tr class="text-gray-700 dark:text-gray-400">
+                <td class="px-4 py-3">
+                  <div class="flex items-center text-sm">
+                    <div>
+                      <p class="font-semibold">
+                        <a href="{{ category.language.get_absolute_url }}">{{ category.language.name }}</a>
+                      </p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-4 py-3 text-sm">
+                  {{ category.full_name }}
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        {% endif %}
+        {% if quizzes %}
+          <table class="w-full whitespace-no-wrap">
+            <thead>
+            <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+              <th class="px-4 py-3">{% trans "Quizzes" %}</th>
+            </tr>
+            </thead>
+            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+            {% for quiz in quizzes %}
+              <tr class="text-gray-700 dark:text-gray-400">
+                <td class="px-4 py-3">
+                  <div class="flex items-center text-sm">
+                    <div>
+                      <p class="font-semibold">
+                        <a href="{% url 'home:practice' quiz.uuid %}">
+                          {{ quiz.title }}
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        {% endif %}
       </div>
     </div>
   </div>

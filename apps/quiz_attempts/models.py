@@ -134,9 +134,23 @@ class QuizAttempt(TimeStampedModel):
         return questions_queryset
 
     def get_next_question(self):
-        questions_queryset = self.get_next_questions_queryset()
-        if questions_queryset:
-            return random.choice(questions_queryset)
+        questions_list = copy.copy(self.questions_list or [])
+        completed_questions_list = copy.copy(self.completed_question_list or [])
+        not_completed_questions_list = copy.copy(self.not_completed_question_list or [])
+
+        next_question = None
+        if self.quiz.quiz_type == quizzes_constants.DYNAMIC:
+            if len(questions_list) == len(completed_questions_list) and \
+                    len(questions_list) == self.quiz.maximum_number_of_questions:
+                pass
+            elif not_completed_questions_list:
+                question_id = not_completed_questions_list[0]
+                next_question = questions_models.Question.objects.filter(
+                    id=question_id, is_published=True).first()
+        else:
+            questions_queryset = self.get_next_questions_queryset()
+            next_question = random.choice(questions_queryset)
+        return next_question
 
     @transaction.atomic()
     def get_or_generate_next_question(self):
@@ -149,7 +163,11 @@ class QuizAttempt(TimeStampedModel):
 
     @classmethod
     def create_quiz_attempt(cls, user, quiz):
-        quiz_attempt = cls.objects.create(user=user, quiz=quiz)
+        active_quiz_attempts = cls.objects.filter(user=user, quiz=quiz, is_completed=False)
+        if active_quiz_attempts.exists():
+            quiz_attempt = active_quiz_attempts.first()
+        else:
+            quiz_attempt = cls.objects.create(user=user, quiz=quiz)
         if quiz.quiz_type == quizzes_constants.DYNAMIC:
             question_ids = list(quiz_attempt.get_base_questions_queryset().values_list('id', flat=True))
             questions_list = random.sample(question_ids, quiz.maximum_number_of_questions)
