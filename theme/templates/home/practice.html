@@ -2,29 +2,53 @@
 
 {% load i18n %}
 
-{% block head_title %}{{ block.super }} - {% trans "Dashboard" %}{% endblock %}
-
+{% block head_title %}{{ block.super }} - {{ quiz.title }} - {% trans "Practice" %}{% endblock %}
 
 {% block content %}
-  <div class="container px-6 mx-auto grid">
-    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-      {% trans "Practice" %}
-    </h2>
-    {# Cards #}
-    <div class="w-full overflow-hidden rounded-lg shadow-xs">
-      <div class="w-full overflow-x-auto">
-        <p>{{ quiz.title }}</p>
-        <p>{{ quiz_attempt }}</p>
-        <p>
-          {{ quiz_attempt_question }}
-          <br>
-          <ol>
-            {% for choice in quiz_attempt_question.choices.all %}
-              <li>{{ choice.sentence.text }}</li>
-            {% endfor %}
-          </ol>
-        </p>
+  <div class="container px-6 mt-4 mx-auto grid">
+    <div class="items-center justify-center p-6 bg-white rounded-lg shadow-md">
+      <div class="w-full">
+        <div class="mb-4 text-xl text-gray-700{% comment %}  dark:text-gray-200{% endcomment %}">
+          {{ quiz.title }}
+        </div>
+        <hr class="my-2"/>
+        <h1 class="mb-4 mt-6 text-lg font-medium text-gray-700{% comment %}  dark:text-gray-200{% endcomment %}">
+          {{ quiz_attempt_question_number }}. {{ quiz_attempt_question.sentence.text }}
+        </h1>
+
+        <form method="POST" action="{% url 'home:practice' quiz.uuid %}">
+          {% csrf_token %}
+          {% if quiz_attempt_question.choices.exists %}
+            <div class="mt-2">
+              {% for choice in quiz_attempt_question.choices.iterator %}
+                <label class="block text-gray-600 dark:text-gray-400">
+                  <input class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                         type="radio"
+                         name="accountType"
+                         value="{{ choice.id }}">
+                  <span class="ml-2">
+              {{ choice.sentence.text }}
+            </span>
+                </label>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          {% if form.non_field_errors %}
+            <label class="block mt-4 text-sm">
+              {% for error in form.non_field_errors %}
+                <span class="text-xs text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
+                  {{ error }}
+                </span>
+              {% endfor %}
+            </label>
+          {% endif %}
+          <button class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+          >
+            {% trans "Submit" %}
+          </button>
+        </form>
       </div>
     </div>
   </div>
-{% endblock %}
+{% endblock content %}

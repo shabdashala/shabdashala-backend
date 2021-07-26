@@ -5,5 +5,16 @@
 {% block head_title %}{{ block.super }} - {% trans "About us" %}{% endblock %}
 
 {% block content %}
-  {% blocktrans %}A start-up that builds the technical tools needed to easily teach, learn and research languages.{% endblocktrans %}
+  <div class="container px-6 mt-4 mx-auto grid">
+    <div class="items-center justify-center p-6 bg-white rounded-lg">
+      <div class="w-full">
+        <h1 class="mb-4 text-xl font-semibold text-gray-700{% comment %}  dark:text-gray-200{% endcomment %}">
+          {% trans "About us" %}
+        </h1>
+        <p class="mt-4">
+          {% blocktrans %}A start-up that builds the technical tools needed to easily teach, learn and research languages.{% endblocktrans %}
+        </p>
+      </div>
+    </div>
+  </div>
 {% endblock %}

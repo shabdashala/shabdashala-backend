@@ -36,6 +36,7 @@ class PracticeView(auth_mixins.LoginRequiredMixin, generic.DetailView):
         context['quiz_attempt'] = quiz_attempts_models.QuizAttempt.create_quiz_attempt(
             self.request.user, context['quiz'])
         context['quiz_attempt_question'] = context['quiz_attempt'].get_or_generate_next_question()
+        context['quiz_attempt_question_number'] = context['quiz_attempt'].current_question_number
         return context
 
 

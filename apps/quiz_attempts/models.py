@@ -55,6 +55,10 @@ class QuizAttempt(TimeStampedModel):
     def __str__(self):
         return f'<QuizAttempt: user={self.user}>'
 
+    @property
+    def current_question_number(self):
+        return len(self.completed_question_list or []) + 1
+
     @transaction.atomic()
     def add_to_questions_list(self, new_question_id):
         questions_list = copy.copy(self.questions_list) or []
@@ -168,7 +172,9 @@ class QuizAttempt(TimeStampedModel):
             quiz_attempt = active_quiz_attempts.first()
         else:
             quiz_attempt = cls.objects.create(user=user, quiz=quiz)
-        if quiz.quiz_type == quizzes_constants.DYNAMIC:
+        if quiz_attempt.is_completed is False and \
+                not quiz_attempt.questions_list and \
+                quiz.quiz_type == quizzes_constants.DYNAMIC:
             question_ids = list(quiz_attempt.get_base_questions_queryset().values_list('id', flat=True))
             questions_list = random.sample(question_ids, quiz.maximum_number_of_questions)
 
