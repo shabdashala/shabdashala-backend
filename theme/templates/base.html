@@ -159,12 +159,14 @@
         </header>
         <main class="h-full overflow-y-auto">
           {% if messages %}
-            <div class="container px-6 mx-auto grid">
-              <ul>
-                {% for message in messages %}
-                  <li>{{ message }}</li>
-                {% endfor %}
-              </ul>
+            <div class="container px-6 mt-4 mx-auto grid">
+              <div class="items-center justify-center p-6 bg-white rounded-lg">
+                <ul>
+                  {% for message in messages %}
+                    <li>{{ message }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
             </div>
           {% endif %}
           {% block content %}

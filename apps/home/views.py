@@ -1,9 +1,11 @@
+from django.contrib import messages
 from django.contrib.auth import mixins as auth_mixins
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.decorators import method_decorator
+from django.utils.translation import gettext_lazy as _
 from django.views import generic
 
 # from apps.categories import models as categories_models
@@ -97,6 +99,7 @@ class PracticeStartView(PracticeViewMixin, generic.DetailView):
                     abandoned_at=timezone.now())
             new_quiz_attempt = quiz_attempts_models.QuizAttempt.create_quiz_attempt(
                 self.request.user, self.quiz)
+            messages.success(request, _('Started new quiz'))
             return redirect(to=reverse('home:practice-home', kwargs={
                 'quiz_uuid': new_quiz_attempt.quiz.uuid,
                 'quiz_attempt_uuid': new_quiz_attempt.uuid,
@@ -125,12 +128,11 @@ class PracticeProgressView(PracticeViewMixin, generic.FormView):
         context = super().get_context_data(**kwargs)
         extra_context = {}
         if self.quiz_attempt:
-            quiz_attempt_question = self.quiz_attempt.get_or_generate_next_question()
-            form = quiz_attempts_forms.QuizQuestionForm(instance=quiz_attempt_question)
+            form = self.get_form()
             extra_context = {
                 'quiz': self.quiz,
                 'quiz_attempt': self.quiz_attempt,
-                'quiz_attempt_question': quiz_attempt_question,
+                'quiz_attempt_question': self.quiz_attempt_question,
                 'form': form,
             }
         return dict(context, **extra_context)
