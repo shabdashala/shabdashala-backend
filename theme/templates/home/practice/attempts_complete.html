@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block head_title %}{{ block.super }} - {{ quiz.title }} - {% trans "Practice" %}{% endblock %}
+
+{% block content %}
+  <div class="container px-6 mt-4 mx-auto grid">
+    <div class="items-center justify-center p-6 bg-white rounded-lg">
+      <div class="w-full">
+        <h1 class="mb-4 text-xl font-semibold text-gray-700{% comment %}  dark:text-gray-200{% endcomment %}">
+          {{ quiz.title }}
+        </h1>
+        <p class="mt-4">
+          {% if quiz.is_single_attempt %}
+            {% trans "You have already sat this exam and only one sitting is permitted" %}.
+          {% else %}
+            {% trans "You have already sat this exam for the permitted number of times" %}.
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

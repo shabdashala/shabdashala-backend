@@ -1,7 +1,11 @@
-from django.views import generic
 from django.contrib.auth import mixins as auth_mixins
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
+from django.utils.decorators import method_decorator
+from django.views import generic
 
 # from apps.categories import models as categories_models
+from apps.quiz_attempts import forms as quiz_attempts_forms
 from apps.quiz_attempts import models as quiz_attempts_models
 from apps.quizzes import models as quizzes_models
 
@@ -19,12 +23,47 @@ class IndexView(auth_mixins.LoginRequiredMixin, generic.TemplateView):
         return context
 
 
-class PracticeView(auth_mixins.LoginRequiredMixin, generic.DetailView):
-    template_name = 'home/practice.html'
+class AboutUsView(auth_mixins.LoginRequiredMixin, generic.TemplateView):
+    template_name = 'home/about-us.html'
+
+
+class PracticeViewMixin(object):
+    quiz = None
+    quiz_attempt = None
+
+    attempts_complete_template_name = 'home/practice/attempts_complete.html'
+    number_of_attempts = None
+    has_completed_attempts = None
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        self.quiz = get_object_or_404(quizzes_models.Quiz, uuid=kwargs['quiz_uuid'])
+        self.number_of_attempts = quiz_attempts_models.QuizAttempt.objects.filter(
+            user=request.user,
+            quiz=self.quiz,
+            is_completed=True).count()
+        if self.number_of_attempts and self.number_of_attempts >= self.quiz.maximum_number_of_user_attempts:
+            self.has_completed_attempts = True
+        if not self.has_completed_attempts:
+            self.quiz_attempt = self.get_quiz_attempt()
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_quiz_attempt(self):
+        raise NotImplemented('child class should implement this method')
+
+
+class PracticeStartView(PracticeViewMixin, generic.DetailView):
+    template_name = 'home/practice/start.html'
     model = quizzes_models.Quiz
     context_object_name = 'quiz'
     slug_field = 'uuid'
     slug_url_kwarg = 'quiz_uuid'
+
+    def get_quiz_attempt(self):
+        return quiz_attempts_models.QuizAttempt.objects.filter(
+            user=self.request.user, quiz=self.quiz,
+            is_completed=False, is_abandoned=False
+        ).first()
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -33,12 +72,53 @@ class PracticeView(auth_mixins.LoginRequiredMixin, generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['quiz_attempt'] = quiz_attempts_models.QuizAttempt.create_quiz_attempt(
-            self.request.user, context['quiz'])
-        context['quiz_attempt_question'] = context['quiz_attempt'].get_or_generate_next_question()
-        context['quiz_attempt_question_number'] = context['quiz_attempt'].current_question_number
-        return context
+        extra_context = {}
+        if self.quiz_attempt:
+            extra_context = {
+                'quiz_attempt': self.quiz_attempt
+            }
+        return dict(context, **extra_context)
+
+    def get_template_names(self):
+        if self.has_completed_attempts:
+            return [self.attempts_complete_template_name]
+        return [self.template_name]
 
 
-class AboutUsView(auth_mixins.LoginRequiredMixin, generic.TemplateView):
-    template_name = 'home/about-us.html'
+class PracticeProgressView(PracticeViewMixin, generic.FormView):
+    form_class = quiz_attempts_forms.QuizQuestionForm
+    progress_template_name = 'home/practice/progress.html'
+    result_template_name = 'home/practice/result.html'
+
+    def get_quiz_attempt(self):
+        return quiz_attempts_models.QuizAttempt.create_quiz_attempt(
+            self.request.user, self.quiz)
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        return dict(kwargs, instance=self.quiz_attempt_question)
+
+    def get_form(self, *args, **kwargs):
+        self.quiz_attempt_question = self.quiz_attempt.get_or_generate_next_question()
+        return self.form_class(**self.get_form_kwargs())
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        extra_context = {}
+        if self.quiz_attempt:
+            quiz_attempt_question = self.quiz_attempt.get_or_generate_next_question()
+            form = quiz_attempts_forms.QuizQuestionForm(instance=quiz_attempt_question)
+            extra_context = {
+                'quiz': self.quiz,
+                'quiz_attempt': self.quiz_attempt,
+                'quiz_attempt_question': quiz_attempt_question,
+                'form': form,
+            }
+        return dict(context, **extra_context)
+
+    def get_template_names(self):
+        if self.quiz_attempt.is_completed:
+            return [self.result_template_name]
+        elif self.has_completed_attempts:
+            return [self.attempts_complete_template_name]
+        return [self.progress_template_name]

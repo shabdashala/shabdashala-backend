@@ -24,6 +24,7 @@ class Quiz(TimeStampedModel):
     quiz_type = models.CharField(verbose_name=_('Quiz type'),
                                  max_length=16, choices=quiz_constants.QUIZ_TYPE_CHOICES,
                                  default=quiz_constants.DYNAMIC, db_index=True)
+    maximum_number_of_user_attempts = models.PositiveIntegerField(_('Maximum number of user attempts'), default=100)
     maximum_number_of_questions = models.PositiveIntegerField(_('Maximum number of questions'), default=10)
     maximum_marks = models.PositiveIntegerField(_('Maximum marks'), default=10)
     maximum_bonus_marks = models.PositiveIntegerField(_('Maximum bonus marks'), default=10)
@@ -68,6 +69,10 @@ class Quiz(TimeStampedModel):
 
     def __str__(self):
         return f'<Quiz: category={self.category.full_name}>'
+
+    @property
+    def is_single_attempt(self):
+        return self.maximum_number_of_user_attempts == 1
 
     def generate_slug(self):
         """

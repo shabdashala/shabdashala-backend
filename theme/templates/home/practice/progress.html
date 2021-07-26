@@ -16,7 +16,7 @@
           {{ quiz_attempt.current_question_number }}. {{ quiz_attempt_question.sentence.text }}
         </h1>
 
-        <form method="POST" action="{% url 'home:practice' quiz.uuid %}">
+        <form method="POST" action="{% url 'home:practice-home' quiz.uuid quiz_attempt.uuid %}">
           {% csrf_token %}
           <input type=hidden name="question_id" value="{{ quiz_attempt_question.id }}">
           {% if form.choices %}
@@ -44,8 +44,7 @@
               {% endfor %}
             </label>
           {% endif %}
-          <button class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-          >
+          <button class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
             {% trans "Submit" %}
           </button>
         </form>

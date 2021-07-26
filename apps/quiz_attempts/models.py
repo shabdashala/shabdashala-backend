@@ -1,5 +1,6 @@
 import copy
 import random
+import uuid
 
 from django.conf import settings
 from django.core.validators import (
@@ -17,6 +18,7 @@ from apps.quizzes import constants as quizzes_constants
 
 
 class QuizAttempt(TimeStampedModel):
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('User'), on_delete=models.CASCADE)
     quiz = models.ForeignKey('quizzes.Quiz', verbose_name=_('Quiz'), on_delete=models.CASCADE)
     questions_list = postgres_fields.ArrayField(
@@ -46,18 +48,24 @@ class QuizAttempt(TimeStampedModel):
 
     total_score = models.DecimalField(_('Total Score'), default=0, decimal_places=2, max_digits=10)
     current_score = models.DecimalField(_('Current Score'), default=0, decimal_places=2, max_digits=10)
-
+    is_abandoned = models.BooleanField(default=False, blank=False,
+                                       verbose_name=_("Is Abandoned?"))
     is_completed = models.BooleanField(default=False, blank=False,
                                        verbose_name=_("Is completed?"))
+    abandoned_at = models.DateTimeField(null=True, blank=True, verbose_name=_("Abandoned Date and time?"))
     completed_at = models.DateTimeField(null=True, blank=True, verbose_name=_("Completed Date and time?"))
     final_submission_info = models.JSONField(verbose_name=_(" info"), default=dict)
 
     def __str__(self):
-        return f'<QuizAttempt: user={self.user}>'
+        return f'<QuizAttempt: user={self.user} quiz={self.quiz}>'
 
     @property
     def current_question_number(self):
         return len(self.completed_question_list or []) + 1
+
+    @property
+    def total_questions(self):
+        return len(self.questions_list or [])
 
     @transaction.atomic()
     def add_to_questions_list(self, new_question_id):
@@ -167,7 +175,7 @@ class QuizAttempt(TimeStampedModel):
 
     @classmethod
     def create_quiz_attempt(cls, user, quiz):
-        active_quiz_attempts = cls.objects.filter(user=user, quiz=quiz, is_completed=False)
+        active_quiz_attempts = cls.objects.filter(user=user, quiz=quiz, is_completed=False, is_abandoned=False)
         if active_quiz_attempts.exists():
             quiz_attempt = active_quiz_attempts.first()
         else:
