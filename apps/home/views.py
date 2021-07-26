@@ -1,6 +1,8 @@
 from django.contrib.auth import mixins as auth_mixins
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse
+from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views import generic
 
@@ -37,7 +39,7 @@ class PracticeViewMixin(object):
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
-        self.quiz = get_object_or_404(quizzes_models.Quiz, uuid=kwargs['quiz_uuid'])
+        self.quiz = get_object_or_404(quizzes_models.Quiz, uuid=kwargs['quiz_uuid'], is_published=True)
         self.number_of_attempts = quiz_attempts_models.QuizAttempt.objects.filter(
             user=request.user,
             quiz=self.quiz,
@@ -58,17 +60,13 @@ class PracticeStartView(PracticeViewMixin, generic.DetailView):
     context_object_name = 'quiz'
     slug_field = 'uuid'
     slug_url_kwarg = 'quiz_uuid'
+    start_new_action = 'start-new'
 
     def get_quiz_attempt(self):
         return quiz_attempts_models.QuizAttempt.objects.filter(
             user=self.request.user, quiz=self.quiz,
             is_completed=False, is_abandoned=False
         ).first()
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        queryset = queryset.filter(is_published=True)
-        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -77,12 +75,33 @@ class PracticeStartView(PracticeViewMixin, generic.DetailView):
             extra_context = {
                 'quiz_attempt': self.quiz_attempt
             }
-        return dict(context, **extra_context)
+        return dict(context, start_new_action=self.start_new_action, **extra_context)
 
     def get_template_names(self):
         if self.has_completed_attempts:
             return [self.attempts_complete_template_name]
         return [self.template_name]
+
+    def post(self, request, *args, **kwargs):
+        action = request.POST.get('action')
+        if action == self.start_new_action:
+            existing_attempts = quiz_attempts_models.QuizAttempt.objects.filter(
+                user=self.request.user,
+                quiz=self.quiz,
+                is_completed=False,
+                is_abandoned=False,
+            )
+            if existing_attempts.exists():
+                existing_attempts.update(
+                    is_abandoned=True,
+                    abandoned_at=timezone.now())
+            new_quiz_attempt = quiz_attempts_models.QuizAttempt.create_quiz_attempt(
+                self.request.user, self.quiz)
+            return redirect(to=reverse('home:practice-home', kwargs={
+                'quiz_uuid': new_quiz_attempt.quiz.uuid,
+                'quiz_attempt_uuid': new_quiz_attempt.uuid,
+            }))
+        return self.get(request, *args, **kwargs)
 
 
 class PracticeProgressView(PracticeViewMixin, generic.FormView):
