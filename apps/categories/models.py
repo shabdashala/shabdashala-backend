@@ -24,6 +24,7 @@ class Category(MP_Node):
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     language = models.ForeignKey('languages.Language', on_delete=models.CASCADE)
     name = models.CharField(_('Name'), max_length=255, db_index=True)
+    english_name = models.CharField(_('English name'), null=True, blank=True, max_length=255, db_index=True)
     description = models.TextField(_('Description'), blank=True, null=True)
     meta_title = models.CharField(_('Meta title'), max_length=255, blank=True, null=True)
     meta_description = models.TextField(_('Meta description'), blank=True, null=True)

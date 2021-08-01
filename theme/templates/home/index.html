@@ -18,24 +18,14 @@
           <table class="w-full whitespace-no-wrap">
             <thead>
             <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-              <th class="px-4 py-3">{% trans "Language" %}</th>
-              <th class="px-4 py-3">{% trans "Category" %}</th>
+              <th class="px-4 py-3">{% trans "Learning resources" %}</th>
             </tr>
             </thead>
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
             {% for category in categories %}
               <tr class="text-gray-700 dark:text-gray-400">
-                <td class="px-4 py-3">
-                  <div class="flex items-center text-sm">
-                    <div>
-                      <p class="font-semibold">
-                        <a href="{{ category.language.get_absolute_url }}">{{ category.language.name }}</a>
-                      </p>
-                    </div>
-                  </div>
-                </td>
                 <td class="px-4 py-3 text-sm">
-                  {{ category.full_name }}
+                  <a href="{{ category.get_absolute_url }}">{{ category.full_name }}</a>
                 </td>
               </tr>
             {% endfor %}

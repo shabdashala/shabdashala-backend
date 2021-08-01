@@ -10,7 +10,7 @@ from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
 from django.views import generic
 
-# from apps.categories import models as categories_models
+from apps.categories import models as categories_models
 # from apps.questions import models as questions_models
 from apps.quiz_attempts import forms as quiz_attempts_forms
 from apps.quiz_attempts import models as quiz_attempts_models
@@ -22,9 +22,9 @@ class IndexView(auth_mixins.LoginRequiredMixin, generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context['categories'] = categories_models.Category.objects.filter(
-        #     is_public=True, depth=1,
-        # )
+        context['categories'] = categories_models.Category.objects.filter(
+            is_public=True, depth=1,
+        )
         context['quizzes'] = quizzes_models.Quiz.objects.filter(
             is_published=True)
         return context
