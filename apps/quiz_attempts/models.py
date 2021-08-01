@@ -76,7 +76,7 @@ class QuizAttempt(TimeStampedModel):
     @property
     def marks_percent(self):
         if self.current_score >= 0 and self.total_score > 0:
-            return int(self.current_score / self.total_score)
+            return float((self.current_score / self.total_score) * 100)
         return 0
 
     @transaction.atomic()
