@@ -1,3 +1,5 @@
+import typing
+
 from django.contrib import messages
 from django.contrib.auth import mixins as auth_mixins
 from django.contrib.auth.decorators import login_required
@@ -9,6 +11,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views import generic
 
 # from apps.categories import models as categories_models
+# from apps.questions import models as questions_models
 from apps.quiz_attempts import forms as quiz_attempts_forms
 from apps.quiz_attempts import models as quiz_attempts_models
 from apps.quizzes import models as quizzes_models
@@ -32,24 +35,32 @@ class AboutUsView(auth_mixins.LoginRequiredMixin, generic.TemplateView):
 
 
 class PracticeViewMixin(object):
-    quiz = None
-    quiz_attempt = None
+    quiz: typing.Union[None, quizzes_models.Quiz] = None
+    quiz_attempt: typing.Union[None, quiz_attempts_models.QuizAttempt] = None
 
     attempts_complete_template_name = 'home/practice/attempts_complete.html'
-    number_of_attempts = None
-    has_completed_attempts = None
+    number_of_attempts: typing.Union[None, int] = None
+    has_completed_attempts: typing.Union[None, bool] = None
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         self.quiz = get_object_or_404(quizzes_models.Quiz, uuid=kwargs['quiz_uuid'], is_published=True)
+        # fifteen_minutes_ago = timezone.now() - timezone.timedelta(minutes=15)
         self.number_of_attempts = quiz_attempts_models.QuizAttempt.objects.filter(
             user=request.user,
             quiz=self.quiz,
-            is_completed=True).count()
+            is_completed=True,
+            # created__gte=fifteen_minutes_ago,
+        ).count()
         if self.number_of_attempts and self.number_of_attempts >= self.quiz.maximum_number_of_user_attempts:
             self.has_completed_attempts = True
         if not self.has_completed_attempts:
             self.quiz_attempt = self.get_quiz_attempt()
+        if self.quiz_attempt and self.quiz_attempt.is_completed:
+            return redirect(reverse('home:practice-results', kwargs={
+                'quiz_uuid': self.quiz_attempt.quiz.uuid,
+                'quiz_attempt_uuid': self.quiz_attempt.uuid,
+            }))
         return super().dispatch(request, *args, **kwargs)
 
     def get_quiz_attempt(self):
@@ -65,9 +76,13 @@ class PracticeStartView(PracticeViewMixin, generic.DetailView):
     start_new_action = 'start-new'
 
     def get_quiz_attempt(self):
+        # fifteen_minutes_ago = timezone.now() - timezone.timedelta(minutes=15)
         return quiz_attempts_models.QuizAttempt.objects.filter(
-            user=self.request.user, quiz=self.quiz,
-            is_completed=False, is_abandoned=False
+            user=self.request.user,
+            quiz=self.quiz,
+            is_completed=False,
+            is_abandoned=False,
+            # created__gte=fifteen_minutes_ago,
         ).first()
 
     def get_context_data(self, **kwargs):
@@ -110,30 +125,23 @@ class PracticeStartView(PracticeViewMixin, generic.DetailView):
 class PracticeProgressView(PracticeViewMixin, generic.FormView):
     form_class = quiz_attempts_forms.QuizQuestionForm
     progress_template_name = 'home/practice/progress.html'
-    result_template_name = 'home/practice/result.html'
+    result_template_name = 'home/practice/results.html'
+    quiz_attempt_question: typing.Union[None, quiz_attempts_models.AttemptedQuestion] = None
 
     def get_quiz_attempt(self):
-        return quiz_attempts_models.QuizAttempt.create_quiz_attempt(
-            self.request.user, self.quiz)
-
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        return dict(kwargs, instance=self.quiz_attempt_question)
-
-    def get_form(self, *args, **kwargs):
-        self.quiz_attempt_question = self.quiz_attempt.get_or_generate_next_question()
-        return self.form_class(**self.get_form_kwargs())
+        # return quiz_attempts_models.QuizAttempt.create_quiz_attempt(self.request.user, self.quiz)
+        return get_object_or_404(
+            quiz_attempts_models.QuizAttempt, user=self.request.user,
+            quiz=self.quiz, uuid=self.kwargs.get('quiz_attempt_uuid'))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         extra_context = {}
         if self.quiz_attempt:
-            form = self.get_form()
             extra_context = {
                 'quiz': self.quiz,
                 'quiz_attempt': self.quiz_attempt,
                 'quiz_attempt_question': self.quiz_attempt_question,
-                'form': form,
             }
         return dict(context, **extra_context)
 
@@ -143,3 +151,63 @@ class PracticeProgressView(PracticeViewMixin, generic.FormView):
         elif self.has_completed_attempts:
             return [self.attempts_complete_template_name]
         return [self.progress_template_name]
+
+    def get_success_url(self):
+        return reverse('home:practice-home', kwargs={
+            'quiz_uuid': self.quiz_attempt.quiz.uuid,
+            'quiz_attempt_uuid': self.quiz_attempt.uuid,
+        })
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        return dict(kwargs, instance=self.quiz_attempt_question.question)
+
+    def get_form(self, *args, **kwargs):
+        self.quiz_attempt_question = self.quiz_attempt.get_or_generate_next_question()
+        return self.form_class(**self.get_form_kwargs())
+
+    def form_valid(self, form):
+        if self.quiz_attempt_question.question.is_choice_question():
+            selected_choice = form.cleaned_data['choices']
+            self.quiz_attempt_question.set_selected_choice(selected_choice=selected_choice)
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        if self.quiz_attempt_question.question.is_choice_question():
+            selected_choice = form.cleaned_data['choices']
+            self.quiz_attempt_question.set_selected_choice(selected_choice=selected_choice)
+        return super().form_invalid(form)
+
+
+class PracticeResultsView(generic.DetailView):
+    template_name = 'home/practice/results.html'
+    model = quizzes_models.Quiz
+    context_object_name = 'quiz'
+    slug_field = 'uuid'
+    slug_url_kwarg = 'quiz_uuid'
+
+    quiz = None
+    quiz_attempt = None
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        self.quiz = get_object_or_404(quizzes_models.Quiz, uuid=kwargs['quiz_uuid'], is_published=True)
+        self.quiz_attempt = get_object_or_404(
+            quiz_attempts_models.QuizAttempt, user=self.request.user,
+            quiz=self.quiz, uuid=self.kwargs.get('quiz_attempt_uuid'))
+        if self.quiz_attempt and self.quiz_attempt.is_completed is False:
+            return redirect(reverse('home:practice-home', kwargs={
+                'quiz_uuid': self.quiz_attempt.quiz.uuid,
+                'quiz_attempt_uuid': self.quiz_attempt.uuid,
+            }))
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        extra_context = {}
+        if self.quiz_attempt:
+            extra_context = {
+                'quiz': self.quiz,
+                'quiz_attempt': self.quiz_attempt,
+            }
+        return dict(context, **extra_context)

@@ -9,9 +9,10 @@ class QuizQuestionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         instance = kwargs.get('instance')
-        self.fields['choices'].queryset = questions_models.Choice.objects.filter(
-            language=instance.language,
-            question=instance)
+        if instance:
+            self.fields['choices'].queryset = questions_models.Choice.objects.filter(
+                language=instance.language,
+                question=instance)
 
     class Meta:
         model = questions_models.Choice

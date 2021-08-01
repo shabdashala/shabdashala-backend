@@ -11,3 +11,4 @@ class AttemptedQuestionInline(admin.StackedInline):
 @admin.register(quiz_attempts_models.QuizAttempt)
 class QuizAttemptAdmin(admin.ModelAdmin):
     inlines = [AttemptedQuestionInline]
+    list_display = ['uuid', 'quiz']

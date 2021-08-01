@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head_title %}{{ block.super }} - {{ quiz.title }} - {% trans "Results" %}{% endblock head_title %}
+{% block head_description %} {% trans "Exam Results for" %} {{ quiz.title }} {% endblock head_description %}
+
+{% block content %}
+  <div class="container px-6 mt-4 mx-auto grid">
+    <div class="items-center justify-center p-6 bg-white rounded-lg shadow-md">
+      <div class="w-full">
+        <h1 class="mb-4 mt-6 text-lg font-medium text-gray-700{% comment %}  dark:text-gray-200{% endcomment %}">
+          {% trans "Exam results" %}
+        </h1>
+
+        <p>
+          <small class="muted">{% trans "Exam title" %}: </small>
+          <strong>{{ quiz.title }}</strong>
+        </p>
+
+        <p class="lead">
+          {% trans "You answered" %} {{ quiz_attempt.current_score }} {% trans "questions correctly out of" %} {{ quiz_attempt.total_score }}, {% trans "giving you" %} {{ quiz_attempt.marks_percent }} {% trans "percent correct" %}
+        </p>
+
+        {% if quiz_attempt.pass_mark %}
+          <hr class="my-2"/>
+          <p class="lead">{{ sitting.result_message }}</p>
+          <hr>
+
+        {% endif %}
+
+        <p>{% trans "Review the questions below and try the exam again in the future" %}.</p>
+
+        <hr class="my-2"/>
+
+        {% if quiz_attempt.attempted_questions.exists %}
+
+          {% for attempted_question in quiz_attempt.attempted_questions.iterator %}
+            <p class="mb-4 mt-6 text-lg font-medium text-gray-400{% comment %}  dark:text-gray-200{% endcomment %}">
+              {{ attempted_question.question.sentence.text }}
+            </p>
+            <p class="mb-4 mt-6 text-lg font-medium text-gray-400{% comment %}  dark:text-gray-200{% endcomment %}">
+              {% trans "Your answer" %}: {{ attempted_question.user_answer_text }}
+            </p>
+            <p class="mb-4 mt-6 text-lg font-medium text-gray-400{% comment %}  dark:text-gray-200{% endcomment %}">
+              <strong>{% trans "Explanation" %}:</strong>
+            </p>
+            <div class="well">
+            {% if attempted_question.question.description %}
+              <p>{{ attempted_question.question.description|safe }}</p>
+            {% elif attempted_question.question.category.description %}
+              <p>{{ attempted_question.question.category.description|safe }}</p>
+            {% endif %}
+            </div>
+
+            <hr class="my-2"/>
+          {% endfor %}
+
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

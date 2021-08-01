@@ -1,5 +1,6 @@
 import copy
 import random
+import typing
 import uuid
 
 from django.conf import settings
@@ -7,11 +8,13 @@ from django.core.validators import (
     validate_comma_separated_integer_list,
 )
 from django.db import models, transaction
+from django.db.models.query import QuerySet
 from django.contrib.postgres import fields as postgres_fields
 from django.utils import timezone
 from django.utils.translation import gettext as _
 
 from django_extensions.db.models import TimeStampedModel
+from django_extensions.db.fields import CreationDateTimeField, ModificationDateTimeField
 
 from apps.questions import models as questions_models
 from apps.quizzes import constants as quizzes_constants
@@ -56,6 +59,9 @@ class QuizAttempt(TimeStampedModel):
     completed_at = models.DateTimeField(null=True, blank=True, verbose_name=_("Completed Date and time?"))
     final_submission_info = models.JSONField(verbose_name=_(" info"), default=dict)
 
+    created = CreationDateTimeField(_('created'), db_index=True)
+    modified = ModificationDateTimeField(_('modified'), db_index=True)
+
     def __str__(self):
         return f'<QuizAttempt: user={self.user} quiz={self.quiz}>'
 
@@ -66,6 +72,12 @@ class QuizAttempt(TimeStampedModel):
     @property
     def total_questions(self):
         return len(self.questions_list or [])
+
+    @property
+    def marks_percent(self):
+        if self.current_score >= 0 and self.total_score > 0:
+            return int(self.current_score / self.total_score)
+        return 0
 
     @transaction.atomic()
     def add_to_questions_list(self, new_question_id):
@@ -120,7 +132,8 @@ class QuizAttempt(TimeStampedModel):
 
         return questions_models.Question.objects.filter(id__in=question_ids)
 
-    def get_next_questions_queryset(self):
+    def get_next_questions_queryset(self) -> typing.Union[QuerySet[questions_models.Question],
+                                                          typing.Sequence[questions_models.Question]]:
         questions_list = self.questions_list or []
         completed_questions_list = self.completed_question_list or []
         not_completed_questions_list = self.not_completed_question_list or []
@@ -145,7 +158,7 @@ class QuizAttempt(TimeStampedModel):
             questions_queryset = self.get_base_questions_queryset()
         return questions_queryset
 
-    def get_next_question(self):
+    def get_next_question(self) -> typing.Union[None, questions_models.Question]:
         questions_list = copy.copy(self.questions_list or [])
         completed_questions_list = copy.copy(self.completed_question_list or [])
         not_completed_questions_list = copy.copy(self.not_completed_question_list or [])
@@ -165,13 +178,20 @@ class QuizAttempt(TimeStampedModel):
         return next_question
 
     @transaction.atomic()
-    def get_or_generate_next_question(self):
-        new_question = self.get_next_question()
+    def get_or_generate_next_question(self) -> typing.Union[None, 'AttemptedQuestion']:
+        new_question: typing.Union[None, questions_models.Question] = self.get_next_question()
         if new_question:
             if self.quiz.quiz_type == quizzes_constants.ADAPTIVE:
                 self.add_to_questions_list(new_question.id)
             self.add_to_not_completed_question_list(new_question.id)
-        return new_question
+
+        new_attempted_question: typing.Union[None, 'AttemptedQuestion'] = None
+        if new_question:
+            if self.attempted_questions.filter(question=new_question).exists():
+                new_attempted_question = self.attempted_questions.filter(question=new_question).first()
+            else:
+                new_attempted_question = self.create_attempted_question(question=new_question)
+        return new_attempted_question
 
     @classmethod
     def create_quiz_attempt(cls, user, quiz):
@@ -189,25 +209,37 @@ class QuizAttempt(TimeStampedModel):
             quiz_attempt.questions_list = copy.copy(questions_list)
             quiz_attempt.completed_question_list = []
             quiz_attempt.not_completed_question_list = copy.copy(questions_list)
+
+            total_score = 0
+            for correct_question in questions_models.Question.objects.filter(id__in=question_ids).iterator():
+                total_score += correct_question.question.maximum_marks
+            quiz_attempt.total_score = total_score
+
             quiz_attempt.save(update_fields=[
                 'questions_list',
                 'completed_question_list',
                 'not_completed_question_list',
+                'total_score',
             ])
         return quiz_attempt
 
-    def create_attempted_question(self, question):
-        return self.attempted_questions.create(
+    @transaction.atomic()
+    def create_attempted_question(self, question: questions_models.Question,
+                                  selected_choice: typing.Union[None, questions_models.Choice] = None):
+        attempted_question = self.attempted_questions.create(
             user=self.user,
             question=question)
+        if question.is_choice_question() and selected_choice:
+            attempted_question.set_selected_choice(selected_choice=selected_choice)
+        return attempted_question
 
     @transaction.atomic()
     def update_score(self, **kwargs):
         marks_sum = self.attempted_questions.filter(is_correct=True).aggregate(
             models.Sum('marks_obtained'))['marks_obtained__sum']
         if kwargs.get('is_completed'):
-            self.is_completed = marks_sum or 0
-        self.total_score = marks_sum or 0
+            self.is_completed = kwargs['is_completed']
+        self.current_score = marks_sum or 0
         self.save()
 
 
@@ -228,6 +260,12 @@ class AttemptedQuestion(TimeStampedModel):
 
     def get_absolute_url(self):
         return f'/attempted-result/{self.pk}/'
+
+    @transaction.atomic()
+    def set_selected_choice(self, selected_choice: questions_models.Choice):
+        self.selected_choice = selected_choice
+        self.save(update_fields=['selected_choice'])
+        self.evaluate_question()
 
     @transaction.atomic()
     def evaluate_question(self):
@@ -260,12 +298,12 @@ class AttemptedQuestion(TimeStampedModel):
         self.quiz_attempt.update_score()
         if is_correct or not self.quiz_attempt.quiz.ask_till_all_correct:
             self.quiz_attempt.add_to_completed_question_list(self.question_id)
-        else:
+        elif not is_correct:
             self.quiz_attempt.add_to_not_completed_question_list(self.question_id)
         questions_list = list(self.quiz_attempt.questions_list) or []
         completed_questions_list = list(self.quiz_attempt.completed_question_list) or []
         if len(questions_list) == len(completed_questions_list) and \
-                len(questions_list) == self.quiz_attempt.quiz.maximum_number_of_questions:
+                len(completed_questions_list) == self.quiz_attempt.quiz.maximum_number_of_questions:
             quiz_attempt = self.quiz_attempt
             quiz_attempt.is_completed = True
             quiz_attempt.save(update_fields=['is_completed'])
@@ -277,3 +315,11 @@ class AttemptedQuestion(TimeStampedModel):
                 'text': self.question.id,
             }
         }
+
+    @property
+    def user_answer_text(self):
+        if self.question.is_choice_question() and self.selected_choice:
+            return self.selected_choice.sentence.text
+        elif self.question.is_text_question() and self.entered_text:
+            return self.entered_text.text
+        return ''

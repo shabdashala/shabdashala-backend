@@ -13,8 +13,12 @@
         </div>
         <hr class="my-2"/>
         <h1 class="mb-4 mt-6 text-lg font-medium text-gray-700{% comment %}  dark:text-gray-200{% endcomment %}">
-          {{ quiz_attempt.current_question_number }}. {{ quiz_attempt_question.sentence.text }}
+          {{ quiz_attempt.current_question_number }}. {{ form.instance.sentence.text }}
         </h1>
+
+        <p class="mb-4 mt-6 text-lg font-medium text-gray-400{% comment %}  dark:text-gray-200{% endcomment %}">
+          {{ form.instance.hint_text }}
+        </p>
 
         <form method="POST" action="{% url 'home:practice-home' quiz.uuid quiz_attempt.uuid %}">
           {% csrf_token %}
