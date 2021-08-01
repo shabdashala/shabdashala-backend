@@ -212,7 +212,7 @@ class QuizAttempt(TimeStampedModel):
 
             total_score = 0
             for correct_question in questions_models.Question.objects.filter(id__in=question_ids).iterator():
-                total_score += correct_question.question.maximum_marks
+                total_score += correct_question.maximum_marks
             quiz_attempt.total_score = total_score
 
             quiz_attempt.save(update_fields=[
