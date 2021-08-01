@@ -211,7 +211,8 @@ class QuizAttempt(TimeStampedModel):
             quiz_attempt.not_completed_question_list = copy.copy(questions_list)
 
             total_score = 0
-            for correct_question in questions_models.Question.objects.filter(id__in=question_ids).iterator():
+            questions = questions_models.Question.objects.filter(id__in=question_ids)
+            for correct_question in questions.iterator():
                 total_score += correct_question.maximum_marks
             quiz_attempt.total_score = total_score
 
