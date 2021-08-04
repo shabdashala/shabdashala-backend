@@ -22,24 +22,27 @@
         </p>
 
         {% if quiz_attempt.pass_mark %}
-          <hr class="my-2"/>
+          <hr class="my-2 mt-4 mb-8"/>
           <p class="lead">{{ sitting.result_message }}</p>
-          <hr>
+          <hr class="my-2 mt-4 mb-8"/>
 
         {% endif %}
 
         <p>{% trans "Review the questions below and try the exam again in the future" %}.</p>
 
-        <hr class="my-2"/>
+        <hr class="my-2 mt-4 mb-8"/>
 
         {% if quiz_attempt.attempted_questions.exists %}
 
           {% for attempted_question in quiz_attempt.attempted_questions.iterator %}
             <p class="mb-4 mt-6 text-lg font-medium text-gray-400{% comment %}  dark:text-gray-200{% endcomment %}">
-              {{ attempted_question.question.sentence.text }}
+              {{ forloop.counter }} {{ attempted_question.question.sentence.text }}
             </p>
             <p class="mb-4 mt-6 text-lg font-medium text-gray-400{% comment %}  dark:text-gray-200{% endcomment %}">
               {% trans "Your answer" %}: {{ attempted_question.user_answer_text }}
+            </p>
+            <p class="mb-4 mt-6 text-lg font-medium text-gray-400{% comment %}  dark:text-gray-200{% endcomment %}">
+              {% trans "Correct answer" %}: {{ attempted_question.question.get_answer_text }}
             </p>
             <p class="mb-4 mt-6 text-lg font-medium text-gray-400{% comment %}  dark:text-gray-200{% endcomment %}">
               <strong>{% trans "Explanation" %}:</strong>
@@ -52,7 +55,7 @@
             {% endif %}
             </div>
 
-            <hr class="my-2"/>
+            <hr class="my-2 mt-4 mb-8"/>
           {% endfor %}
 
         {% endif %}

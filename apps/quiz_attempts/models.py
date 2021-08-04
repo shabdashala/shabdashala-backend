@@ -96,15 +96,18 @@ class QuizAttempt(TimeStampedModel):
 
     @property
     def current_question_number(self):
-        return len(self.completed_question_list or []) + 1
+        asked_questions = list(set(
+            copy.copy(self.completed_question_list or []) + copy.copy(self.incorrect_question_list or [])
+        ))
+        return len(asked_questions) + 1
 
     @property
     def correct_questions(self):
-        return len(self.completed_question_list or [])
+        return self.attempted_questions.filter(is_evaluated=True, is_correct=True).count()
 
     @property
     def total_questions(self):
-        return len(self.questions_list or [])
+        return self.attempted_questions.filter(is_evaluated=True).count()
 
     @property
     def marks_percent(self):
@@ -197,16 +200,13 @@ class QuizAttempt(TimeStampedModel):
 
         # if self.quiz.ask_till_all_correct:
         #     if new_question_id not in not_completed_question_list:
-        #         self._add_to_not_completed_list(new_question_id)
-        # else:
-        #     if new_question_id not in completed_question_list:
-        #         self._add_to_completed_question_list(new_question_id)
+        #         self._add_to_not_completed_question_list()
 
         if new_question_id in not_completed_question_list:
             self._remove_from_not_completed_question_list(new_question_id)
 
-        if new_question_id in completed_question_list:
-            self._remove_from_completed_question_list(new_question_id)
+        if new_question_id not in completed_question_list:
+            self._add_to_completed_question_list(new_question_id)
 
     def get_base_questions_queryset(self):
         question_ids = set()
@@ -228,7 +228,7 @@ class QuizAttempt(TimeStampedModel):
         questions_list = self.questions_list or []
         completed_questions_list = self.completed_question_list or []
         not_completed_questions_list = self.not_completed_question_list or []
-        incorrect_question_list = self.incorrect_question_list or []
+        # incorrect_question_list = self.incorrect_question_list or []
 
         max_number_of_questions = self.quiz.maximum_number_of_questions
         questions_queryset = questions_models.Question.objects.none()
@@ -237,28 +237,28 @@ class QuizAttempt(TimeStampedModel):
             pass
 
         elif len(completed_questions_list) < max_number_of_questions and \
-            (not_completed_questions_list or incorrect_question_list and self.quiz.ask_till_all_correct):
+                not_completed_questions_list and self.quiz.ask_till_all_correct:
             questions_queryset = questions_models.Question.objects.filter(
-                id=questions_list, is_published=True)
+                id=not_completed_questions_list, is_published=True)
 
-        # elif not_completed_questions_list:
-        #     questions_queryset = questions_models.Question.objects.filter(
-        #         id__in=self.not_completed_question_list, is_published=True)
-
+        elif not_completed_questions_list:
+            questions_queryset = questions_models.Question.objects.filter(
+                id__in=self.not_completed_question_list, is_published=True)
         else:
             questions_queryset = self.get_base_questions_queryset()
         return questions_queryset
 
     def get_next_question(self) -> typing.Union[None, questions_models.Question]:
-        questions_list = copy.copy(list(set(self.questions_list or [])))
-        completed_questions_list = copy.copy(list(set(self.completed_question_list or [])))
-        not_completed_questions_list = copy.copy(list(set(self.not_completed_question_list or [])))
+        questions_list = copy.copy(self.questions_list or [])
+        completed_questions_list = copy.copy(self.completed_question_list or [])
+        not_completed_questions_list = copy.copy(self.not_completed_question_list or [])
 
         next_question = None
+
         if self.quiz.quiz_type == quizzes_constants.DYNAMIC:
             if len(questions_list) == len(completed_questions_list) and \
                     len(questions_list) == self.quiz.maximum_number_of_questions:
-                pass
+                return next_question
 
             elif not_completed_questions_list:
                 question_id = not_completed_questions_list[0]
@@ -357,6 +357,9 @@ class AttemptedQuestion(TimeStampedModel):
 
     objects = quiz_attempts_managers.AttemptedQuestionManager()
 
+    def __str__(self):
+        return f'<AttemptedQuestion: user={self.user} question_id={self.question.id} question={self.question}>'
+
     def delete(self, **kwargs):
         self.is_deleted = True
         self.date_removed = timezone.now()
@@ -373,8 +376,8 @@ class AttemptedQuestion(TimeStampedModel):
 
     @transaction.atomic()
     def evaluate_question(self):
-        if self.is_evaluated or self.quiz_attempt.is_completed:
-            return
+        # if self.is_evaluated or self.quiz_attempt.is_completed:
+        #     return
 
         is_correct = False
 

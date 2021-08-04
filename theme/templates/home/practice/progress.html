@@ -9,7 +9,7 @@
     <div class="items-center justify-center p-6 bg-white rounded-lg shadow-md">
       <div class="w-full">
         <div class="mb-4 text-xl text-gray-700{% comment %}  dark:text-gray-200{% endcomment %}">
-          {{ quiz.title }} ({{ quiz_attempt.total_questions }} {% trans "Questions" %})
+          {{ quiz.title }} ({{ quiz_attempt.quiz.maximum_number_of_questions }} {% trans "Questions" %})
         </div>
         <hr class="my-2"/>
         <h1 class="mb-4 mt-6 text-lg font-medium text-gray-700{% comment %}  dark:text-gray-200{% endcomment %}">
@@ -23,9 +23,9 @@
         <form method="POST" action="{{ quiz_attempt.get_practice_home_url }}">
           {% csrf_token %}
           <input type=hidden name="question_id" value="{{ quiz_attempt_question.id }}">
-          {% if form.choices %}
+          {% if form.fields.choices.queryset.exists %}
             <div class="mt-2">
-              {% for choice in form.choices.field.queryset %}
+              {% for choice in form.fields.choices.queryset.iterator %}
                 <label class="block text-gray-600 dark:text-gray-400">
                   <input class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                          type="radio"
@@ -51,7 +51,7 @@
 
           <p class="mb-4 mt-6 text-sm text-gray-400{% comment %}  dark:text-gray-200{% endcomment %}">
             <small>
-              {{ form.instance.get_answer_text }}
+              {% trans "Correct answer" %}: {{ form.instance.get_answer_text }}
             </small>
           </p>
 

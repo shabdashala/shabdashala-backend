@@ -19,10 +19,14 @@ class QuizQuestionForm(forms.ModelForm):
         choices = cleaned_data.get("choices")
         is_choice_question = self.instance and self.instance.is_choice_question()
         is_text_question = self.instance and self.instance.is_text_question()
-        if is_choice_question and not choices == self.instance.get_correct_choice():
-            self.add_error('choices', 'Invalid choice selected')
-        if is_text_question and not choices == self.instance.get_correct_text():
-            self.add_error('choices', 'Invalid text entered')
+        if is_choice_question:
+            if choices != self.instance.get_correct_choice():
+                self.add_error('choices', 'Invalid choice selected')
+        elif is_text_question:
+            if choices != self.instance.get_correct_text():
+                self.add_error('choices', 'Invalid text entered')
+        else:
+            self.add_error('choices', 'Invalid attempt')
 
     class Meta:
         model = questions_models.Choice

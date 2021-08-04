@@ -10,7 +10,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views import generic
 
 from apps.categories import models as categories_models
-# from apps.questions import models as questions_models
+from apps.questions import models as questions_models
 from apps.quiz_attempts import forms as quiz_attempts_forms
 from apps.quiz_attempts import models as quiz_attempts_models
 from apps.quizzes import models as quizzes_models
@@ -165,10 +165,13 @@ class PracticeProgressView(PracticeViewMixin, generic.FormView):
 
     def form_invalid(self, form):
         if self.quiz_attempt_question.question.is_choice_question():
-            selected_choice = form.cleaned_data.get('choices')
+            selected_choice_id = form.data.get('choices')
+            selected_choice = questions_models.Choice.objects.filter(id=selected_choice_id).first()
             self.quiz_attempt_question.set_selected_choice(selected_choice=selected_choice)
-        messages.error(self.request, _('Wrong'))
-        return super().form_invalid(form)
+
+        if not self.quiz_attempt.is_completed:
+            messages.error(self.request, _('Wrong'))
+        return redirect(self.get_success_url())
 
 
 class PracticeResultsView(generic.DetailView):
