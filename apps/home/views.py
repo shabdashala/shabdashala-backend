@@ -33,6 +33,21 @@ class AboutUsView(auth_mixins.LoginRequiredMixin, generic.TemplateView):
     template_name = 'home/about-us.html'
 
 
+class LeaderBoardView(auth_mixins.LoginRequiredMixin, generic.ListView):
+    template_name = 'home/leaderboard.html'
+    model = quiz_attempts_models.QuizAttempt
+    context_object_name = 'quiz_attempts'
+    ordering = ['-completed_at', '-id']
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(
+            is_abandoned=False,
+            is_completed=True,
+            is_deleted=False)
+        return queryset
+
+
 class PracticeViewMixin(object):
     quiz: typing.Union[None, quizzes_models.Quiz] = None
     quiz_attempt: typing.Union[None, quiz_attempts_models.QuizAttempt] = None

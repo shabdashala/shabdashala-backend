@@ -5,6 +5,7 @@ app_name = 'home'
 
 urlpatterns = [
     path('', home_views.IndexView.as_view(), name='index'),
+    path('leaderboard/', home_views.LeaderBoardView.as_view(), name='leaderboard'),
     path('about-us/', home_views.AboutUsView.as_view(), name='about-us'),
     path('practice/<str:quiz_slug>-<uuid:quiz_uuid>/', home_views.PracticeStartView.as_view(), name='practice-start'),
     path('practice/<str:quiz_slug>-<uuid:quiz_uuid>/attempt-<uuid:quiz_attempt_uuid>/',

@@ -333,6 +333,7 @@ class QuizAttempt(TimeStampedModel):
             models.Sum('marks_obtained'))['marks_obtained__sum']
         if kwargs.get('is_completed'):
             self.is_completed = kwargs['is_completed']
+            self.completed_at = timezone.now()
         self.current_score = marks_sum or 0
         self.save()
 

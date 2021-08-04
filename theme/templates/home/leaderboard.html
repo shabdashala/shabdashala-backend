@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block head_title %}{{ block.super }} - {% trans "Dashboard" %}{% endblock %}
+
+
+{% block content %}
+  <div class="container px-6 mt-4 mx-auto grid">
+  <div class="items-center justify-center p-6 bg-white rounded-lg">
+    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+      {% trans "Leaderboard" %}
+    </h2>
+    {# Cards #}
+    <div class="w-full overflow-hidden rounded-lg shadow-xs">
+      <div class="w-full overflow-x-auto">
+        {% if quiz_attempts %}
+          <table class="w-full whitespace-no-wrap">
+            <thead>
+            <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+              <th class="px-4 py-3">{% trans "User" %}</th>
+              <th class="px-4 py-3">{% trans "Quiz" %}</th>
+              <th class="px-4 py-3">{% trans "Completed at" %}</th>
+            </tr>
+            </thead>
+            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+            {% for quiz_attempt in quiz_attempts %}
+              <tr class="text-gray-700 dark:text-gray-400">
+                <td class="px-4 py-3 text-sm">
+                  {{ quiz_attempt.user.get_full_name }}
+                </td>
+                <td class="px-4 py-3 text-sm">
+                  {{ quiz_attempt.quiz.title }}
+                </td>
+                <td class="px-4 py-3 text-sm">
+                  {% if quiz_attempt.completed_at %}{{ quiz_attempt.completed_at }}{% else %}-{% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          {% if quizzes %}
+            <hr class="my-8"/>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  </div>
+{% endblock %}
