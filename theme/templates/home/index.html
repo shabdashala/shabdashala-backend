@@ -49,7 +49,7 @@
                   <div class="flex items-center text-sm">
                     <div>
                       <p class="font-semibold">
-                        <a href="{% url 'home:practice-start' quiz.uuid %}">
+                        <a href="{{ quiz.get_quiz_start_url }}">
                           {{ quiz.title }}
                         </a>
                       </p>

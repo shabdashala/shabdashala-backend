@@ -1,5 +1,5 @@
 from apps.core.base_managers import DeactivateManager
 
 
-class LanguageManager(DeactivateManager):
+class SentenceManager(DeactivateManager):
     pass

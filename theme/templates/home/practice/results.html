@@ -18,7 +18,7 @@
         </p>
 
         <p class="lead">
-          {% trans "You answered" %} {{ quiz_attempt.current_score }} {% trans "questions correctly out of" %} {{ quiz_attempt.total_score }}, {% trans "giving you" %} {{ quiz_attempt.marks_percent }} {% trans "percent correct" %}
+          {% trans "You answered" %} {{ quiz_attempt.correct_questions }} {% trans "questions correctly out of" %} {{ quiz_attempt.total_questions }}, {% trans "giving you" %} {{ quiz_attempt.marks_percent }} {% trans "percent correct" %}
         </p>
 
         {% if quiz_attempt.pass_mark %}

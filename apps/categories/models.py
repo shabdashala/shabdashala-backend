@@ -1,3 +1,4 @@
+import re
 import uuid
 
 from django.core.cache import cache
@@ -5,7 +6,8 @@ from django.db import models
 from django.db.models import Exists, OuterRef
 from django.template.defaultfilters import striptags
 from django.urls import reverse
-from django.utils.text import slugify
+# from django.utils.text import slugify
+from django.utils import timezone
 from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
 
@@ -46,6 +48,8 @@ class Category(MP_Node):
     display_order = models.PositiveIntegerField(_("Display order"), default=0)
 
     is_active = models.BooleanField(default=False)
+    is_deleted = models.BooleanField(_('Is Deleted?'), default=False, db_index=True)
+    date_removed = models.DateTimeField(null=True, blank=True, db_index=True)
 
     _slug_separator = '/'
     _full_name_separator = ' > '
@@ -54,6 +58,11 @@ class Category(MP_Node):
 
     def __str__(self):
         return self.full_name
+
+    def delete(self, **kwargs):
+        self.is_deleted = True
+        self.date_removed = timezone.now()
+        self.save()
 
     @property
     def full_name(self):
@@ -93,7 +102,7 @@ class Category(MP_Node):
         Generates a slug for a category. This makes no attempt at generating
         a unique slug.
         """
-        return slugify(self.name, allow_unicode=True)
+        return re.sub(r'[-\s]+', '-', self.name.lower().strip()).strip('-_')
 
     def save(self, *args, **kwargs):
         """

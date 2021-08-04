@@ -8,6 +8,7 @@ from . import models as languages_models
 class LanguageAdmin(BaseModelAdmin):
     list_display = [
         'name', 'english_name', 'two_letter_code',
-        'three_letter_code', 'display_order', 'is_active'
+        'three_letter_code', 'display_order', 'is_active',
+        'is_deleted', 'date_removed',
     ]
     ordering = ['english_name', '-display_order']

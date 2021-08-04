@@ -4,7 +4,6 @@ from django.contrib import messages
 from django.contrib.auth import mixins as auth_mixins
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect
-from django.urls import reverse
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
@@ -57,10 +56,7 @@ class PracticeViewMixin(object):
         if not self.has_completed_attempts:
             self.quiz_attempt = self.get_quiz_attempt()
         if self.quiz_attempt and self.quiz_attempt.is_completed:
-            return redirect(reverse('home:practice-results', kwargs={
-                'quiz_uuid': self.quiz_attempt.quiz.uuid,
-                'quiz_attempt_uuid': self.quiz_attempt.uuid,
-            }))
+            return redirect(self.quiz_attempt.get_practice_results_url())
         return super().dispatch(request, *args, **kwargs)
 
     def get_quiz_attempt(self):
@@ -115,10 +111,7 @@ class PracticeStartView(PracticeViewMixin, generic.DetailView):
             new_quiz_attempt = quiz_attempts_models.QuizAttempt.create_quiz_attempt(
                 self.request.user, self.quiz)
             messages.success(request, _('Started new quiz'))
-            return redirect(to=reverse('home:practice-home', kwargs={
-                'quiz_uuid': new_quiz_attempt.quiz.uuid,
-                'quiz_attempt_uuid': new_quiz_attempt.uuid,
-            }))
+            return redirect(to=new_quiz_attempt.get_practice_home_url())
         return self.get(request, *args, **kwargs)
 
 
@@ -153,10 +146,7 @@ class PracticeProgressView(PracticeViewMixin, generic.FormView):
         return [self.progress_template_name]
 
     def get_success_url(self):
-        return reverse('home:practice-home', kwargs={
-            'quiz_uuid': self.quiz_attempt.quiz.uuid,
-            'quiz_attempt_uuid': self.quiz_attempt.uuid,
-        })
+        return self.quiz_attempt.get_practice_home_url()
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -170,12 +160,14 @@ class PracticeProgressView(PracticeViewMixin, generic.FormView):
         if self.quiz_attempt_question.question.is_choice_question():
             selected_choice = form.cleaned_data['choices']
             self.quiz_attempt_question.set_selected_choice(selected_choice=selected_choice)
+        messages.success(self.request, _('Correct'))
         return super().form_valid(form)
 
     def form_invalid(self, form):
         if self.quiz_attempt_question.question.is_choice_question():
-            selected_choice = form.cleaned_data['choices']
+            selected_choice = form.cleaned_data.get('choices')
             self.quiz_attempt_question.set_selected_choice(selected_choice=selected_choice)
+        messages.error(self.request, _('Wrong'))
         return super().form_invalid(form)
 
 
@@ -196,10 +188,7 @@ class PracticeResultsView(generic.DetailView):
             quiz_attempts_models.QuizAttempt, user=self.request.user,
             quiz=self.quiz, uuid=self.kwargs.get('quiz_attempt_uuid'))
         if self.quiz_attempt and self.quiz_attempt.is_completed is False:
-            return redirect(reverse('home:practice-home', kwargs={
-                'quiz_uuid': self.quiz_attempt.quiz.uuid,
-                'quiz_attempt_uuid': self.quiz_attempt.uuid,
-            }))
+            return redirect(self.quiz_attempt.get_practice_home_url())
         return super().dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):

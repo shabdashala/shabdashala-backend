@@ -59,7 +59,12 @@ def seed_sandhulu_questions():
             text=sentence_text,
             is_active=True,
         ).first()
-        if not sentence:
+        if sentence:
+            if sentence.is_deleted:
+                sentence.is_deleted = False
+                sentence.date_removed = None
+                sentence.save(update_fields=['is_deleted', 'date_removed'])
+        else:
             sentence = sentences_models.Sentence.objects.create(
                 language=language,
                 text=sentence_text,
@@ -80,7 +85,13 @@ def seed_sandhulu_questions():
             sentence=sentence,
             is_published=True,
         ).first()
-        if not question:
+
+        if question:
+            if question.is_deleted:
+                question.is_deleted = False
+                question.date_removed = None
+                question.save(update_fields=['is_deleted', 'date_removed'])
+        else:
             question = questions_models.Question.objects.create(
                 language=language,
                 category=correct_sandh_category,
@@ -104,7 +115,12 @@ def seed_sandhulu_questions():
             text=correct_sadhi_name,
             is_active=True,
         ).first()
-        if not correct_choice_sentence:
+        if correct_choice_sentence:
+            if correct_choice_sentence.is_deleted:
+                correct_choice_sentence.is_deleted = False
+                correct_choice_sentence.date_removed = None
+                correct_choice_sentence.save(update_fields=['is_deleted', 'date_removed'])
+        else:
             correct_choice_sentence = sentences_models.Sentence.objects.create(
                 language=language,
                 text=correct_sadhi_name,
@@ -116,22 +132,28 @@ def seed_sandhulu_questions():
             is_correct=True
         )
 
-        number_of_other_choices = random.randint(1, question.maximum_number_of_choices)
-        other_sadhi_names = random.sample([
+        number_of_other_choices = random.randint(2, question.maximum_number_of_choices)
+        other_sandhi_names = [
             sandhi_name for sandhi_name in SANDHI_CATEGORY_NAMES
-            if sandhi_name is not correct_sadhi_name
-        ], number_of_other_choices)
+            if sandhi_name != correct_sadhi_name
+        ]
+        other_sadhi_choices = random.sample(other_sandhi_names, number_of_other_choices)
 
-        for other_sadhi_name in other_sadhi_names:
+        for other_sadhi_choice in other_sadhi_choices:
             other_choice_sentence = sentences_models.Sentence.objects.filter(
                 language=language,
-                text=other_sadhi_name,
+                text=other_sadhi_choice,
                 is_active=True,
             ).first()
-            if not other_choice_sentence:
+            if other_choice_sentence:
+                if other_choice_sentence.is_deleted:
+                    other_choice_sentence.is_deleted = False
+                    other_choice_sentence.date_removed = None
+                    other_choice_sentence.save(update_fields=['is_deleted', 'date_removed'])
+            else:
                 other_choice_sentence = sentences_models.Sentence.objects.create(
                     language=language,
-                    text=other_sadhi_name,
+                    text=other_sadhi_choice,
                     is_active=True)
             question.choices.create(
                 language=question.language,
@@ -150,7 +172,12 @@ def seed_question_sets_data():
         description='',
         display_order=0,
     ).first()
-    if not question_set:
+    if question_set:
+        if question_set.is_deleted:
+            question_set.is_deleted = False
+            question_set.date_removed = None
+            question_set.save(update_fields=['is_deleted', 'date_removed'])
+    else:
         question_set = questions_models.QuestionSet.objects.create(
             title=question_set_title,
             description='',
@@ -172,7 +199,13 @@ def seed_quizzes_data():
         language=language,
         category=category,
     ).first()
-    if not quiz:
+    if quiz:
+        if not quiz.is_active or quiz.is_deleted:
+            quiz.is_active = True
+            quiz.is_deleted = False
+            quiz.date_removed = None
+            quiz.save(update_fields=['is_active', 'is_deleted', 'date_removed'])
+    else:
         quiz = quizzes_models.Quiz.objects.create(
             title=quiz_title,
             language=language,
@@ -190,10 +223,16 @@ def seed_quizzes_data():
     quiz.question_sets.add(question_set)
 
 
+def delete_all():
+    questions_models.Choice.objects.active().delete()
+    questions_models.Question.objects.active().delete()
+    questions_models.QuestionSet.objects.active().delete()
+    languages_models.Language.objects.active().delete()
+
+
 def seed_initial_data():
     seed_languages_data()
     seed_sandhulu_categories()
     seed_sandhulu_questions()
     seed_question_sets_data()
     seed_quizzes_data()
-
