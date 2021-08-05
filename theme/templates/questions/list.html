@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block head_title %}{{ block.super }} -{% if category %}{{ category.name }} -{% endif %} {% trans "Questions" %}{% endblock %}
+
+{% block content %}
+  <div class="container px-6 mt-4 mx-auto grid">
+  <div class="items-center justify-center p-6 bg-white rounded-lg">
+    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+      {% if category %}{{ category.name }} -{% endif %} {% trans "Questions" %}
+    </h2>
+    {# Cards #}
+    <div class="w-full overflow-hidden rounded-lg shadow-xs">
+      <div class="w-full overflow-x-auto">
+        {% if questions %}
+          <table class="w-full whitespace-no-wrap">
+            <thead>
+            <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+              <th class="px-4 py-3">{% trans "Question" %}</th>
+              <th class="px-4 py-3">{% trans "Answer" %}</th>
+            </tr>
+            </thead>
+            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+            {% for question in questions %}
+              <tr class="text-gray-700 dark:text-gray-400">
+                <td class="px-4 py-3 text-sm">
+                  {{ question.sentence.text }}
+                </td>
+                <td class="px-4 py-3 text-sm">
+                  {{ question.get_answer_text }}
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  </div>
+{% endblock %}

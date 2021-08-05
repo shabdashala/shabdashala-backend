@@ -188,6 +188,12 @@ class Category(MP_Node):
     def get_absolute_url(self):
         return self._get_absolute_url()
 
+    def get_categories_questions_url(self):
+        return reverse('categories:categories-questions', kwargs={
+            'category_slug': self.slug,
+            'category_pk': self.pk,
+        })
+
     class Meta:
         app_label = 'categories'
         ordering = ['path']
