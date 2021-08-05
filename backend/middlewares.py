@@ -28,7 +28,7 @@ class ForceTeluguLangMiddleware:
         lang = 'te-in'
 
         # Force Telugu locale for the main site
-        accept = request.META.get('HTTP_ACCEPT_LANGUAGE', []).split(',')
+        accept = request.META.get('HTTP_ACCEPT_LANGUAGE', '').split(',')
 
         with suppress(ValueError):
             # Remove `lang` from the HTTP_ACCEPT_LANGUAGE to avoid duplicates
