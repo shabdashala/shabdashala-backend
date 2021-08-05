@@ -1,4 +1,9 @@
 # https://peddabaalasiksha.com/sandhulu-pedda-bala-siksha/
+# https://academy.teluguthesis.com/2016/05/atva-itva-utva-sandhulu.html?m=1
+# https://www.sakshieducation.com/Story.aspx?nid=95161
+# https://te.wikisource.org/wiki/%E0%B0%B2%E0%B0%BF%E0%B0%9F%E0%B0%BF%E0%B0%B2%E0%B1%8D_%E0%B0%AE%E0%B0%BE%E0%B0%B8%E0%B1%8D%E0%B0%9F%E0%B0%B0%E0%B1%8D%E0%B0%B8%E0%B1%8D_%E0%B0%B8%E0%B1%81%E0%B0%B2%E0%B0%AD_%E0%B0%B5%E0%B1%8D%E0%B0%AF%E0%B0%BE%E0%B0%95%E0%B0%B0%E0%B0%A3%E0%B0%AE%E0%B1%81/%E0%B0%B8%E0%B0%82%E0%B0%A7%E0%B0%BF_%E0%B0%B5%E0%B0%BF%E0%B0%AD%E0%B0%BE%E0%B0%97%E0%B0%AE%E0%B1%81#lu
+# https://telugucampus.com/telugu_vyaak_sandhulu_1.php
+# http://telugu-grammar.blogspot.com/2016/
 
 SANDHULU = 'సంధులు'
 SANDHULU_SAMSKRUTHA_SANDHULU = 'సంధులు > సంస్కృత సంధులు'
@@ -8,21 +13,61 @@ SANDHULU_SAMSKRUTHA_SANDHULU_VRUDDHI_SANDHI = 'సంధులు > సంస్
 SANDHULU_SAMSKRUTHA_SANDHULU_YANADESA_SANDHI = 'సంధులు > సంస్కృత సంధులు > యణాదేశ సంధి'
 SANDHULU_SAMSKRUTHA_SANDHULU_JASTWA_SANDHI = 'సంధులు > సంస్కృత సంధులు > జశ్త్వ సంధి'
 SANDHULU_SAMSKRUTHA_SANDHULU_SCHUTWA_SANDHI = 'సంధులు > సంస్కృత సంధులు > శ్చుత్వ సంధి'
+SANDHULU_SAMSKRUTHA_SANDHULU_ANUNASIKA_SANDHI = 'సంధులు > సంస్కృత సంధులు > అనునాసిక సంధి'
+SANDHULU_SAMSKRUTHA_SANDHULU_VISARGA_SANDHI = 'సంధులు > సంస్కృత సంధులు > విసర్గ సంధి'
+SANDHULU_SAMSKRUTHA_SANDHULU_PARASAVARNA_SANDHI = 'సంధులు > సంస్కృత సంధులు > పరసవర్ణ సంధి'
+SANDHULU_SAMSKRUTHA_SANDHULU_PARAROOPA_SANDHI = 'సంధులు > సంస్కృత సంధులు > పరరూప సంధి'
 
 SANDHULU_TELUGU_SANDHULU = 'సంధులు > తెలుగు సంధులు'
 SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU = 'సంధులు > తెలుగు సంధులు > అచ్చు సంధులు'
 SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_AKARA_SANDHI = 'సంధులు > తెలుగు సంధులు > అచ్చు సంధులు > అకార సంధి'
 SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_IKARA_SANDHI = 'సంధులు > తెలుగు సంధులు > అచ్చు సంధులు > ఇకార సంధి'
+SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_UKARA_SANDHI = 'సంధులు > తెలుగు సంధులు > అచ్చు సంధులు > ఉకార సంధి'
+SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_YADAGAMA_SANDHI = 'సంధులు > తెలుగు సంధులు > అచ్చు సంధులు > యడాగమ సంధి'
+SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_AMREDITA_SANDHI = 'సంధులు > తెలుగు సంధులు > అచ్చు సంధులు > ఆమ్రేడిత సంధి'
 
 SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU = 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు'
 SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_TRIKA_SANDHI = 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > త్రిక సంధి'
+SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_NUGAGAMA_SANDHI = 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > నుగాగమ సంధి'
+SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_GASADADAVADESA_SANDHI = 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > గసడదవాదేశ సంధి'
+SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_LULANALA_SANDHI = 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > లులనల సంధి'
+SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_SARALADESA_SANDHI = 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > సరళాదేశ సంధి'
+SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_PUMPWADESA_SANDHI = 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > పుంప్వాదేశ సంధి'
+SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_DWIRUKTAKATAKARA_SANDHI = 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > ద్విరుక్తటకారాదేశ సంధి'
+SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_TUGAGAMA_SANDHI = 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > టుగాగమ సంధి'
+SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_RUGAGAMA_SANDHI = 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > రుగాగమ సంధి'
+SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_DUGAGAMA_SANDHI = 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > దుగాగమ సంధి'
+SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_PADWADI_SANDHI = 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > పడ్వాది సంధి'
+SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_DWIGUSAMASA_SANDHI = 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > ద్విగు సమాస సంధి'
+SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_BAHUVREEHISAMASA_SANDHI = 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > బహువ్రీహి సమాస సంధి'
+SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_PRATADI_SANDHI = 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > ప్రాతాది సంధి'
 
 SANDHI_CATEGORY_MAPPING = {
-    'సవర్ణదీర్ఘ సంధి': SANDHULU_SAMSKRUTHA_SANDHULU_SAVARNA_DHEERGA_SANDHI,
-    'యణాదేశ సంధి': SANDHULU_SAMSKRUTHA_SANDHULU_YANADESA_SANDHI,
-    'అకార సంధి': SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_AKARA_SANDHI,
-    'ఇకార సంధి': SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_IKARA_SANDHI,
-    'త్రిక సంధి': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_TRIKA_SANDHI,
+    'సవర్ణదీర్ఘసంధి': SANDHULU_SAMSKRUTHA_SANDHULU_SAVARNA_DHEERGA_SANDHI,
+    'యణాదేశసంధి': SANDHULU_SAMSKRUTHA_SANDHULU_YANADESA_SANDHI,
+    'అకారసంధి': SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_AKARA_SANDHI,
+    'ఇకారసంధి': SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_IKARA_SANDHI,
+    'ఉకారసంధి': SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_UKARA_SANDHI,
+    'త్రికసంధి': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_TRIKA_SANDHI,
+    'గుణసంధి': SANDHULU_SAMSKRUTHA_SANDHULU_GUNA_SANDHI,
+    'నుగాగమసంధి': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_NUGAGAMA_SANDHI,
+    'ఆమ్రేడితసంధి': SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_AMREDITA_SANDHI,
+    'ప్రాతాదిసంధి': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_PRATADI_SANDHI,
+    'గసడదవాదేశసంధి': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_GASADADAVADESA_SANDHI,
+    'పడ్వాదిసంధి': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_PADWADI_SANDHI,
+    'విసర్గసంధి': SANDHULU_SAMSKRUTHA_SANDHULU_VISARGA_SANDHI,
+    'శ్చుత్వసంధి': SANDHULU_SAMSKRUTHA_SANDHULU_SCHUTWA_SANDHI,
+    'అత్వసంధి': SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_AKARA_SANDHI,
+    'ఇత్వసంధి': SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_IKARA_SANDHI,
+    'ఉత్వసంధి': SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_UKARA_SANDHI,
+    'జశ్త్వసంధి': SANDHULU_SAMSKRUTHA_SANDHULU_JASTWA_SANDHI,
+    'ద్విరుక్తటకారదేశసంధి': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_DWIRUKTAKATAKARA_SANDHI,
+    'టుగాగమసంధి': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_TUGAGAMA_SANDHI,
+    'అనునాసికసంధి': SANDHULU_SAMSKRUTHA_SANDHULU_ANUNASIKA_SANDHI,
+    'లులనలసంధి': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_LULANALA_SANDHI,
+    'రురాగమసంధి': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_RUGAGAMA_SANDHI,
+    'వృద్ధిసంధి': SANDHULU_SAMSKRUTHA_SANDHULU_VRUDDHI_SANDHI,
+    'పుంప్వాదేశసంధి': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_PUMPWADESA_SANDHI,
 }
 
 SANDHI_CATEGORY_NAMES = list(SANDHI_CATEGORY_MAPPING.keys())
@@ -91,7 +136,7 @@ TELUGU_SANDHULU_DATA = [
                        "సత్+జనుడు = సజ్జనుడు (త్ (త)+జ= జ్జ) విద్యుత్+శక్తి=విద్యుచ్ఛక్తి (త్ (త)+ శ=చ్ఛ).",
     },
     {
-        'name': 'సంధులు > సంస్కృత సంధులు > అనునాసిక సంధి',
+        'name': SANDHULU_SAMSKRUTHA_SANDHULU_ANUNASIKA_SANDHI,
         'description': "వర్గ ప్రథమాక్షరాలకు (క-చ-ట-త-ప) 'న, మ' అనునాసిక లు పరమైనప్పుడు ఆయా వర్గానునాసికాలు వికల్పంగా రావడాన్ని "
                        "అనునాసిక సంధి అంటారు. మయాది ప్రత్యయాలకు నిత్యముగా వస్తాయి. "
                        "ఉదా: వాక్ + మయం = వాఙ్మయం (క-ఙ=నిత్యం) జగత్ + నాటకం = జగద్నాటకం = జగన్నాటకం (వికల్పం) "
@@ -99,7 +144,7 @@ TELUGU_SANDHULU_DATA = [
                        "మృడ్మయం (ట కు అనునాసికం రానప్పుడు డకారం వికల్పం).",
     },
     {
-        'name': 'సంధులు > సంస్కృత సంధులు > విసర్గ సంధి',
+        'name': SANDHULU_SAMSKRUTHA_SANDHULU_VISARGA_SANDHI,
         'description': "అకారం పూర్వముందున్న విసర్గకు వర్గ తృతీయ, చతుర్థ, పంచమాక్షరాలు అ-హ-య-వ-ర-ల లు పరమైనప్పుడు విసర్గ 'ఓ' "
                        "కారంగా మారుతుంది. (వర్గ తృతీయాక్షరాలు- గ, జ, డ, బ, లు వర్గ చతుర్థాక్షరాలు (ఘ, ఝ, ఢ, ధ, భ, లు); "
                        "వర్గ పంచమాక్షరాలు ఙ- ఞ- ణ- న-మ్ (అనునాసిక లు) హ-య-వ-ర-ల లు పరమైనప్పుడు మాత్రమే విసర్గ ఓకారంగా "
@@ -108,25 +153,25 @@ TELUGU_SANDHULU_DATA = [
                        "తపః +ఫలము = తపఃఫలం ('ఫ' కారం వర్గ ద్వితీయాక్షరమైనందువల్ల విసర్గలో మార్పు లేదు).",
     },
     {
-        'name': 'సంధులు > సంస్కృత సంధులు > పరసవర్ణ సంధి',
+        'name': SANDHULU_SAMSKRUTHA_SANDHULU_PARASAVARNA_SANDHI,
         'description': "పదాంతం ముందున్న 'త' కారానికి 'ల' కారం పరమైనప్పుడు 'ల' కారమే ఆదేశంగా రావడాన్ని పర సవర్ణ సంధి అంటారు. "
                        "(త్ – తకారానికి లకారం వస్తే 'ల్ల' కారం వస్తుంది). ఉదా: భగవత్ + లీల = భగవల్లీల (త్ + ల = ల్ల); "
                        "ఉత్ + లేఖనం = ఉల్లేఖనం (త్+లే = ల్లే); విద్యుత్ + లత = విద్యుల్లత (త్ + ల = ల్ల); "
                        "సుహృత్ + లాభం = సుహృల్లాభం (త్ + లా = ల్లా).",
     },
     {
-        'name': 'సంధులు > సంస్కృత సంధులు > పరరూప సంధి',
+        'name': SANDHULU_SAMSKRUTHA_SANDHULU_PARAROOPA_SANDHI,
         'description': "హల్లుల్లోని అకారానికి అకారం పరమైతే రెండో పదంలోని మొదటి అచ్చు ఏకాదేశమవుతుంది. "
                        "దీన్ని పరరూపసంధి అంటారు.ఉదా: సార + అంగము = సారంగము (ర్ + అ = రకారంలోని అకారానికి 'అ' కారం పరమై "
                        "రకారానికి దీర్ఘం వచ్చింది); సీమ + అంతము = సీమంతము (మ్ + అకారానికి అకారం పరమై అకార దీర్ఘం వచ్చింది).",
     },
 
     {
-        'name': 'సంధులు > తెలుగు సంధులు',
+        'name': SANDHULU_TELUGU_SANDHULU,
         'description': "వర్ణాలనిబట్టి సంధులు రెండు రకములు. <ol><li>అచ్చు సంధి</li><li>హల్లు సంధి</li></ol>",
     },
     {
-        'name': 'సంధులు > తెలుగు సంధులు > అచ్చు సంధులు',
+        'name': SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU,
         'description': """
 అచ్చు సంధులు:
 
@@ -152,7 +197,7 @@ TELUGU_SANDHULU_DATA = [
                        '</ol>',
     },
     {
-        'name': 'సంధులు > తెలుగు సంధులు > అచ్చు సంధులు > యడాగమ సంధి',
+        'name': SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_YADAGAMA_SANDHI,
         'description': "సంధి లేని చోట స్వరంబు కంటే పరంబైన స్వరంబునకు యడాగమంబగు. "
                        "సంధి జరిగే అవకాశం లేనప్పుడు పర స్వరానికి ముందు 'య్' కారం ఆగమంగా వచ్చి "
                        "చేరుతుంది. ఉదా: వెల + (య్) ఆలు = వెలయాలు; మా + (య్) అమ్మ = మాయమ్మ.",
@@ -167,7 +212,7 @@ TELUGU_SANDHULU_DATA = [
         """,
     },
     {
-        'name': 'సంధులు > తెలుగు సంధులు > అచ్చు సంధులు > ఉకార సంధి',
+        'name': SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_UKARA_SANDHI,
         'description': """
 ఉత్తునకచ్చుపరమైనప్పుడు సంధి నిత్యముగా వస్తుంది (హ్రస్వమైన ఉకారానికి మాత్రమే ఇది వర్తిస్తుంది ఉదా: రాముడు + అతడు = రాముడతడు
 (డు లోని ఉ కారానికి అకారం పరమై అకారం నిత్యంగా వచ్చింది). ప్రథ‌మేత‌ర‌ విభక్తి శత్రర్థక చువర్ణంబులందున్న ఉకారానికి సంధి వైకల్పికం అవుతుంది.
@@ -177,7 +222,7 @@ TELUGU_SANDHULU_DATA = [
         """,
     },
     {
-        'name': 'సంధులు > తెలుగు సంధులు > అచ్చు సంధులు > ఆమ్రేడిత సంధి',
+        'name': SANDHULU_TELUGU_SANDHULU_ACHCHU_SANDHULU_AMREDITA_SANDHI,
         'description': """
 <p>అచ్చునకు ఆమ్రేడితం పరమైనప్పుడు సంధి తరచుగానగు. ద్విరుక్తం పదరూపం ఆమ్రేడితం. ఒక పదాన్ని రెండుసార్లు ఉచ్ఛరించినప్పుడు
 రెండోసారి ఉచ్ఛరించినదాన్ని ఆమ్రేడితమంటారు.  ఉదా: ఔర + ఔర (ఆమ్రేడితం) ఔరౌర; ఆహా + ఆహా = ఆహాహా;</p>
@@ -191,7 +236,7 @@ TELUGU_SANDHULU_DATA = [
     },
 
     {
-        'name': 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు',
+        'name': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU,
         'description': """
 హల్లు సంధులు:-
 
@@ -209,11 +254,12 @@ TELUGU_SANDHULU_DATA = [
     <li>ద్విగు సమాస సంధి</li>
     <li>బహువ్రీహి సమాస సంధి</li>
     <li>ప్రాతాది సంధి</li>
+    <li>లులనల సంధి</li>
 </ol>
         """,
     },
     {
-        'name': 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > గసడదవాదేశ సంధి',
+        'name': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_GASADADAVADESA_SANDHI,
         'description': "ప్రథమం మీది పరుషాలకు గ, స, డ, ద, వలు బహుళముగానగు. "
                        "ప్రథమావిభక్తిలో ఉన్న పదాలకు పరమైన పదాల్లో ఉన్న పరుషాలకు (క చ ట త ప లకు క్రమంగా గ, స, డ, వలు) "
                        "బహుళంగా వస్తాయి. ఉదా: వాడు + కొట్టె = వాడు గొట్టె; అపుడు + చనియె = అపుడుసనియె; "
@@ -224,7 +270,7 @@ TELUGU_SANDHULU_DATA = [
                        "(ఈ ఉదాహరణలో క, చ అనే పరుషాలకు గ, స, లు రాలేదు).",
     },
     {
-        'name': 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > సరళాదేశ సంధి',
+        'name': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_SARALADESA_SANDHI,
         'description': "ద్రుత, ప్రకృతికము మీది పరుషములకు సరళములగు. ద్రుతమనగా నకారము – నుకారము – న్ – లుగా గ్రహించవలెను. "
                        "ద్రుతప్రకృతికముల తరువాత నున్న క చ ట త ప అను వర్ణములకు సరళములగు గ జ డ ద బ లు ఆదేశములగును. "
                        "క చ ట త ప - పరుషములు; గ జ డ ద బ - సరళములగు. "
@@ -240,14 +286,14 @@ TELUGU_SANDHULU_DATA = [
                        "మొగిడెఁబద్మము – (మొగిడెన్బద్మము). ",
     },
     {
-        'name': 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > పుంప్వాదేశ సంధి',
+        'name': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_PUMPWADESA_SANDHI,
         'description': "కర్మధారయమందలి 'ము' వర్ణానికి 'పుంపు'లగు ము వర్ణానికి 'పువర్ణం' బిందు పూర్వక పువర్ణం (ంపు) "
                        "రెండు రూపాలు వస్తాయి. ఉదా: సరసము + మాట = సరసపు మాట; సరసంపు మాట; "
                        "విరసము + వచనం = విరసపు వచనం విరసంపు వచనం; "
                        "సౌందర్యము + పాలు = సౌందర్యపుపాలు – సౌందర్యంపుపాలు; ఆకాశము + పందిరి = ఆకాశపుపందిరి – ఆకాశంపుపందిరి.",
     },
     {
-        'name': 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > ద్విరుక్తటకారాదేశ సంధి',
+        'name': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_DWIRUKTAKATAKARA_SANDHI,
         'description': "కుఱు – చిఱు – కడు – నడు – నిడు శబ్దముల ఱ – డ లకు అచ్చు పరంబగునపుడు ద్విరుక్తటకారంబగు. "
                        "కుఱు – చిఱు అను పదములలోని 'ఱ' కారమునకు – నడు – నిడు – కడు పదములలోని 'డ' కారమునకు – అచ్చుతో మొదలైన "
                        "పదములు పరమైన, ద్విరుక్తమగు 'ట్ట్' ఆదేశమగును. ఱ – డ లు అనగా ఱకార, డ కారములు. "
@@ -256,7 +302,7 @@ TELUGU_SANDHULU_DATA = [
                        "నిడు + ఊర్పు = నిట్ + ట్ + ఊర్పు = నిట్టూర్పు.  కడు + అలుక = కట్ + ట్ + అలుక = కట్టలుక.",
     },
     {
-        'name': 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > టుగాగమ సంధి',
+        'name': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_TUGAGAMA_SANDHI,
         'description': "కర్మధారయంలో ఉత్తునకు అచ్చు పరమైనప్పుడు టుగాగమంబగుతుంది. "
                        "వివరణ: నామవాచక, విశేషణాలకు సంబంధించిన సమాసం కర్మధారయ సమాసం. "
                        "ఇందులో పరస్వరానికి ముందు 'ట్' కారం ఆగమంగా వస్తుంది. ఉదా: కఱకు+ (ట్) అమ్ము = కఱకుటమ్ము. "
@@ -264,7 +310,7 @@ TELUGU_SANDHULU_DATA = [
                        "పేర్వాదులు: పేరు, పొదరు, చిగురు, తలిరు.  ఉదా: పేరు + ఉరము = పేరుటురము (టుగాగగం రానప్పుడు)",
     },
     {
-        'name': 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > రుగాగమ సంధి',
+        'name': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_RUGAGAMA_SANDHI,
         'description': "కర్మధారయంబున 'పేరాది' శబ్దాలకు 'ఆలు' శబ్దం పరమైనప్పుడు రుగాగమంబగు. "
                        "పేరాది శబ్దాలు: పేద, బీద, ముగ్ధ, కొమ, జవ, మనుమ, ఐదవ మొదలైనవి. "
                        "ఉదా: పేద (ర్) + ఆలు = పేదరాలు. పరస్వరానికి ముందు 'ర్' కారం చేరి పేదరాలు రూపం వచ్చింది. "
@@ -274,13 +320,13 @@ TELUGU_SANDHULU_DATA = [
                        "గుణవంత + ఆలు = గుణవంతు + ర్ +ఆలు= గుణవంతురాలు.",
     },
     {
-        'name': 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > దుగాగమ సంధి',
+        'name': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_DUGAGAMA_SANDHI,
         'description': "నీ- నా- తన శబ్దాలకు ఉత్తర పదంబు పరమైనప్పుడు దుగాగమంబు విభాషనగు. "
                        "ఉదా: నా + (దు) విభుడు = నాదువిభుడు (సంధి జరిగిన రూపం) నా విభుడు (సంధి జరగని రూపం) "
                        "తన + (దు) కోపం = తనదు కోపం (సంధి జరిగిన రూపం) తన కోపం (సంధి జరగని రూపం).",
     },
     {
-        'name': 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > నుగాగమ సంధి',
+        'name': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_NUGAGAMA_SANDHI,
         'description': "ఉదంత తద్ధర్మార్థ విశేషణానికి అచ్చుపరమైనప్పుడు నుగామమంబగు. తద్ధర్మార్థకాలు: భూత, భవిష్యత్, వర్తమాన కాలాల్లో జరిగే "
                        "క్రియలు. హ్రస్వమైన ఉకారం చివర ఉన్న తద్ధర్మార్థక క్రియలకు అచ్చుపరమైతే నుగాగమం వస్తుందని సూత్రార్థం. "
                        "ఉదా: చేయు + (న్) ఎడ = చేయునెడ; వ్రాయు + (న్) అది = వ్రాయునది. షష్ఠీ తత్పురుష సమాస మందలి ఉకార, "
@@ -288,7 +334,7 @@ TELUGU_SANDHULU_DATA = [
                        "చెరువు + (న్) ఉదకం = చెరువునుదకం.",
     },
     {
-        'name': 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > పడ్వాది సంధి',
+        'name': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_PADWADI_SANDHI,
         'description': "పడ్వాదులు, పరంబగునపుడు 'ము' వర్ణమునకు లోప, పూర్ణబిందువులు విభాషనగు. "
                        "భయము + పడె – భయపడె; భయంపడె; భయముపడె. సూత్రము + పట్టె – సూత్రపట్టె; సూత్రం పట్టె; సూత్రముపట్టె. "
                        "పడ్వాదులు – పడు – పెట్టు మొదలగునవి. ఈ కార్యము కర్తృవాచి 'ము' వర్ణమునకు కలుగదు. "
@@ -311,16 +357,30 @@ TELUGU_SANDHULU_DATA = [
                        "ఉదా: ఆ + క్కన్య = అక్కన్య మూడు సూత్రాలతో – అక్కన్య రూపం వస్తుంది.",
     },
     {
-        'name': 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > ద్విగు సమాస సంధి',
+        'name': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_DWIGUSAMASA_SANDHI,
         'description': "సమానాధికరణంబగు ఉత్తర పదంబు పరంబగునపుడు 'మూడు' శబ్దములోని 'డు' వర్ణమునకు లోపంబును, "
                        "మీది హల్లునకు ద్విత్వంబునగు. ఉదా: మూడు+లోకములు=ముల్లోకములు.",
     },
     {
-        'name': 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > బహువ్రీహి సమాస సంధి',
+        'name': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_BAHUVREEHISAMASA_SANDHI,
         'description': 'బహువ్రీహిని స్త్రీ వాచ్యంబునగుచో ఉపమానంబు మీది మేనునకు బోడియగు. ఉదా: అలరు+మేను=అలరుఁ బోడి.',
     },
     {
-        'name': 'సంధులు > తెలుగు సంధులు > హల్లు సంధులు > ప్రాతాది సంధి',
+        'name': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_PRATADI_SANDHI,
         'description': 'సమాసంబులన్ ప్రాతాదుల తొలి యచ్చుమీది వర్ణంబుల కెల్ల లోపంబు బహుళంబుగానగు. ఉదా: క్రొత్త+గండి=క్రొగ్గండి.',
     },
+
+    {
+        'name': SANDHULU_TELUGU_SANDHULU_HALLU_SANDHULU_LULANALA_SANDHI,
+        'description': """
+లు-ల-నలు పరంబగునపుడు డొకానొకచో, ముగాగమంబునకు లోపంబును తత్పూర్వస్వరంబునకు, దీర్ఘంబును విభాషణగు లు-ల-నలు పరమగు నపుడు, ఆగమమైన 'ము' వర్ణమునకు కొన్ని చోటుల లోపమును దానికి ముందున్న అచ్చునకు దీర్ఘమును వికల్పముగా వచ్చును.
+
+వజ్రము + లు = వజ్రాలు
+వజ్రము + ల = వజ్రాల
+వజ్రము + న = వజ్రాన
+పగడము + లు = పగడాలు
+పగడము + ల = పగడాల
+పగడము + న = పగడాన
+        """
+    }
 ]

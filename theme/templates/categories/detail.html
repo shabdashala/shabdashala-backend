@@ -8,13 +8,13 @@
   <div class="container px-6 mt-4 mx-auto grid">
     <div class="items-center justify-center p-6 bg-white rounded-lg">
       <div class="w-full">
-        <h1 class="mb-4 text-xl font-semibold text-gray-700{% comment %}  dark:text-gray-200{% endcomment %}">
+        <h1 class="mb-4 mt-6 text-lg font-medium text-gray-700{% comment %}  dark:text-gray-200{% endcomment %}">
           {{ category.name }}
         </h1>
         <ol>
           {% for child_category in category.get_descendants %}
           <li class="mt-4">
-            <h2 class="font-medium mt-4">
+            <h2 class="mb-4 mt-6 text-lg font-medium text-gray-700{% comment %}  dark:text-gray-200{% endcomment %}">
               {{ child_category.name }}
             </h2>
             <p class="mt-4">

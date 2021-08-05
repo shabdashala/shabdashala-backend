@@ -26,7 +26,7 @@ def load_sandhulu_questions_data():
     with open(os.path.abspath(f"{settings.DATA_DIR}/telugu_sandhulu_data.tsv")) as file:
         tsv_file = csv.reader(file, delimiter="\t")
         for line in tsv_file:
-            if len(line) >= 3:
+            if len(line) >= 3 and line[2].strip() != 'సంధి పేరు':
                 data.append({
                     'sandhi_padam': line[0].strip(),
                     'visandhi': line[1].strip(),
