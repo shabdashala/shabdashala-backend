@@ -179,7 +179,8 @@ class PracticeProgressView(PracticeViewMixin, generic.FormView):
         if self.quiz_attempt_question.question.is_choice_question():
             selected_choice = form.cleaned_data['choices']
             self.quiz_attempt_question.set_selected_choice(selected_choice=selected_choice)
-        messages.success(self.request, _('Correct'))
+        if not self.quiz_attempt.is_completed:
+            messages.success(self.request, _('Correct'))
         return super().form_valid(form)
 
     def form_invalid(self, form):
