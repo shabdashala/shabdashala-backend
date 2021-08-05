@@ -16,6 +16,10 @@ from apps.quiz_attempts import models as quiz_attempts_models
 from apps.quizzes import models as quizzes_models
 
 
+class PrivacyPolicyView(auth_mixins.LoginRequiredMixin, generic.TemplateView):
+    template_name = 'home/privacy-policy.html'
+
+
 class IndexView(auth_mixins.LoginRequiredMixin, generic.TemplateView):
     template_name = 'home/index.html'
 
