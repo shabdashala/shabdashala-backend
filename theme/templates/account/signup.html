@@ -12,6 +12,20 @@
       {% csrf_token %}
       <label class="block text-sm">
       <span class="text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
+        {% trans "username" %} *
+      </span>
+        <input class="block w-full mt-1 text-sm{% comment %}  dark:border-gray-600 dark:bg-gray-700{% endcomment %} focus:border-purple-400 focus:outline-none focus:shadow-outline-purple {% comment %}  dark:text-gray-300 dark:focus:shadow-outline-gray{% endcomment %} form-input"
+               id="id_username" name="username" placeholder="" required=""
+               maxlength="30" type="text"
+        />
+        {% for error in form.username.errors %}
+          <span class="text-xs text-gray-700{% comment %}  dark:text-gray-400{% endcomment %}"
+                id="id_username">{{ error }}</span>
+        {% endfor %}
+      </label>
+
+      <label class="block mt-4 text-sm">
+      <span class="text-gray-700{% comment %} dark:text-gray-400{% endcomment %}">
         {% trans "Email" %} *
       </span>
         <input class="block w-full mt-1 text-sm{% comment %}  dark:border-gray-600 dark:bg-gray-700{% endcomment %} focus:border-purple-400 focus:outline-none focus:shadow-outline-purple {% comment %}  dark:text-gray-300 dark:focus:shadow-outline-gray{% endcomment %} form-input"
@@ -20,7 +34,7 @@
         />
         {% for error in form.email.errors %}
           <span class="text-xs text-gray-700{% comment %}  dark:text-gray-400{% endcomment %}"
-                id="id_login">{{ error }}</span>
+                id="id_email">{{ error }}</span>
         {% endfor %}
       </label>
 

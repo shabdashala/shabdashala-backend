@@ -11,6 +11,7 @@ class RegistrationSerializer(serializers.Serializer):
     first_name = serializers.CharField(write_only=True)
     last_name = serializers.CharField(write_only=True)
 
+    username = serializers.CharField(required=True, allow_blank=False)
     email = serializers.EmailField(required=settings.ACCOUNT_UNIQUE_EMAIL)
     password = serializers.CharField(write_only=True)
     password_confirmation = serializers.CharField(write_only=True)
@@ -43,6 +44,7 @@ class RegistrationSerializer(serializers.Serializer):
         return {
             'first_name': self.validated_data.get('first_name', ''),
             'last_name': self.validated_data.get('last_name', ''),
+            'username': self.validated_data.get('username', ''),
             'email': self.validated_data.get('email', ''),
             'password': self.validated_data.get('password', ''),
         }

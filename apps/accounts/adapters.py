@@ -33,6 +33,7 @@ class AccountAdapter(DefaultAccountAdapter):
         first_name = data.get('first_name')
         last_name = data.get('last_name')
         email = data.get('email')
+        username = data.get('username')
 
         user_email(user, email)
         if first_name:
@@ -47,7 +48,8 @@ class AccountAdapter(DefaultAccountAdapter):
         else:
             user.set_unusable_password()
 
-        user.username = user.email
+        # user.username = user.email
+        user_username(user, username or '')
         if commit:
             # Ability not to commit makes it easier to derive from
             # this adapter by adding
@@ -143,7 +145,7 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
         free. For example, verifying whether or not the username
         already exists, is not a responsibility.
         """
-        username = data.get('email')
+        username = data.get('username')
         first_name = data.get('first_name')
         last_name = data.get('last_name')
         email = data.get('email')

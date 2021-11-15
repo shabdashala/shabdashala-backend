@@ -36,7 +36,7 @@ class UserAdmin(BaseModelAdmin, DjangoUserAdmin, BaseImportExportModelAdmin):
     add_form = accounts_forms.UserCreationForm
     fieldsets = (
         (None, {
-            'fields': ['email', "password"]
+            'fields': ['email', 'username', "password"]
         }),
         (_('Personal info'), {
             'fields': ['first_name', 'last_name', 'gender', 'mobile'],
@@ -50,7 +50,7 @@ class UserAdmin(BaseModelAdmin, DjangoUserAdmin, BaseImportExportModelAdmin):
     )
     readonly_fields = (
         'is_active', 'is_staff', 'is_superuser',
-        'last_login', 'date_joined',
+        'last_login', 'date_joined', 'email',
     )
     add_fieldsets = (
         (None, {
@@ -66,8 +66,8 @@ class UserAdmin(BaseModelAdmin, DjangoUserAdmin, BaseImportExportModelAdmin):
         'is_active',
         accounts_filters.GroupListFilter,
     )
-    list_display = ('email', 'first_name', 'last_name', 'is_staff')
-    search_fields = ('email', 'first_name', 'last_name', 'mobile')
+    list_display = ('email', 'username', 'first_name', 'last_name', 'is_staff')
+    search_fields = ('email', 'username', 'first_name', 'last_name', 'mobile')
     ordering = ('email',)
 
 

@@ -4,6 +4,7 @@ import os
 import uuid
 
 from django.contrib.auth import models as django_auth_models
+from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.core.mail import send_mail
 from django.db import models
 from django.contrib.postgres.fields import CIEmailField
@@ -39,6 +40,20 @@ class User(django_auth_models.AbstractBaseUser, django_auth_models.PermissionsMi
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
     email = CIEmailField(_('email address'), unique=True)
+    username_validator = UnicodeUsernameValidator()
+
+    username = models.CharField(
+        _('username'),
+        max_length=150,
+        unique=True,
+        null=True,
+        help_text=_('Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'),
+        validators=[username_validator],
+        error_messages={
+            'unique': _("A user with that username already exists."),
+        },
+    )
+
     mobile = PhoneNumberField(_("Phone number"), blank=True, null=True)
     gender = models.CharField(
         _('gender'),
@@ -76,7 +91,7 @@ class User(django_auth_models.AbstractBaseUser, django_auth_models.PermissionsMi
     objects = accounts_managers.UserManager()
 
     EMAIL_FIELD = 'email'
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
     class Meta:

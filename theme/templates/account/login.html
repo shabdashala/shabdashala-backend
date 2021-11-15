@@ -80,7 +80,7 @@
               </span>
                 <input class="block w-full mt-1 text-sm{% comment %}  dark:border-gray-600 dark:bg-gray-700{% endcomment %} focus:border-purple-400 focus:outline-none focus:shadow-outline-purple {% comment %}  dark:text-gray-300 dark:focus:shadow-outline-gray{% endcomment %} form-input"
                        autocomplete="email" id="id_login" name="login" placeholder="" required=""
-                       type="email"
+                       type="text"
                 />
                 {% for error in form.login.errors %}
                   <span class="text-xs text-gray-700{% comment %}  dark:text-gray-400{% endcomment %}" id="id_login">{{ error }}</span>
