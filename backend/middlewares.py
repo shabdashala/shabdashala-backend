@@ -3,6 +3,7 @@ from contextlib import suppress
 from django.conf import settings
 
 ADMIN_LANG = getattr(settings, 'ADMIN_LANGUAGE_CODE', settings.LANGUAGE_CODE)
+ALLOWED_LANGUAGES = [lang[0] for lang in settings.LANGUAGES]
 
 
 class ForceTeluguLangMiddleware:
@@ -25,17 +26,24 @@ class ForceTeluguLangMiddleware:
         request.META['HTTP_ACCEPT_LANGUAGE'], namely
         `django.middleware.locale.LocaleMiddleware`.
         """
-        lang = 'te-in'
+        language = request.GET.get('lang')
 
-        # Force Telugu locale for the main site
-        accept = request.META.get('HTTP_ACCEPT_LANGUAGE', '').split(',')
+        if request.method.lower() == 'get' and \
+                language != request.session.get('language') and language in ALLOWED_LANGUAGES:
+            request.session['language'] = language
+        elif 'language' in request.session:
+            language = request.session['language']
 
-        with suppress(ValueError):
-            # Remove `lang` from the HTTP_ACCEPT_LANGUAGE to avoid duplicates
-            accept.remove(lang)
+        if language in ALLOWED_LANGUAGES:
+            # Force Telugu locale for the main site
+            accept = request.META.get('HTTP_ACCEPT_LANGUAGE', '').split(',')
 
-        accept = [lang] + accept
-        request.META['HTTP_ACCEPT_LANGUAGE'] = f"""{','.join(accept)}"""
+            with suppress(ValueError):
+                # Remove `lang` from the HTTP_ACCEPT_LANGUAGE to avoid duplicates
+                accept.remove(f'{language}-in')
+
+            accept = [f'{language}-in'] + accept
+            request.META['HTTP_ACCEPT_LANGUAGE'] = f"""{','.join(accept)}"""
 
         response = self.get_response(request)
 

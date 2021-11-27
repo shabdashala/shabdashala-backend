@@ -264,8 +264,8 @@ LANGUAGES = [
     ('en', _('English')),
 ]
 
-LANGUAGE_CODE = 'te-in'
-ADMIN_LANGUAGE_CODE = 'te-in'
+LANGUAGE_CODE = 'en-us'
+ADMIN_LANGUAGE_CODE = 'en-us'
 
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, '../locale'),
