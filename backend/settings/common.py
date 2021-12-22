@@ -58,6 +58,14 @@ ACCOUNT_FORMS = {
     'signup': 'apps.accounts.forms.SignupForm',
 }
 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 SOCIAL_AUTH_FACEBOOK_KEY = '4080949708656125'
 SOCIAL_AUTH_FACEBOOK_SECRET = '09add2496f9f0f56b7302298c1109229'
 SOCIALACCOUNT_ADAPTER = 'apps.accounts.adapters.SocialAccountAdapter'
