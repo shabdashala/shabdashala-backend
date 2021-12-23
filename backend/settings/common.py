@@ -103,6 +103,7 @@ REST_FRAMEWORK = {
     #     'user': '1000/day'
     # },
     # 'DEFAULT_PAGINATION_CLASS': 'api.pagination.StandardResultsSetPagination',
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
 
 SOCIALACCOUNT_PROVIDERS = {
