@@ -30,8 +30,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 SERVER_EMAIL = 'no-reply@shabdashala.com'
 DEFAULT_FROM_EMAIL = 'no-reply@shabdashala.com'
-EMAIL_HOST_USER = 'Varanasi Bala Subrahmanyam'
-EMAIL_HOST_PASSWORD = 'iv7LtOizxHq7YQtC5u_fSQ'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_HOST = 'smtp.mandrillapp.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = False
@@ -66,8 +66,8 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-SOCIAL_AUTH_FACEBOOK_KEY = '4080949708656125'
-SOCIAL_AUTH_FACEBOOK_SECRET = '09add2496f9f0f56b7302298c1109229'
+SOCIAL_AUTH_FACEBOOK_KEY = ''
+SOCIAL_AUTH_FACEBOOK_SECRET = ''
 SOCIALACCOUNT_ADAPTER = 'apps.accounts.adapters.SocialAccountAdapter'
 
 LOGIN_URL = '/accounts/login/'
@@ -190,7 +190,7 @@ TAILWIND_APP_NAME = 'theme'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'backend.middlewares.ForceTeluguLangMiddleware',
+    # 'backend.middlewares.ForceTeluguLangMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
