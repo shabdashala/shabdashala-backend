@@ -783,11 +783,11 @@ msgstr "మా గురించి"
 
 #: theme/templates/home/about-us.html:8
 msgid ""
-"A start-up that builds the technical tools needed to easily teach, learn and "
+"A microstartup that builds the technical tools needed to easily teach, learn and "
 "research languages."
 msgstr ""
 "భాషలను సులభంగా బోధించడానికి, నేర్చుకోవడానికి మరియు పరిశోధించడానికి కావలసినటువంటి సాంకేతిక సాధనాలను నిర్మించే "
-"అంకుర సంస్థ."
+"సూక్ష్మ అంకుర సంస్థ."
 
 #: theme/templates/socialaccount/authentication_error.html:5
 #: theme/templates/socialaccount/authentication_error.html:8
