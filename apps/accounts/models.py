@@ -13,7 +13,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from phonenumber_field.modelfields import PhoneNumberField
 
-from . import managers as accounts_managers
 from . import utils as accounts_utils
 
 
@@ -88,11 +87,11 @@ class User(django_auth_models.AbstractBaseUser, django_auth_models.PermissionsMi
         null=True, blank=True,
         upload_to=accounts_utils.get_user_image_upload_path)
 
-    objects = accounts_managers.UserManager()
+    objects = django_auth_models.UserManager()
 
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['email', 'first_name', 'last_name']
 
     class Meta:
         verbose_name = _('User')
