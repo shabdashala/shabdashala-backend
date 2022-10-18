@@ -4,7 +4,7 @@
 venv/
 .env
 local_settings.py
-/backend/settings/local.py
+/backend/settings/local*.py
 db.sqlite3
 /media/
 /workspace/
