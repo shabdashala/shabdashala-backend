@@ -10,15 +10,22 @@ A microstartup that builds the technical tools needed to easily teach, learn and
 ### Instructor's Perspective
 
 [x] An Instructor can create multiple Learning Subjects.
+
 [x] An Instructor can add a Question Bank (multiple questions) to a Learning Subject.
+
 [x] An Instructor can configure a dynamic quiz with various MCQ options for a Question Bank.
+
 [ ] An Instructor can view high level statistics (number of views, number of quizzes taken by learners, success rate and, etc...)
 
 ### Learners Perspective
 [x] A Learner can read about various subjects.
+
 [x] A Learner can prepare for quiz from Question Bank.
+
 [x] A Learner can take quizzes with dynamic MCQs and options.
+
 [x] A Learner can view the top performers using Leaderboards.
+
 [ ] A Learner can take quizzes with spaced repetition technique.
 
 ### Pages
