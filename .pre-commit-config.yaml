@@ -32,7 +32,5 @@
         name: Sorting Imports
         entry: isort
         language: system
-        args:
-        - -y
         files: \.py$
         exclude: (.*/scripts/.*|.*/migrations/.*)$
