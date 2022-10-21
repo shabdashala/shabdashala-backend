@@ -15,4 +15,7 @@ urlpatterns = [
     path('practice/<str:quiz_slug>-<uuid:quiz_uuid>/attempt-<uuid:quiz_attempt_uuid>/results/',
          home_views.PracticeResultsView.as_view(),
          name='practice-results'),
+
+    # NOTE: profile page url have to be in the last
+    path('<str:username>/', home_views.ProfileView.as_view(), name='profile'),
 ]

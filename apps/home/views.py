@@ -2,6 +2,7 @@ import typing
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404, redirect
 from django.utils import timezone
 from django.utils.decorators import method_decorator
@@ -15,8 +16,21 @@ from apps.quiz_attempts import models as quiz_attempts_models
 from apps.quizzes import models as quizzes_models
 
 
+User = get_user_model()
+
+
 class PrivacyPolicyView(generic.TemplateView):
     template_name = 'home/privacy-policy.html'
+
+
+class ProfileView(generic.DetailView):
+    template_name = 'home/profile.html'
+    model = get_user_model()
+    slug_field = 'username'
+    slug_url_kwarg = 'username'
+    # renaming context object name to respect auth template context processor
+    # `django.contrib.auth.context_processors.auth`
+    context_object_name = 'user_obj'
 
 
 class IndexView(generic.TemplateView):
