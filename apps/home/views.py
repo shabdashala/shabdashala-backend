@@ -20,7 +20,7 @@ class PrivacyPolicyView(generic.TemplateView):
     template_name = 'home/privacy-policy.html'
 
 
-class IndexView(auth_mixins.LoginRequiredMixin, generic.TemplateView):
+class IndexView(generic.TemplateView):
     template_name = 'home/index.html'
 
     def get_context_data(self, **kwargs):
@@ -33,11 +33,11 @@ class IndexView(auth_mixins.LoginRequiredMixin, generic.TemplateView):
         return context
 
 
-class AboutUsView(auth_mixins.LoginRequiredMixin, generic.TemplateView):
+class AboutUsView(generic.TemplateView):
     template_name = 'home/about-us.html'
 
 
-class LeaderBoardView(auth_mixins.LoginRequiredMixin, generic.ListView):
+class LeaderBoardView(generic.ListView):
     template_name = 'home/leaderboard.html'
     model = quiz_attempts_models.QuizAttempt
     context_object_name = 'quiz_attempts'

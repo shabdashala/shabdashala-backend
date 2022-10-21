@@ -6,11 +6,11 @@ from apps.categories import models as categories_models
 from . import models as questions_models
 
 
-class QuestionIndexView(auth_mixins.LoginRequiredMixin, generic.TemplateView):
+class QuestionIndexView(generic.TemplateView):
     template_name = 'questions/index.html'
 
 
-class QuestionListView(auth_mixins.LoginRequiredMixin, generic.ListView):
+class QuestionListView(generic.ListView):
     template_name = 'questions/list.html'
     model = questions_models.Question
     category = None

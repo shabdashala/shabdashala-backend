@@ -4,11 +4,11 @@ from django.contrib.auth import mixins as auth_mixins
 from . import models as categories_models
 
 
-class CategoryIndexView(auth_mixins.LoginRequiredMixin, generic.TemplateView):
+class CategoryIndexView(generic.TemplateView):
     template_name = 'categories/index.html'
 
 
-class CategoryListView(auth_mixins.LoginRequiredMixin, generic.ListView):
+class CategoryListView(generic.ListView):
     template_name = 'categories/index.html'
 
 
@@ -20,7 +20,7 @@ class CategoryUpdateView(auth_mixins.LoginRequiredMixin, generic.ListView):
     template_name = 'categories/index.html'
 
 
-class CategoryDetailView(auth_mixins.LoginRequiredMixin, generic.DetailView):
+class CategoryDetailView(generic.DetailView):
     template_name = 'categories/detail.html'
     model = categories_models.Category
 
