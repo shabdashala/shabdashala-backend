@@ -1,32 +1,52 @@
 # ShabdaShala
 
-`ShabdaShala` is an online assessment and competing tool that enables language learners to take multiple instructor created quizzes.
+`ShabdaShala` provides a platform to enhance teacher engagement with students through improved access to content, assessments, data and networks, helping teachers better support student learning.
 
 ## About Us:
 A microstartup that builds the technical tools needed to easily teach, learn and research languages. Currently we provide basic tools for  We are 100% open-source.
 
-## Features:
+## Long-term modules:
+	- Instructor Management
+	- Learner Management
+	- (Organization Management)
+	- Profile Management like LinkedIn or Github
+	- Content Management
+		- Courses
+			- Text Only
+			- Video courses
+			- Live Broadcasting (Just like on Television)
+				- YouTube
+			- Live Tutoring
+		- Paths / Levels
+	- Project Management
+	- Assessment Management
+		- Dynamic
+		- Gamification
+		- Spaced repetition technique - to improve memory
+	- Live Tutoring - Video Conferences
+		- Class / Meetings
+			- 1:1
+			- 1:n
+		- Recordings
+
+	- Online Payments
+
+	- Dictionary Compilation and Lexicographers Tools
+
+## Current Features:
 
 ### Instructor's Perspective
-
-[x] An Instructor can create multiple Learning Subjects.
-
-[x] An Instructor can add a Question Bank (multiple questions) to a Learning Subject.
-
-[x] An Instructor can configure a dynamic quiz with various MCQ options for a Question Bank.
-
-[ ] An Instructor can view high level statistics (number of views, number of quizzes taken by learners, success rate and, etc...)
+    - An Instructor can create multiple Learning Subjects. [DONE]
+    - An Instructor can add a Question Bank (multiple questions) to a Learning Subject. [DONE]
+    - An Instructor can configure a dynamic quiz with various MCQ options for a Question Bank. [DONE]
+    - An Instructor can view high level statistics (number of views, number of quizzes taken by learners, success rate and, etc...)
 
 ### Learners Perspective
-[x] A Learner can read about various subjects.
-
-[x] A Learner can prepare for quiz from Question Bank.
-
-[x] A Learner can take quizzes with dynamic MCQs and options.
-
-[x] A Learner can view the top performers using Leaderboards.
-
-[ ] A Learner can take quizzes with spaced repetition technique.
+    - A Learner can read about various subjects. [DONE]
+    - A Learner can prepare for quiz from Question Bank. [DONE]
+    - A Learner can take quizzes with dynamic MCQs and options. [DONE]
+    - A Learner can view the top performers using Leaderboards. [DONE]
+    - A Learner can take quizzes with spaced repetition technique.
 
 ### Pages
 
